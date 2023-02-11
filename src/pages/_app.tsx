@@ -34,7 +34,7 @@ const raleway = Raleway({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <div
-      className={`${raleway.variable} ${playfair.variable} ${style.color_light} ${style.transitionToken} ${style.shadows} ${style.font_sizes} ${style.line_height} rootHolder`}
+      className={`${raleway.variable} ${playfair.variable} ${style.color_source} ${style.color_light} ${style.transitionToken} ${style.shadows} ${style.typography}  rootHolder`}
     >
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
