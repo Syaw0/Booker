@@ -1,9 +1,6 @@
 import Menu from "./menu";
 import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { Provider } from "react-redux";
-import mycloudFakeProps from "../../shared/mycloudFakeProps";
-import makeStore from "../../store/mycloud/mycloudStore";
 
 const mock1 = jest.fn(() => {});
 const mock2 = jest.fn(() => {});
@@ -25,11 +22,7 @@ const options = [
 ];
 
 const CustomParent = () => {
-  return (
-    <Provider store={makeStore(mycloudFakeProps)}>
-      <Menu items={options} />
-    </Provider>
-  );
+  return <Menu items={options} />;
 };
 
 describe("Component Test : Menu", () => {
@@ -73,11 +66,10 @@ describe("Component Test : Menu", () => {
     fireEvent.click(screen.getByTestId(options[1].text));
     expect(mock2).toBeCalledTimes(1);
   });
-  it.skip("if click on outside of menu , menu will close", () => {
+  it("if click on outside of menu , menu will close", () => {
     render(<CustomParent />);
     fireEvent.click(screen.getByTestId("menuHolderIcon"));
     fireEvent.click(document);
-    console.log(mockSetTimeout.mock);
 
     let itemHolder;
     try {

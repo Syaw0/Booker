@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prettier": "npx prettier . -c -w"
+    "prettier": "npx prettier . -c -w",
+    "test:component": "npx jest ./src/components/"
   },
   "dependencies": {
     "@next/font": "13.1.2",
