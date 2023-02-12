@@ -1,0 +1,99 @@
+import { useState } from "react";
+import useFetch from "src/hooks/useFetch";
+import Button from "../button/button";
+import Message from "../message/message";
+import Text from "../typography/typography";
+import style from "./tfaForm.module.css";
+import OtpInput from "../input/otp/otp";
+import checkOtp, { loaderMsg } from "src/utils/checkOtp";
+import Timer from "../timer/timer";
+import getFreshOtp, {
+  loaderMsg as getFreshOtpLoaderMsg,
+} from "src/utils/getFreshOtp";
+
+interface TfaFormPropsType {
+  timerInit?: number;
+}
+
+const TfaForm = ({ timerInit = 60 }: TfaFormPropsType) => {
+  const [inputData, setInputData] = useState("");
+  const [timer, setTimer] = useState(timerInit);
+  const [trigger, state, msg, setMsg] = useFetch(
+    [checkOtp, getFreshOtp],
+    [loaderMsg, getFreshOtpLoaderMsg]
+  );
+
+  const next = async () => {
+    if (!checkInputs()) {
+      return;
+    }
+    const resp = await trigger(0);
+  };
+
+  const checkInputs = () => {
+    if (inputData.length != 6) {
+      setMsg("error", "otp input must have a value!");
+      return false;
+    }
+    return true;
+  };
+
+  const getFreshCode = async () => {
+    if (timer <= 0) {
+      const result = await trigger(1);
+      if (result.status) {
+        setTimer(120);
+      }
+    }
+  };
+
+  const loginInstead = () => {};
+
+  return (
+    <div data-testid="tfaFormHolder" className={style.holder}>
+      <div className={style.typographyHolder}>
+        <Text variant="displayLarge" className={style.headText}>
+          Assurance
+        </Text>
+
+        <Text variant="titleMedium" className={style.subheadText}>
+          we just send email to your email address , enter the code that we send
+          ! you have just 3 times to try , after that the code is outdated.{" "}
+          <Text
+            testid="tfaForm_getFreshCode"
+            as="span"
+            onClick={getFreshCode}
+            className={style.getFreshCode}
+          >
+            get fresh code
+          </Text>
+          <Timer setTime={setTimer} time={timer} />
+        </Text>
+      </div>
+      <div className={style.inputsHolder}>
+        <OtpInput len={6} setValue={setInputData} value={inputData} />
+      </div>
+      <div className={style.buttonHolder}>
+        <Button
+          testid="tfaFormNextButton"
+          color="primary"
+          onClick={next}
+          className={style.NextButton}
+        >
+          Next
+        </Button>
+        <Text
+          testid="tfaFormLoginButton"
+          onClick={loginInstead}
+          className={style.loginInsteadButton}
+          variant="labelLarge"
+        >
+          Login instead
+        </Text>
+      </div>
+      <Message type={state} msg={msg} />
+    </div>
+  );
+};
+
+export default TfaForm;

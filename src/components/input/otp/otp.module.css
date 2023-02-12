@@ -6,22 +6,22 @@
 
 .otpInput {
   width: 30px;
-  font-size: var(--headline5);
+  font-size: var(--titleLarge);
   text-align: center;
   padding: 0.5rem;
   margin: 0px 8px;
   border-radius: 6px;
   box-shadow: none;
-  border: 1px solid var(--onBg300);
+  border: 1px solid var(--on-background300);
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: transparent;
-  color: var(--onBg800);
+  color: var(--on-background800);
 }
 
 .otpInput:focus {
-  background-color: var(--primary300);
-  color: var(--primary);
+  background-color: var(--primary-container400);
+  color: var(--on-primary-container);
   outline: none;
 }

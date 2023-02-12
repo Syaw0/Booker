@@ -2,6 +2,7 @@ import Head from "next/head";
 import LoginForm from "src/components/loginform/loginform";
 import ResetPasswordForm from "src/components/resetPasswordform/resetPasswordform";
 import SignupForm from "src/components/signupform/signupform";
+import TfaForm from "src/components/tfaForm/tfaForm";
 
 const AuthenticatePage = () => {
   return (
@@ -23,7 +24,8 @@ const AuthenticatePage = () => {
         {/* <LoginForm /> */}
         {/* <SignupForm /> */}
         {/* <ResetPasswordForm /> */}
-        <ResetPasswordForm />
+        {/* <ResetPasswordForm /> */}
+        <TfaForm timerInit={4} />
       </div>
     </>
   );
