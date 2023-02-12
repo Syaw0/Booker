@@ -1,5 +1,6 @@
-/* .holder {
-} */
+.headText {
+  font-weight: 600;
+}
 
 .subheadText {
   font-family: var(--font-sub);

@@ -49,10 +49,10 @@ const ForgetPasswordForm = () => {
   return (
     <div data-testid="forgetPasswordFormHolder" className={style.holder}>
       <div className={style.typographyHolder}>
-        <Text variant="displayLarge" className={style.headText}>
+        <Text variant="displayMedium" className={style.headText}>
           Forget Password
         </Text>
-        <Text variant="headlineSmall" className={style.subheadText}>
+        <Text variant="titleMedium" className={style.subheadText}>
           Enter your account email address
         </Text>
       </div>

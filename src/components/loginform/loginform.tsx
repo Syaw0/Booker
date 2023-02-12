@@ -48,10 +48,10 @@ const LoginForm = () => {
   return (
     <div data-testid="loginformHolder" className={style.holder}>
       <div className={style.typographyHolder}>
-        <Text variant="displayLarge" className={style.headText}>
+        <Text variant="displayMedium" className={style.headText}>
           Welcome Back
         </Text>
-        <Text variant="headlineSmall" className={style.subheadText}>
+        <Text variant="titleMedium" className={style.subheadText}>
           Fill the form to login to your account
         </Text>
       </div>

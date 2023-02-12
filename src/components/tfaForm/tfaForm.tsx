@@ -52,7 +52,7 @@ const TfaForm = ({ timerInit = 60 }: TfaFormPropsType) => {
   return (
     <div data-testid="tfaFormHolder" className={style.holder}>
       <div className={style.typographyHolder}>
-        <Text variant="displayLarge" className={style.headText}>
+        <Text variant="displayMedium" className={style.headText}>
           Assurance
         </Text>
 

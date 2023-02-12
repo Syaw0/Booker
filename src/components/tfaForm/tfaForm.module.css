@@ -2,6 +2,10 @@
   width: 25rem;
 }
 
+.headText {
+  font-weight: 600;
+}
+
 .subheadText {
   font-family: var(--font-sub);
 }

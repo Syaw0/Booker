@@ -1,8 +1,9 @@
-/* .holder {
-} */
-
 .subheadText {
   font-family: var(--font-sub);
+}
+
+.headText {
+  font-weight: 600;
 }
 .forgetPasswordBtn {
   padding: 0.2rem 0;

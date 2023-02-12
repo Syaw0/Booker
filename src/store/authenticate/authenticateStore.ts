@@ -1,0 +1,81 @@
+import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+type ComponentType =
+  | "login"
+  | "signup"
+  | "tfa"
+  | "forgetPassword"
+  | "resetPassword";
+
+type SignupData = {
+  name: string;
+  password: string;
+  email: string;
+};
+
+interface AuthenticateStoreTypes {
+  currentComponent: ComponentType;
+  isReset: boolean;
+  isSignup: boolean;
+  currentEmail: string;
+  signupData: SignupData;
+}
+
+const initialState: AuthenticateStoreTypes = {
+  currentComponent: "login",
+  currentEmail: "",
+  isReset: false,
+  isSignup: false,
+  signupData: {
+    email: "",
+    name: "",
+    password: "",
+  },
+};
+
+const authenticateSlice = createSlice({
+  name: "authenticate",
+  initialState: initialState,
+  reducers: {
+    setComponent(preState, action: PayloadAction<ComponentType>) {
+      return {
+        ...preState,
+        currentComponent: action.payload,
+      };
+    },
+    setIsReset(preState, action: PayloadAction<boolean>) {
+      return {
+        ...preState,
+        isReset: action.payload,
+      };
+    },
+
+    setIsSignup(preState, action: PayloadAction<boolean>) {
+      return {
+        ...preState,
+        isReset: action.payload,
+      };
+    },
+    setSignupData(preState, action: PayloadAction<SignupData>) {
+      return {
+        ...preState,
+        signupData: action.payload,
+      };
+    },
+  },
+});
+
+const makeStore = (preState: Partial<AuthenticateStoreTypes>) => {
+  return configureStore({
+    reducer: authenticateSlice.reducer,
+    preloadedState: { ...initialState, ...preState },
+  });
+};
+
+export const setIsReset = authenticateSlice.actions.setIsReset;
+export const setIsSignup = authenticateSlice.actions.setIsSignup;
+export const setComponent = authenticateSlice.actions.setComponent;
+export const setSignupData = authenticateSlice.actions.setSignupData;
+
+export default makeStore;
+export type RootState = typeof initialState;
