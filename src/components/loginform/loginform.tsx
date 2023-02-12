@@ -46,7 +46,7 @@ const LoginForm = () => {
   const loginInstead = () => {};
 
   return (
-    <div className={style.holder}>
+    <div data-testid="loginformHolder" className={style.holder}>
       <div className={style.typographyHolder}>
         <Text variant="displayLarge" className={style.headText}>
           Welcome Back
@@ -82,6 +82,7 @@ const LoginForm = () => {
             StartIcon={<IconLock height="24" width="24" />}
           />
           <Text
+            testid="loginformForgetPasswordButton"
             className={style.forgetPasswordBtn}
             onClick={forgetPassword}
             variant="labelLarge"
@@ -92,6 +93,7 @@ const LoginForm = () => {
       </div>
       <div className={style.buttonHolder}>
         <Button
+          testid="loginformLoginButton"
           color="primary"
           onClick={performCheckLoginform}
           className={style.registerButton}
@@ -99,6 +101,7 @@ const LoginForm = () => {
           Login
         </Button>
         <Text
+          testid="loginformSignupButton"
           onClick={loginInstead}
           className={style.forgetPasswordBtn}
           variant="labelLarge"

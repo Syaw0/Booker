@@ -6,6 +6,9 @@ const config = {
   testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
   testEnvironment: "jsdom",
+  moduleNameMapper: {
+    "src/(.*)": "<rootDir>/src/$1",
+  },
 };
 
 export default config;
