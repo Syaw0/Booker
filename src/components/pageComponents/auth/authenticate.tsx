@@ -9,15 +9,15 @@ import style from "./authenticate.module.css";
 const Authenticate = () => {
   const whichComponent = useAuthStore((s) => s.currentComponent);
   return (
-    <div className={style.holder}>
-      <div className={style.left} />
+    <div data-testid="authenticateHolder" className={style.holder}>
+      <div data-testid="authenticateLeft" className={style.left} />
 
-      <div className={style.right}>
+      <div data-testid="authenticateRight" className={style.right}>
         {whichComponent === "login" && <LoginForm />}
         {whichComponent === "signup" && <SignupForm />}
         {whichComponent === "resetPassword" && <ResetPasswordForm />}
         {whichComponent === "forgetPassword" && <ForgetPasswordForm />}
-        {whichComponent === "tfa" && <TfaForm />}
+        {whichComponent === "tfa" && <TfaForm timerInit={120} />}
       </div>
     </div>
   );

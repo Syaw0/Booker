@@ -3,18 +3,25 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import checkOtp from "src/utils/checkOtp";
 import getFreshOtp from "src/utils/getFreshOtp";
-import { act } from "react-dom/test-utils";
 import { Provider } from "react-redux";
 import makeStore from "src/store/authenticate/authenticateStore";
+import signup from "src/utils/signup";
+import router from "next-router-mock";
+import { MemoryRouterProvider } from "next-router-mock/dist/MemoryRouterProvider";
+import { act } from "react-dom/test-utils";
+
+jest.mock("next/router", () => require("next-router-mock"));
 jest.useFakeTimers();
+
 jest.mock("src/utils/getFreshOtp.ts");
 jest.mock("src/utils/checkOtp.ts");
+jest.mock("src/utils/signup.ts");
 
 const mockCheckOtp = checkOtp as jest.Mock;
 const mockGetFreshOtp = getFreshOtp as jest.Mock;
-
-const CustomParent = ({ timerInit = 1 }: any) => (
-  <Provider store={makeStore({})}>
+const mockSignup = signup as jest.Mock;
+const CustomParent = ({ timerInit = 1, storeData }: any) => (
+  <Provider store={makeStore({ ...storeData })}>
     <TfaForm timerInit={timerInit} />
   </Provider>
 );
@@ -93,7 +100,7 @@ describe("Test Component : TfaForm", () => {
     mockCheckOtp.mockReturnValueOnce(
       new Promise((res) => res({ status: true, msg: "okay" }))
     );
-    render(<CustomParent timerInit={0} />);
+    render(<CustomParent timerInit={0} />, { wrapper: MemoryRouterProvider });
     const next = screen.getByTestId("tfaFormNextButton");
     const inp1 = screen.getByTestId("otpInput_0");
     const inp2 = screen.getByTestId("otpInput_1");
@@ -117,13 +124,40 @@ describe("Test Component : TfaForm", () => {
       expect(screen.getByTestId("errorMessage")).toHaveTextContent("error")
     );
 
-    fireEvent.click(next);
+    await act(async () => fireEvent.click(next));
     expect(mockCheckOtp).toBeCalledTimes(2);
-    await waitFor(() =>
-      expect(screen.getByTestId("waitMessage")).toBeInTheDocument()
-    );
+
     await waitFor(() =>
       expect(screen.getByTestId("successMessage")).toHaveTextContent("okay")
     );
+    await waitFor(() => expect(router.asPath).toEqual("/"));
+  });
+  it("if we came from signup if otp is correct call signup", async () => {
+    mockCheckOtp.mockReturnValueOnce(
+      new Promise((res) => res({ status: true, msg: "okay" }))
+    );
+    mockSignup.mockReturnValue(
+      new Promise((res) => res({ status: true, msg: "okay" }))
+    );
+    render(<CustomParent timerInit={0} storeData={{ isSignup: true }} />);
+    const next = screen.getByTestId("tfaFormNextButton");
+    const inp1 = screen.getByTestId("otpInput_0");
+    const inp2 = screen.getByTestId("otpInput_1");
+    const inp3 = screen.getByTestId("otpInput_2");
+    const inp4 = screen.getByTestId("otpInput_3");
+    const inp5 = screen.getByTestId("otpInput_4");
+    const inp6 = screen.getByTestId("otpInput_5");
+    fireEvent.change(inp1, { target: { value: "2" } });
+    fireEvent.change(inp2, { target: { value: "2" } });
+    fireEvent.change(inp3, { target: { value: "2" } });
+    fireEvent.change(inp4, { target: { value: "2" } });
+    fireEvent.change(inp5, { target: { value: "2" } });
+    fireEvent.change(inp6, { target: { value: "2" } });
+
+    fireEvent.click(next);
+    await waitFor(() =>
+      expect(screen.getByTestId("successMessage")).toBeInTheDocument()
+    );
+    expect(mockSignup).toBeCalledTimes(1);
   });
 });

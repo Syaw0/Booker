@@ -3,7 +3,11 @@ import { useDispatch } from "react-redux";
 import IconEmail from "src/assets/icons/iconEmail";
 import IconLock from "src/assets/icons/iconLock";
 import useFetch from "src/hooks/useFetch";
-import { setComponent } from "src/store/authenticate/authenticateStore";
+import {
+  setComponent,
+  setIsSignup,
+  setSignupData,
+} from "src/store/authenticate/authenticateStore";
 import checkEmailForm from "src/utils/checkEmailForm";
 import checkInputsEmptiness from "src/utils/checkInputEmptiness";
 import checkPasswordValidity from "src/utils/checkPasswordValidity";
@@ -32,6 +36,11 @@ const SignupForm = () => {
       return;
     }
     const resp = await trigger(0);
+    if (resp.status) {
+      dispatch(setIsSignup(true));
+      dispatch(setComponent("tfa"));
+      dispatch(setSignupData(inputData));
+    }
   };
 
   const checkInputs = () => {

@@ -17,6 +17,7 @@ import {
 } from "src/store/authenticate/authenticateStore";
 import { useAuthStore } from "src/store/authenticate/authenticateStoreHooks";
 import { useRouter } from "next/router";
+import signup, { loaderMsg as signupLoaderMsg } from "src/utils/signup";
 
 interface TfaFormPropsType {
   timerInit?: number;
@@ -26,11 +27,12 @@ const TfaForm = ({ timerInit = 60 }: TfaFormPropsType) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const isReset = useAuthStore((s) => s.isReset);
+  const isSignup = useAuthStore((s) => s.isSignup);
   const [inputData, setInputData] = useState("");
   const [timer, setTimer] = useState(timerInit);
   const [trigger, state, msg, setMsg] = useFetch(
-    [checkOtp, getFreshOtp],
-    [loaderMsg, getFreshOtpLoaderMsg]
+    [checkOtp, getFreshOtp, signup],
+    [loaderMsg, getFreshOtpLoaderMsg, signupLoaderMsg]
   );
 
   const next = async () => {
@@ -42,7 +44,13 @@ const TfaForm = ({ timerInit = 60 }: TfaFormPropsType) => {
       if (isReset) {
         return dispatch(setComponent("resetPassword"));
       }
-      router.reload();
+      if (isSignup) {
+        const result = await trigger(2);
+        if (!result.status) {
+          return;
+        }
+      }
+      router.replace("/");
     }
   };
 

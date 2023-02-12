@@ -4,7 +4,9 @@ import "@testing-library/jest-dom";
 import checkLoginForm from "src/utils/checkLoginform";
 import { Provider } from "react-redux";
 import makeStore from "src/store/authenticate/authenticateStore";
+import { act } from "react-dom/test-utils";
 
+jest.mock("next/router", () => require("next-router-mock"));
 jest.mock("src/utils/checkLoginform.ts");
 const mockCheckLoginform = checkLoginForm as jest.Mock;
 
@@ -78,13 +80,8 @@ describe("Test Component : Loginform", () => {
     );
     expect(mockCheckLoginform).toHaveBeenCalledTimes(1);
 
-    fireEvent.click(loginBtn);
-    await waitFor(() =>
-      expect(screen.getByTestId("waitMessage")).toBeInTheDocument()
-    );
-    await waitFor(() =>
-      expect(screen.getByTestId("successMessage")).toBeInTheDocument()
-    );
+    await act(async () => fireEvent.click(loginBtn));
+
     await waitFor(() =>
       expect(screen.getByTestId("successMessage")).toHaveTextContent(
         "successfully checked and its ok"

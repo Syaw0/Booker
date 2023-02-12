@@ -8,7 +8,6 @@ type ComponentType =
   | "resetPassword";
 
 type SignupData = {
-  name: string;
   password: string;
   email: string;
 };
@@ -28,7 +27,6 @@ const initialState: AuthenticateStoreTypes = {
   isSignup: false,
   signupData: {
     email: "",
-    name: "",
     password: "",
   },
 };
@@ -59,7 +57,7 @@ const authenticateSlice = createSlice({
     setIsSignup(preState, action: PayloadAction<boolean>) {
       return {
         ...preState,
-        isReset: action.payload,
+        isSignup: action.payload,
       };
     },
     setSignupData(preState, action: PayloadAction<SignupData>) {
