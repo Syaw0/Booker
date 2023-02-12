@@ -8,7 +8,7 @@ const mockSignupform = checkSignupFrom as jest.Mock;
 
 const CustomParent = () => <SignupForm />;
 
-describe("Test Component : Loginform", () => {
+describe("Test Component : Signupform", () => {
   it("its render properly", () => {
     render(<CustomParent />);
     expect(screen.getByTestId("signupformHolder")).toBeInTheDocument();

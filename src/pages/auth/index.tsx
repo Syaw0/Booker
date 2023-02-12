@@ -1,5 +1,6 @@
 import Head from "next/head";
 import LoginForm from "src/components/loginform/loginform";
+import ResetPasswordForm from "src/components/resetPasswordform/resetPasswordform";
 import SignupForm from "src/components/signupform/signupform";
 
 const AuthenticatePage = () => {
@@ -20,7 +21,8 @@ const AuthenticatePage = () => {
         }}
       >
         {/* <LoginForm /> */}
-        <SignupForm />
+        {/* <SignupForm /> */}
+        <ResetPasswordForm />
       </div>
     </>
   );
