@@ -4,7 +4,7 @@
 .subheadText {
   font-family: var(--font-sub);
 }
-.forgetPasswordBtn {
+.loginInsteadButton {
   padding: 0.2rem 0;
   font-weight: 600;
   cursor: pointer;
@@ -13,11 +13,11 @@
   width: fit-content;
 }
 
-.forgetPasswordBtn:hover {
+.loginInsteadButton:hover {
   color: var(--on-background);
 }
 
-.loginButton {
+.registerButton {
   width: 100%;
   margin-bottom: 0.2rem;
 }
@@ -34,7 +34,7 @@
   margin-bottom: 1.5rem;
 }
 
-.loginformEmailInput {
+.signupformEmailInput {
   margin-bottom: 0.6rem;
 }
 /* .loginformPasswordInput {

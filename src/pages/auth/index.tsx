@@ -1,5 +1,6 @@
 import Head from "next/head";
 import LoginForm from "src/components/loginform/loginform";
+import SignupForm from "src/components/signupform/signupform";
 
 const AuthenticatePage = () => {
   return (
@@ -18,7 +19,8 @@ const AuthenticatePage = () => {
           alignItems: "center",
         }}
       >
-        <LoginForm />
+        {/* <LoginForm /> */}
+        <SignupForm />
       </div>
     </>
   );

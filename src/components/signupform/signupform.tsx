@@ -4,23 +4,27 @@ import IconLock from "src/assets/icons/iconLock";
 import useFetch from "src/hooks/useFetch";
 import checkEmailForm from "src/utils/checkEmailForm";
 import checkInputsEmptiness from "src/utils/checkInputEmptiness";
-import checkLoginForm, { loaderMsg } from "src/utils/checkLoginform";
+import checkPasswordValidity from "src/utils/checkPasswordValidity";
+import checkSignupForm, { loaderMsg } from "src/utils/checkSignupForm";
 import Button from "../button/button";
 import PasswordInput from "../input/password/passwordInput";
 import TextInput from "../input/text/textInput";
 import Message from "../message/message";
 import Text from "../typography/typography";
-import style from "./loginform.module.css";
+import style from "./signupform.module.css";
 
-const LoginForm = () => {
+const SignupForm = () => {
   const [inputData, setInputData] = useState({ email: "", password: "" });
-  const [trigger, state, msg, setMsg] = useFetch([checkLoginForm], [loaderMsg]);
+  const [trigger, state, msg, setMsg] = useFetch(
+    [checkSignupForm],
+    [loaderMsg]
+  );
   const inputChangeHandle = (e: ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.currentTarget;
     setInputData((s) => ({ ...s, [name]: value }));
   };
 
-  const performCheckLoginform = async () => {
+  const performCheckSignupform = async () => {
     if (!checkInputs()) {
       return;
     }
@@ -37,76 +41,68 @@ const LoginForm = () => {
       setMsg("error", "use valid email address!");
       return false;
     }
+    if (!checkPasswordValidity(inputData.password)) {
+      setMsg("error", "password must has 5 or more character!");
+      return false;
+    }
 
     return true;
   };
 
-  const forgetPassword = () => {};
-
-  const signupInstead = () => {};
+  const loginInstead = () => {};
 
   return (
-    <div data-testid="loginformHolder" className={style.holder}>
+    <div data-testid="signupformHolder" className={style.holder}>
       <div className={style.typographyHolder}>
         <Text variant="displayLarge" className={style.headText}>
-          Welcome Back
+          Welcome
         </Text>
         <Text variant="headlineSmall" className={style.subheadText}>
-          Fill the form to login to your account
+          Fill the form to join our store membership
         </Text>
       </div>
       <div className={style.inputsHolder}>
         <TextInput
-          className={style.loginformEmailInput}
+          className={style.signupformEmailInput}
           name="email"
           id="email"
           label="Email Address"
           type="email"
-          testId="loginformEmailInput"
+          testId="signupformEmailInput"
           placeholder="Enter your email address..."
           value={inputData.email}
           onChange={inputChangeHandle}
           StartIcon={<IconEmail height="24" width="24" />}
         />
 
-        <span>
-          <PasswordInput
-            className={style.loginformPasswordInput}
-            name="password"
-            id="password"
-            label="Password"
-            testId="loginformPasswordInput"
-            placeholder="Enter your account password..."
-            value={inputData.password}
-            onChange={inputChangeHandle}
-            StartIcon={<IconLock height="24" width="24" />}
-          />
-          <Text
-            testid="loginformForgetPasswordButton"
-            className={style.forgetPasswordBtn}
-            onClick={forgetPassword}
-            variant="labelLarge"
-          >
-            Forget Password?
-          </Text>
-        </span>
+        <PasswordInput
+          className={style.signupformPasswordInput}
+          name="password"
+          id="password"
+          label="Password"
+          testId="signupformPasswordInput"
+          placeholder="Enter your account password..."
+          value={inputData.password}
+          onChange={inputChangeHandle}
+          StartIcon={<IconLock height="24" width="24" />}
+        />
       </div>
       <div className={style.buttonHolder}>
         <Button
-          testid="loginformLoginButton"
+          testid="signupformSignupButton"
           color="primary"
-          onClick={performCheckLoginform}
-          className={style.loginButton}
+          onClick={performCheckSignupform}
+          className={style.registerButton}
         >
-          Login
+          Signup
         </Button>
         <Text
-          testid="loginformSignupButton"
-          onClick={signupInstead}
-          className={style.forgetPasswordBtn}
+          testid="signupformLoginButton"
+          onClick={loginInstead}
+          className={style.loginInsteadButton}
           variant="labelLarge"
         >
-          Signup instead
+          Login instead
         </Text>
       </div>
       <Message type={state} msg={msg} />
@@ -114,4 +110,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default SignupForm;
