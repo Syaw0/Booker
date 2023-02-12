@@ -43,6 +43,12 @@ const authenticateSlice = createSlice({
         currentComponent: action.payload,
       };
     },
+    setCurrentEmail(preState, action: PayloadAction<string>) {
+      return {
+        ...preState,
+        currentEmail: action.payload,
+      };
+    },
     setIsReset(preState, action: PayloadAction<boolean>) {
       return {
         ...preState,
@@ -76,6 +82,7 @@ export const setIsReset = authenticateSlice.actions.setIsReset;
 export const setIsSignup = authenticateSlice.actions.setIsSignup;
 export const setComponent = authenticateSlice.actions.setComponent;
 export const setSignupData = authenticateSlice.actions.setSignupData;
+export const setCurrentEmail = authenticateSlice.actions.setCurrentEmail;
 
 export default makeStore;
 export type RootState = typeof initialState;

@@ -1,5 +1,7 @@
 import Head from "next/head";
+import { Provider } from "react-redux";
 import Authenticate from "src/components/pageComponents/auth/authenticate";
+import makeStore from "src/store/authenticate/authenticateStore";
 
 const AuthenticatePage = () => {
   return (
@@ -8,7 +10,9 @@ const AuthenticatePage = () => {
         <title>Authentication</title>
         <meta name="description" content="Booker Authentication page" />
       </Head>
-      <Authenticate />
+      <Provider store={makeStore({})}>
+        <Authenticate />
+      </Provider>
     </>
   );
 };

@@ -10,12 +10,22 @@ import Timer from "../timer/timer";
 import getFreshOtp, {
   loaderMsg as getFreshOtpLoaderMsg,
 } from "src/utils/getFreshOtp";
+import { useDispatch } from "react-redux";
+import {
+  setComponent,
+  setIsReset,
+} from "src/store/authenticate/authenticateStore";
+import { useAuthStore } from "src/store/authenticate/authenticateStoreHooks";
+import { useRouter } from "next/router";
 
 interface TfaFormPropsType {
   timerInit?: number;
 }
 
 const TfaForm = ({ timerInit = 60 }: TfaFormPropsType) => {
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const isReset = useAuthStore((s) => s.isReset);
   const [inputData, setInputData] = useState("");
   const [timer, setTimer] = useState(timerInit);
   const [trigger, state, msg, setMsg] = useFetch(
@@ -28,6 +38,12 @@ const TfaForm = ({ timerInit = 60 }: TfaFormPropsType) => {
       return;
     }
     const resp = await trigger(0);
+    if (resp.status) {
+      if (isReset) {
+        return dispatch(setComponent("resetPassword"));
+      }
+      router.reload();
+    }
   };
 
   const checkInputs = () => {
@@ -47,7 +63,12 @@ const TfaForm = ({ timerInit = 60 }: TfaFormPropsType) => {
     }
   };
 
-  const loginInstead = () => {};
+  const loginInstead = () => {
+    if (isReset) {
+      dispatch(setIsReset(false));
+    }
+    dispatch(setComponent("login"));
+  };
 
   return (
     <div data-testid="tfaFormHolder" className={style.holder}>

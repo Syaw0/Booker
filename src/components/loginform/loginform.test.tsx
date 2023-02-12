@@ -2,11 +2,17 @@ import LoginForm from "./loginform";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import checkLoginForm from "src/utils/checkLoginform";
+import { Provider } from "react-redux";
+import makeStore from "src/store/authenticate/authenticateStore";
 
 jest.mock("src/utils/checkLoginform.ts");
 const mockCheckLoginform = checkLoginForm as jest.Mock;
 
-const CustomParent = () => <LoginForm />;
+const CustomParent = () => (
+  <Provider store={makeStore({})}>
+    <LoginForm />
+  </Provider>
+);
 
 describe("Test Component : Loginform", () => {
   it("its render properly", () => {

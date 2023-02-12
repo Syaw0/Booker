@@ -13,6 +13,7 @@ interface TextInputType {
   onKeyDown?: (e: any) => void;
   name?: string;
   StartIcon?: ReactNode;
+  EndIcon?: ReactNode;
 }
 
 const TextInput = ({
@@ -26,6 +27,7 @@ const TextInput = ({
   className = "",
   StartIcon,
   onKeyDown,
+  EndIcon,
   name = "",
 }: TextInputType) => {
   return (
@@ -43,6 +45,7 @@ const TextInput = ({
           type={type}
         />
       </span>
+      {EndIcon != null && EndIcon}
     </div>
   );
 };

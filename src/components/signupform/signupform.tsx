@@ -1,7 +1,9 @@
 import { ChangeEvent, useState } from "react";
+import { useDispatch } from "react-redux";
 import IconEmail from "src/assets/icons/iconEmail";
 import IconLock from "src/assets/icons/iconLock";
 import useFetch from "src/hooks/useFetch";
+import { setComponent } from "src/store/authenticate/authenticateStore";
 import checkEmailForm from "src/utils/checkEmailForm";
 import checkInputsEmptiness from "src/utils/checkInputEmptiness";
 import checkPasswordValidity from "src/utils/checkPasswordValidity";
@@ -14,6 +16,7 @@ import Text from "../typography/typography";
 import style from "./signupform.module.css";
 
 const SignupForm = () => {
+  const dispatch = useDispatch();
   const [inputData, setInputData] = useState({ email: "", password: "" });
   const [trigger, state, msg, setMsg] = useFetch(
     [checkSignupForm],
@@ -49,7 +52,9 @@ const SignupForm = () => {
     return true;
   };
 
-  const loginInstead = () => {};
+  const loginInstead = () => {
+    dispatch(setComponent("login"));
+  };
 
   return (
     <div data-testid="signupformHolder" className={style.holder}>

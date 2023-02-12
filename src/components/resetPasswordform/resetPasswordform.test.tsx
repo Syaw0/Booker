@@ -2,11 +2,17 @@ import ResetPasswordForm from "./resetPasswordform";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import resetPassword from "src/utils/resetPassword";
+import { Provider } from "react-redux";
+import makeStore from "src/store/authenticate/authenticateStore";
 
 jest.mock("src/utils/resetPassword.ts");
 const mockResetPasswordForm = resetPassword as jest.Mock;
 
-const CustomParent = () => <ResetPasswordForm />;
+const CustomParent = () => (
+  <Provider store={makeStore({})}>
+    <ResetPasswordForm />
+  </Provider>
+);
 
 describe("Test Component : ResetPasswordForm", () => {
   it("its render properly", () => {

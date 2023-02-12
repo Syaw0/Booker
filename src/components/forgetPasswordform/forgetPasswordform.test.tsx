@@ -2,11 +2,17 @@ import ForgetPasswordForm from "./forgetPasswordform";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import checkForForgetPasswordForm from "src/utils/checkForgetPasswordForm";
+import { Provider } from "react-redux";
+import makeStore from "src/store/authenticate/authenticateStore";
 
 jest.mock("src/utils/checkForgetPasswordForm.ts");
 const mockCheckForForgetPasswordForm = checkForForgetPasswordForm as jest.Mock;
 
-const CustomParent = () => <ForgetPasswordForm />;
+const CustomParent = () => (
+  <Provider store={makeStore({})}>
+    <ForgetPasswordForm />
+  </Provider>
+);
 
 describe("Test Component : ForgetPasswordForm", () => {
   it("its render properly", () => {

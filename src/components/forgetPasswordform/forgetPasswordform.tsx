@@ -11,8 +11,16 @@ import TextInput from "../input/text/textInput";
 import Message from "../message/message";
 import Text from "../typography/typography";
 import style from "./forgetPasswordform.module.css";
+import { useDispatch } from "react-redux";
+import {
+  setComponent,
+  setCurrentEmail,
+  setIsReset,
+} from "src/store/authenticate/authenticateStore";
 
 const ForgetPasswordForm = () => {
+  const dispatch = useDispatch();
+
   const [inputData, setInputData] = useState({ email: "" });
   const [trigger, state, msg, setMsg] = useFetch(
     [checkForgetPasswordForm],
@@ -28,6 +36,11 @@ const ForgetPasswordForm = () => {
       return;
     }
     const resp = await trigger(0);
+    if (resp.status) {
+      dispatch(setCurrentEmail(inputData.email));
+      dispatch(setIsReset(true));
+      dispatch(setComponent("tfa"));
+    }
   };
 
   const checkInputs = () => {
@@ -44,7 +57,9 @@ const ForgetPasswordForm = () => {
     return true;
   };
 
-  const loginInstead = () => {};
+  const loginInstead = () => {
+    dispatch(setComponent("login"));
+  };
 
   return (
     <div data-testid="forgetPasswordFormHolder" className={style.holder}>

@@ -4,6 +4,8 @@ import "@testing-library/jest-dom";
 import checkOtp from "src/utils/checkOtp";
 import getFreshOtp from "src/utils/getFreshOtp";
 import { act } from "react-dom/test-utils";
+import { Provider } from "react-redux";
+import makeStore from "src/store/authenticate/authenticateStore";
 jest.useFakeTimers();
 jest.mock("src/utils/getFreshOtp.ts");
 jest.mock("src/utils/checkOtp.ts");
@@ -12,7 +14,9 @@ const mockCheckOtp = checkOtp as jest.Mock;
 const mockGetFreshOtp = getFreshOtp as jest.Mock;
 
 const CustomParent = ({ timerInit = 1 }: any) => (
-  <TfaForm timerInit={timerInit} />
+  <Provider store={makeStore({})}>
+    <TfaForm timerInit={timerInit} />
+  </Provider>
 );
 
 describe("Test Component : TfaForm", () => {

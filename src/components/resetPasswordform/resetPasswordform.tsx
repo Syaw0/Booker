@@ -10,8 +10,14 @@ import PasswordInput from "../input/password/passwordInput";
 import IconLock from "src/assets/icons/iconLock";
 import checkPasswordEquality from "src/utils/checkPasswordEquality";
 import checkPasswordValidity from "src/utils/checkPasswordValidity";
+import { useDispatch } from "react-redux";
+import {
+  setComponent,
+  setIsReset,
+} from "src/store/authenticate/authenticateStore";
 
 const ResetPasswordForm = () => {
+  const dispatch = useDispatch();
   const [inputData, setInputData] = useState({
     oldPassword: "",
     newPassword: "",
@@ -28,6 +34,9 @@ const ResetPasswordForm = () => {
       return;
     }
     const resp = await trigger(0);
+    if (resp.status) {
+      dispatch(setComponent("login"));
+    }
   };
 
   const checkInputs = () => {
@@ -56,7 +65,10 @@ const ResetPasswordForm = () => {
     return true;
   };
 
-  const loginInstead = () => {};
+  const loginInstead = () => {
+    dispatch(setIsReset(false));
+    dispatch(setComponent("login"));
+  };
 
   return (
     <div data-testid="resetPasswordFormHolder" className={style.holder}>

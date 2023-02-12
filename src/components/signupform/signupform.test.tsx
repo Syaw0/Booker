@@ -2,11 +2,17 @@ import SignupForm from "./signupform";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import checkSignupFrom from "src/utils/checkSignupForm";
+import { Provider } from "react-redux";
+import makeStore from "src/store/authenticate/authenticateStore";
 
 jest.mock("src/utils/checkSignupForm.ts");
 const mockSignupform = checkSignupFrom as jest.Mock;
 
-const CustomParent = () => <SignupForm />;
+const CustomParent = () => (
+  <Provider store={makeStore({})}>
+    <SignupForm />
+  </Provider>
+);
 
 describe("Test Component : Signupform", () => {
   it("its render properly", () => {
