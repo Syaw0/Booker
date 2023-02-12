@@ -21,8 +21,8 @@ describe("Test Component : Signupform", () => {
   it("if inputs are empty if click on the signup show error", () => {
     render(<CustomParent />);
 
-    const loginBtn = screen.getByTestId("signupformSignupButton");
-    fireEvent.click(loginBtn);
+    const signupBtn = screen.getByTestId("signupformSignupButton");
+    fireEvent.click(signupBtn);
     expect(screen.getByTestId("errorMessage")).toBeInTheDocument();
     expect(screen.getByTestId("errorMessage")).toHaveTextContent(
       "inputs must have value!"
@@ -34,10 +34,10 @@ describe("Test Component : Signupform", () => {
     render(<CustomParent />);
     const passInput = screen.getByTestId("signupformPasswordInput");
     const emailInput = screen.getByTestId("signupformEmailInput");
-    const loginBtn = screen.getByTestId("signupformSignupButton");
+    const signupBtn = screen.getByTestId("signupformSignupButton");
     fireEvent.change(passInput, { target: { value: "123" } });
     fireEvent.change(emailInput, { target: { value: "sdwqd" } });
-    fireEvent.click(loginBtn);
+    fireEvent.click(signupBtn);
     expect(screen.getByTestId("errorMessage")).toBeInTheDocument();
     expect(screen.getByTestId("errorMessage")).toHaveTextContent(
       "use valid email address!"
@@ -49,10 +49,10 @@ describe("Test Component : Signupform", () => {
     render(<CustomParent />);
     const passInput = screen.getByTestId("signupformPasswordInput");
     const emailInput = screen.getByTestId("signupformEmailInput");
-    const loginBtn = screen.getByTestId("signupformSignupButton");
+    const signupBtn = screen.getByTestId("signupformSignupButton");
     fireEvent.change(passInput, { target: { value: "123" } });
     fireEvent.change(emailInput, { target: { value: "sdwqd@gmail.com" } });
-    fireEvent.click(loginBtn);
+    fireEvent.click(signupBtn);
     expect(screen.getByTestId("errorMessage")).toBeInTheDocument();
     expect(screen.getByTestId("errorMessage")).toHaveTextContent(
       "password must has 5 or more character!"
@@ -71,11 +71,11 @@ describe("Test Component : Signupform", () => {
     );
     const passInput = screen.getByTestId("signupformPasswordInput");
     const emailInput = screen.getByTestId("signupformEmailInput");
-    const loginBtn = screen.getByTestId("signupformSignupButton");
+    const signupBtn = screen.getByTestId("signupformSignupButton");
     fireEvent.change(passInput, { target: { value: "123123" } });
     fireEvent.change(emailInput, { target: { value: "sdwqd@gmail.com" } });
 
-    fireEvent.click(loginBtn);
+    fireEvent.click(signupBtn);
     await waitFor(() =>
       expect(screen.getByTestId("errorMessage")).toBeInTheDocument()
     );
@@ -84,7 +84,7 @@ describe("Test Component : Signupform", () => {
     );
     expect(mockSignupform).toHaveBeenCalledTimes(1);
 
-    fireEvent.click(loginBtn);
+    fireEvent.click(signupBtn);
     await waitFor(() =>
       expect(screen.getByTestId("waitMessage")).toBeInTheDocument()
     );

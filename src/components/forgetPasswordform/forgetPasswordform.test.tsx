@@ -23,11 +23,11 @@ describe("Test Component : ForgetPasswordForm", () => {
     ).toBeInTheDocument();
   });
 
-  it("if inputs are empty if click on the signup show error", () => {
+  it("if inputs are empty if click on the next show error", () => {
     render(<CustomParent />);
 
-    const loginBtn = screen.getByTestId("forgetPasswordFormNextButton");
-    fireEvent.click(loginBtn);
+    const next = screen.getByTestId("forgetPasswordFormNextButton");
+    fireEvent.click(next);
     expect(screen.getByTestId("errorMessage")).toBeInTheDocument();
     expect(screen.getByTestId("errorMessage")).toHaveTextContent(
       "inputs must have value!"
@@ -38,9 +38,9 @@ describe("Test Component : ForgetPasswordForm", () => {
   it("if email has not a valid form show error", () => {
     render(<CustomParent />);
     const emailInput = screen.getByTestId("forgetPasswordFormEmailInput");
-    const loginBtn = screen.getByTestId("forgetPasswordFormNextButton");
+    const next = screen.getByTestId("forgetPasswordFormNextButton");
     fireEvent.change(emailInput, { target: { value: "sdwqd" } });
-    fireEvent.click(loginBtn);
+    fireEvent.click(next);
     expect(screen.getByTestId("errorMessage")).toBeInTheDocument();
     expect(screen.getByTestId("errorMessage")).toHaveTextContent(
       "use valid email address!"
@@ -59,10 +59,10 @@ describe("Test Component : ForgetPasswordForm", () => {
       )
     );
     const emailInput = screen.getByTestId("forgetPasswordFormEmailInput");
-    const loginBtn = screen.getByTestId("forgetPasswordFormNextButton");
+    const next = screen.getByTestId("forgetPasswordFormNextButton");
     fireEvent.change(emailInput, { target: { value: "sdwqd@gmail.com" } });
 
-    fireEvent.click(loginBtn);
+    fireEvent.click(next);
     await waitFor(() =>
       expect(screen.getByTestId("errorMessage")).toBeInTheDocument()
     );
@@ -71,7 +71,7 @@ describe("Test Component : ForgetPasswordForm", () => {
     );
     expect(mockCheckForForgetPasswordForm).toHaveBeenCalledTimes(1);
 
-    fireEvent.click(loginBtn);
+    fireEvent.click(next);
     await waitFor(() =>
       expect(screen.getByTestId("waitMessage")).toBeInTheDocument()
     );

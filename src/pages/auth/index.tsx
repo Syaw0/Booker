@@ -22,6 +22,7 @@ const AuthenticatePage = () => {
       >
         {/* <LoginForm /> */}
         {/* <SignupForm /> */}
+        {/* <ResetPasswordForm /> */}
         <ResetPasswordForm />
       </div>
     </>
