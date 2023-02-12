@@ -1,11 +1,15 @@
-/* .text {
+.text {
   font-size: var(--subhead3);
-} */
+}
 
 .holder {
   padding: 0.5rem 1rem;
   margin: 1rem;
   border-radius: 8px;
+}
+.holder p {
+  font-size: var(--titleMedium);
+  font-weight: 600;
 }
 
 .successMsg {
@@ -41,5 +45,5 @@
 }
 
 .errorMsg p {
-  color: var(--onError);
+  color: var(--on-error);
 }

@@ -10,9 +10,9 @@ interface TextInputType {
   type: "text" | "email" | "search";
   testId: string;
   className?: string;
-  EndIcon?: ReactNode;
   onKeyDown?: (e: any) => void;
   name?: string;
+  StartIcon?: ReactNode;
 }
 
 const TextInput = ({
@@ -24,23 +24,25 @@ const TextInput = ({
   type,
   testId,
   className = "",
-  EndIcon,
+  StartIcon,
   onKeyDown,
   name = "",
 }: TextInputType) => {
   return (
     <div onKeyDown={onKeyDown} className={`${style.holder} ${className}`}>
       {label !== "" && <label htmlFor={id}>{label}</label>}
-      <input
-        name={name}
-        placeholder={placeholder}
-        data-testid={testId}
-        id={id}
-        onChange={onChange}
-        value={value}
-        type={type}
-      />
-      {EndIcon != null && EndIcon}
+      <span className={style.inputHolder}>
+        {StartIcon != null && StartIcon}
+        <input
+          name={name}
+          placeholder={placeholder}
+          data-testid={testId}
+          id={id}
+          onChange={onChange}
+          value={value}
+          type={type}
+        />
+      </span>
     </div>
   );
 };

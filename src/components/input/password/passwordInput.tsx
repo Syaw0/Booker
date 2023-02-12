@@ -1,6 +1,6 @@
 import IconEyeClose from "../../../assets/icons/iconEyeClose";
 import IconEyeOpen from "../../../assets/icons/iconEyeOpen";
-import React, { useState } from "react";
+import React, { ReactNode, useState } from "react";
 import style from "./passwordInput.module.css";
 
 interface PasswordInputType {
@@ -12,6 +12,7 @@ interface PasswordInputType {
   testId: string;
   className?: string;
   name?: string;
+  StartIcon?: ReactNode;
 }
 
 const PasswordInput = ({
@@ -23,6 +24,7 @@ const PasswordInput = ({
   testId,
   name = "",
   className = "",
+  StartIcon,
 }: PasswordInputType) => {
   const [showPassword, setShowPassword] = useState(false);
   const changePasswordVisibility = (e: React.MouseEvent<SVGAElement>) => {
@@ -33,17 +35,21 @@ const PasswordInput = ({
     <div className={`${style.holder} ${className}`}>
       <label htmlFor={id}>{label}</label>
       <div>
-        <input
-          name={name}
-          placeholder={placeholder}
-          data-testid={testId}
-          id={id}
-          onChange={onChange}
-          value={value}
-          type={showPassword ? "text" : "password"}
-        />
+        <span className={style.inputHolder}>
+          {StartIcon != null ? StartIcon : ""}
+          <input
+            name={name}
+            placeholder={placeholder}
+            data-testid={testId}
+            id={id}
+            onChange={onChange}
+            value={value}
+            type={showPassword ? "text" : "password"}
+          />
+        </span>
         {showPassword ? (
           <IconEyeClose
+            className={style.eyeIcon}
             onClick={changePasswordVisibility}
             width="20"
             height="20"
@@ -52,6 +58,7 @@ const PasswordInput = ({
           />
         ) : (
           <IconEyeOpen
+            className={style.eyeIcon}
             onClick={changePasswordVisibility}
             width="20"
             height="20"
