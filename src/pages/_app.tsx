@@ -1,4 +1,4 @@
-import "@/styles/globals.css";
+import "src/styles/globals.css";
 import { Playfair_Display, Raleway } from "@next/font/google";
 import type { AppProps } from "next/app";
 import Head from "next/head";
@@ -34,7 +34,7 @@ const raleway = Raleway({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <div
-      className={`${raleway.variable} ${playfair.variable} ${style.color_source} ${style.color_light} ${style.transitionToken} ${style.shadows} ${style.typography}  rootHolder`}
+      className={`${raleway.variable} ${playfair.variable} ${style.color_source} ${style.color_light} ${style.transitionToken} ${style.shadows} ${style.lineHeight} ${style.typography}  rootHolder`}
     >
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />

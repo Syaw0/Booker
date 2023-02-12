@@ -3,17 +3,21 @@ import style from "./typography.module.css";
 interface Text {
   children: any;
   variant?:
-    | "headline1"
-    | "headline2"
-    | "headline3"
-    | "headline4"
-    | "headline5"
-    | "headline4-5"
-    | "headline6"
-    | "subhead1"
-    | "subhead2"
-    | "subhead3"
-    | "button";
+    | "displayLarge"
+    | "displayMedium"
+    | "displaySmall"
+    | "headlineLarge"
+    | "headlineMedium"
+    | "headlineSmall"
+    | "titleLarge"
+    | "titleMedium"
+    | "titleSmall"
+    | "bodyLarge"
+    | "bodyMedium"
+    | "bodySmall"
+    | "labelLarge"
+    | "labelMedium"
+    | "labelSmall";
   id?: string;
   testid?: string;
   className?: string;
@@ -23,7 +27,7 @@ interface Text {
 
 const Text = ({
   children,
-  variant = "subhead1",
+  variant = "bodyMedium",
   testid,
   id,
   className = "",

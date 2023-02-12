@@ -2,79 +2,106 @@
   color: var(--onBg);
 }
 
-.headline1 {
-  font-size: var(--headline1);
-  line-height: var(--headline1_lineHeight);
+.displayLarge {
+  font-size: var(--displayLarge);
+  line-height: var(--displayLarge_lineHeight);
   font-weight: 400;
   font-family: var(--font-head);
 }
 
-.headline2 {
-  font-size: var(--headline2);
-  line-height: var(--headline2_lineHeight);
+.displayMedium {
+  font-size: var(--displayMedium);
+  line-height: var(--displayMedium_lineHeight);
   font-weight: 400;
   font-family: var(--font-head);
 }
 
-.headline3 {
-  font-size: var(--headline3);
-  line-height: var(--headline3_lineHeight);
+.displaySmall {
+  font-size: var(--displaySmall);
+  line-height: var(--displaySmall_lineHeight);
   font-weight: 400;
   font-family: var(--font-head);
 }
 
-.headline4-5 {
-  font-size: var(--headline4-5);
-  line-height: var(--headline4-5_lineHeight);
+.headlineLarge {
+  font-size: var(--headlineLarge);
+  line-height: var(--headlineLarge_lineHeight);
   font-weight: 400;
   font-family: var(--font-head);
 }
 
-.headline4 {
-  font-size: var(--headline4);
-  line-height: var(--headline4_lineHeight);
+.headlineMedium {
+  font-size: var(--headlineMedium);
+  line-height: var(--headlineMedium_lineHeight);
   font-weight: 400;
   font-family: var(--font-head);
 }
 
-.headline5 {
-  font-size: var(--headline5);
-  line-height: var(--headline5_lineHeight);
+.headlineSmall {
+  font-size: var(--headlineSmall);
+  line-height: var(--headlineSmall_lineHeight);
   font-weight: 400;
   font-family: var(--font-head);
 }
 
-.headline6 {
-  font-size: var(--headline6);
-  line-height: var(--headline6_lineHeight);
+.titleLarge {
+  font-size: var(--titleLarge);
+  line-height: var(--titleLarge_lineHeight);
   font-weight: 400;
   font-family: var(--font-head);
 }
 
-.subhead1 {
-  font-size: var(--subhead1);
-  line-height: var(--subhead1_lineHeight);
+.titleMedium {
+  font-size: var(--titleMedium);
+  line-height: var(--titleMedium_lineHeight);
   font-weight: 400;
   font-family: var(--font-sub);
 }
 
-.subhead2 {
-  font-size: var(--subhead2);
-  line-height: var(--subhead2_lineHeight);
+.titleSmall {
+  font-size: var(--titleSmall);
+  line-height: var(--titleSmall_lineHeight);
   font-weight: 400;
   font-family: var(--font-sub);
 }
 
-.subhead3 {
-  font-size: var(--subhead3);
-  line-height: var(--subhead3_lineHeight);
+.bodyLarge {
+  font-size: var(--bodyLarge);
+  line-height: var(--bodyLarge_lineHeight);
   font-weight: 400;
   font-family: var(--font-sub);
 }
 
-.button {
-  font-size: var(--button);
-  line-height: var(--button_lineHeight);
+.bodyMedium {
+  font-size: var(--bodyMedium);
+  line-height: var(--bodyMedium_lineHeight);
+  font-weight: 400;
+  font-family: var(--font-sub);
+}
+
+.bodySmall {
+  font-size: var(--bodySmall);
+  line-height: var(--bodySmall_lineHeight);
+  font-weight: 400;
+  font-family: var(--font-sub);
+}
+
+.labelLarge {
+  font-size: var(--labelLarge);
+  line-height: var(--labelLarge_lineHeight);
+  font-weight: 400;
+  font-family: var(--font-sub);
+}
+
+.labelMedium {
+  font-size: var(--labelMedium);
+  line-height: var(--labelMedium_lineHeight);
+  font-weight: 400;
+  font-family: var(--font-sub);
+}
+.labelSmall {
+  font-size: var(--labelSmall);
+  line-height: var(--labelSmall_lineHeight);
   font-weight: 400;
   font-family: var(--font-sub);
 }

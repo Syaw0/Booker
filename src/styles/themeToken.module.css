@@ -191,21 +191,39 @@
 
 /* font-size:57px */
 .typography {
-  --display--large: 1rem;
-  --display--medium: 0.79rem;
-  --display--small: 0.63rem;
-  --headline--large: 0.56rem;
-  --headline--medium: 0.49rem;
-  --headline--small: 0.42rem;
-  --title--large: 0.39rem;
-  --title--medium: 0.28rem;
-  --title--small: 0.25rem;
-  --body--large: 0.28rem;
-  --body--medium: 0.25rem;
-  --body--small: 0.21rem;
-  --label--large: 0.25rem;
-  --label--medium: 0.21rem;
-  --label--small: 0.19rem;
+  --displayLarge_lineHeight: 57px;
+  --displayMedium_lineHeight: 45px;
+  --displaySmall_lineHeight: 36px;
+  --headlineLarge_lineHeight: 32px;
+  --headlineMedium_lineHeight: 28px;
+  --headlineSmall_lineHeight: 24px;
+  --titleLarge_lineHeight: 22px;
+  --titleMedium_lineHeight: 16px;
+  --titleSmall_lineHeight: 14px;
+  --bodyLarge_lineHeight: 16px;
+  --bodyMedium_lineHeight: 14px;
+  --bodySmall_lineHeight: 12px;
+  --labelLarge_lineHeight: 14px;
+  --labelMedium_lineHeight: 12px;
+  --labelSmall_lineHeight: 11px;
+}
+
+.lineHeight {
+  --displayLarge: 64px;
+  --displayMedium: 52px;
+  --displaySmall: 44px;
+  --headlineLarge: 40px;
+  --headlineMedium: 36px;
+  --headlineSmall: 32px;
+  --titleLarge: 28px;
+  --titleMedium: 24px;
+  --titleSmall: 20px;
+  --bodyLarge: 24px;
+  --bodyMedium: 20px;
+  --bodySmall: 16px;
+  --labelLarge: 20px;
+  --labelMedium: 16px;
+  --labelSmall: 16px;
 }
 
 .transitionToken {
