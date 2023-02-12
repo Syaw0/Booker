@@ -1,22 +1,21 @@
 import { ChangeEvent, useState } from "react";
 import IconEmail from "src/assets/icons/iconEmail";
-import IconLock from "src/assets/icons/iconLock";
 import useFetch from "src/hooks/useFetch";
 import checkEmailForm from "src/utils/checkEmailForm";
 import checkInputsEmptiness from "src/utils/checkInputEmptiness";
-import checkResetPasswordForm, {
+import checkForgetPasswordForm, {
   loaderMsg,
-} from "src/utils/checkResetPasswordForm";
+} from "src/utils/checkForgetPasswordForm";
 import Button from "../button/button";
 import TextInput from "../input/text/textInput";
 import Message from "../message/message";
 import Text from "../typography/typography";
-import style from "./resetPasswordform.module.css";
+import style from "./forgetPasswordform.module.css";
 
-const ResetPasswordForm = () => {
+const ForgetPasswordForm = () => {
   const [inputData, setInputData] = useState({ email: "" });
   const [trigger, state, msg, setMsg] = useFetch(
-    [checkResetPasswordForm],
+    [checkForgetPasswordForm],
     [loaderMsg]
   );
   const inputChangeHandle = (e: ChangeEvent<HTMLInputElement>) => {
@@ -48,10 +47,10 @@ const ResetPasswordForm = () => {
   const loginInstead = () => {};
 
   return (
-    <div data-testid="resetPasswordFormHolder" className={style.holder}>
+    <div data-testid="forgetPasswordFormHolder" className={style.holder}>
       <div className={style.typographyHolder}>
         <Text variant="displayLarge" className={style.headText}>
-          Reset Password
+          Forget Password
         </Text>
         <Text variant="headlineSmall" className={style.subheadText}>
           Enter your account email address
@@ -59,12 +58,12 @@ const ResetPasswordForm = () => {
       </div>
       <div className={style.inputsHolder}>
         <TextInput
-          className={style.resetPasswordFormEmailInput}
+          className={style.forgetPasswordFormEmailInput}
           name="email"
           id="email"
           label="Email Address"
           type="email"
-          testId="resetPasswordFormEmailInput"
+          testId="forgetPasswordFormEmailInput"
           placeholder="Enter your email address..."
           value={inputData.email}
           onChange={inputChangeHandle}
@@ -73,7 +72,7 @@ const ResetPasswordForm = () => {
       </div>
       <div className={style.buttonHolder}>
         <Button
-          testid="resetPasswordFormNextButton"
+          testid="forgetPasswordFormNextButton"
           color="primary"
           onClick={next}
           className={style.NextButton}
@@ -81,7 +80,7 @@ const ResetPasswordForm = () => {
           Next
         </Button>
         <Text
-          testid="resetPasswordFormLoginButton"
+          testid="forgetPasswordFormLoginButton"
           onClick={loginInstead}
           className={style.loginInsteadButton}
           variant="labelLarge"
@@ -94,4 +93,4 @@ const ResetPasswordForm = () => {
   );
 };
 
-export default ResetPasswordForm;
+export default ForgetPasswordForm;

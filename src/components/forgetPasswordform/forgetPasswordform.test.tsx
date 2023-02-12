@@ -1,65 +1,65 @@
-import ResetPasswordForm from "./resetPasswordform";
+import ForgetPasswordForm from "./forgetPasswordform";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import checkForResetPasswordForm from "src/utils/checkResetPasswordForm";
+import checkForForgetPasswordForm from "src/utils/checkForgetPasswordForm";
 
-jest.mock("src/utils/checkResetPasswordForm.ts");
-const mockCheckForResetPasswordForm = checkForResetPasswordForm as jest.Mock;
+jest.mock("src/utils/checkForgetPasswordForm.ts");
+const mockCheckForForgetPasswordForm = checkForForgetPasswordForm as jest.Mock;
 
-const CustomParent = () => <ResetPasswordForm />;
+const CustomParent = () => <ForgetPasswordForm />;
 
-describe("Test Component : ResetPasswordForm", () => {
+describe("Test Component : ForgetPasswordForm", () => {
   it("its render properly", () => {
     render(<CustomParent />);
-    expect(screen.getByTestId("resetPasswordFormHolder")).toBeInTheDocument();
+    expect(screen.getByTestId("forgetPasswordFormHolder")).toBeInTheDocument();
     expect(
-      screen.getByTestId("resetPasswordFormEmailInput")
+      screen.getByTestId("forgetPasswordFormEmailInput")
     ).toBeInTheDocument();
     expect(
-      screen.getByTestId("resetPasswordFormNextButton")
+      screen.getByTestId("forgetPasswordFormNextButton")
     ).toBeInTheDocument();
     expect(
-      screen.getByTestId("resetPasswordFormLoginButton")
+      screen.getByTestId("forgetPasswordFormLoginButton")
     ).toBeInTheDocument();
   });
 
   it("if inputs are empty if click on the signup show error", () => {
     render(<CustomParent />);
 
-    const loginBtn = screen.getByTestId("resetPasswordFormNextButton");
+    const loginBtn = screen.getByTestId("forgetPasswordFormNextButton");
     fireEvent.click(loginBtn);
     expect(screen.getByTestId("errorMessage")).toBeInTheDocument();
     expect(screen.getByTestId("errorMessage")).toHaveTextContent(
       "inputs must have value!"
     );
-    expect(mockCheckForResetPasswordForm).toHaveBeenCalledTimes(0);
+    expect(mockCheckForForgetPasswordForm).toHaveBeenCalledTimes(0);
   });
 
   it("if email has not a valid form show error", () => {
     render(<CustomParent />);
-    const emailInput = screen.getByTestId("resetPasswordFormEmailInput");
-    const loginBtn = screen.getByTestId("resetPasswordFormNextButton");
+    const emailInput = screen.getByTestId("forgetPasswordFormEmailInput");
+    const loginBtn = screen.getByTestId("forgetPasswordFormNextButton");
     fireEvent.change(emailInput, { target: { value: "sdwqd" } });
     fireEvent.click(loginBtn);
     expect(screen.getByTestId("errorMessage")).toBeInTheDocument();
     expect(screen.getByTestId("errorMessage")).toHaveTextContent(
       "use valid email address!"
     );
-    expect(mockCheckForResetPasswordForm).toHaveBeenCalledTimes(0);
+    expect(mockCheckForForgetPasswordForm).toHaveBeenCalledTimes(0);
   });
 
   it("if email  is ok show successful message if not show error", async () => {
     render(<CustomParent />);
-    mockCheckForResetPasswordForm.mockReturnValueOnce(
+    mockCheckForForgetPasswordForm.mockReturnValueOnce(
       new Promise((res) => res({ status: false, msg: "error from server" }))
     );
-    mockCheckForResetPasswordForm.mockReturnValueOnce(
+    mockCheckForForgetPasswordForm.mockReturnValueOnce(
       new Promise((res) =>
         res({ status: true, msg: "successfully checked and its ok" })
       )
     );
-    const emailInput = screen.getByTestId("resetPasswordFormEmailInput");
-    const loginBtn = screen.getByTestId("resetPasswordFormNextButton");
+    const emailInput = screen.getByTestId("forgetPasswordFormEmailInput");
+    const loginBtn = screen.getByTestId("forgetPasswordFormNextButton");
     fireEvent.change(emailInput, { target: { value: "sdwqd@gmail.com" } });
 
     fireEvent.click(loginBtn);
@@ -69,7 +69,7 @@ describe("Test Component : ResetPasswordForm", () => {
     expect(screen.getByTestId("errorMessage")).toHaveTextContent(
       "error from server"
     );
-    expect(mockCheckForResetPasswordForm).toHaveBeenCalledTimes(1);
+    expect(mockCheckForForgetPasswordForm).toHaveBeenCalledTimes(1);
 
     fireEvent.click(loginBtn);
     await waitFor(() =>
@@ -83,6 +83,6 @@ describe("Test Component : ResetPasswordForm", () => {
         "successfully checked and its ok"
       )
     );
-    expect(mockCheckForResetPasswordForm).toHaveBeenCalledTimes(2);
+    expect(mockCheckForForgetPasswordForm).toHaveBeenCalledTimes(2);
   });
 });
