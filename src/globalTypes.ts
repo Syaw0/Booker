@@ -20,27 +20,13 @@ declare global {
     msg: string;
     data?: any;
   }
-  interface ToolBarItemPropsType {
+  interface BookCardPropsType {
     name: string;
-    Icon: (props: IconTypes) => JSX.Element;
-    hook: (d: any) => () => void;
-    type: "dir" | "file";
-    sideInfo: {
-      isFromSide: boolean;
-      data: any;
-    };
-  }
-  interface CardPropsType {
-    name: string;
-    date: string;
-    type: "file" | "dir" | string;
-    size?: number;
-  }
-  interface FileData {
-    name: string;
-    size: number;
-    date: string;
-    isDirectory: boolean;
+    bookId: string;
+    image: string;
+    author: string;
+    price: string;
+    category: string;
   }
 }
 export {};

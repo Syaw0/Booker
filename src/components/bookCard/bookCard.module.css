@@ -1,0 +1,19 @@
+.holder {
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.imageHolder img {
+  border-radius: 0.5rem;
+}
+
+.bookInfo {
+  padding: 0rem 0.2rem;
+}
+
+.bookName {
+  font-weight: 600;
+}
+.authorName {
+  color: var(--on-background600);
+}
