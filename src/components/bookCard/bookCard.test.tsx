@@ -21,22 +21,22 @@ describe("Test Component : Book", () => {
   it("its render properly", () => {
     render(<CustomParent {...fakeBook} />);
     expect(
-      screen.getByTestId(`bookCartHolder_${fakeBook.bookId}`)
+      screen.getByTestId(`bookCardHolder_${fakeBook.bookId}`)
     ).toBeInTheDocument();
-    expect(screen.getByTestId("bookCartImageHolder")).toBeInTheDocument();
-    expect(screen.getByTestId("bookCartInformation")).toBeInTheDocument();
-    expect(screen.getByTestId("bookCartName")).toBeInTheDocument();
-    expect(screen.getByTestId("bookCartAuthor")).toBeInTheDocument();
+    expect(screen.getByTestId("bookCardImageHolder")).toBeInTheDocument();
+    expect(screen.getByTestId("bookCardInformation")).toBeInTheDocument();
+    expect(screen.getByTestId("bookCardName")).toBeInTheDocument();
+    expect(screen.getByTestId("bookCardAuthor")).toBeInTheDocument();
 
-    expect(screen.getByTestId("bookCartName")).toHaveTextContent(fakeBook.name);
-    expect(screen.getByTestId("bookCartAuthor")).toHaveTextContent(
+    expect(screen.getByTestId("bookCardName")).toHaveTextContent(fakeBook.name);
+    expect(screen.getByTestId("bookCardAuthor")).toHaveTextContent(
       fakeBook.author
     );
   });
 
   it("if click on the cart we will move to the book page", () => {
     render(<CustomParent {...fakeBook} />, { wrapper: MemoryRouterProvider });
-    const book = screen.getByTestId(`bookCartHolder_${fakeBook.bookId}`);
+    const book = screen.getByTestId(`bookCardHolder_${fakeBook.bookId}`);
     fireEvent.click(book);
     expect(router.asPath).toEqual(
       `/book/${fakeBook.category}/${fakeBook.bookId}`

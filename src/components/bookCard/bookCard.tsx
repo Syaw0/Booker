@@ -17,11 +17,11 @@ const BookCard = ({
   };
   return (
     <div
-      data-testid={`bookCartHolder_${bookId}`}
+      data-testid={`bookCardHolder_${bookId}`}
       onClick={goTo}
       className={style.holder}
     >
-      <div data-testid="bookCartImageHolder" className={style.imageHolder}>
+      <div data-testid="bookCardImageHolder" className={style.imageHolder}>
         <Image
           width={150}
           height={200}
@@ -31,16 +31,16 @@ const BookCard = ({
         />
       </div>
 
-      <div data-testid="bookCartInformation" className={style.bookInfo}>
+      <div data-testid="bookCardInformation" className={style.bookInfo}>
         <Text
-          testid="bookCartName"
+          testid="bookCardName"
           className={style.bookName}
           variant="titleMedium"
         >
           {name}
         </Text>
         <Text
-          testid="bookCartAuthor"
+          testid="bookCardAuthor"
           className={style.authorName}
           variant="titleSmall"
         >

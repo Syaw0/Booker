@@ -28,5 +28,10 @@ declare global {
     price: string;
     category: string;
   }
+  interface BookIntroducerPropsType {
+    introducingName: string;
+    hrefToAllBooks: string;
+    books: BookCardPropsType[];
+  }
 }
 export {};
