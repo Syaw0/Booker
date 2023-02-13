@@ -33,5 +33,19 @@ declare global {
     hrefToAllBooks: string;
     books: BookCardPropsType[];
   }
+  interface PageMainStates {
+    isLogin: boolean;
+    user: {
+      email: string;
+      cartNumber: string | number;
+      userId: string;
+      profileUrl: string;
+    };
+  }
+  interface HomePagePropsTypes extends PageMainStates {
+    booksIntroducers: {
+      mainIntroducers: BookIntroducerPropsType[];
+    };
+  }
 }
 export {};

@@ -1,6 +1,5 @@
 .holder {
   width: 100%;
-  padding: calc(1rem * 4);
   overflow: hidden;
 }
 
@@ -36,24 +35,12 @@
   min-width: fit-content;
 }
 
-@media (max-width: 1000px) {
-  .holder {
-    padding: calc(1rem * 2);
-  }
-}
-
 @media (max-width: 700px) {
   .introducingName {
     font-size: var(--headlineMedium);
   }
   .top {
     padding: 0rem 0rem 0.5rem 0;
-  }
-}
-
-@media (max-width: 500px) {
-  .holder {
-    padding: calc(1rem);
   }
 }
 

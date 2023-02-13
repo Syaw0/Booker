@@ -30,7 +30,7 @@ const book3: BookCardPropsType = {
 
 const book4: BookCardPropsType = {
   author: "Irvin Yalom",
-  bookId: "2",
+  bookId: "4",
   category: "psychology",
   image:
     "https://images.squarespace-cdn.com/content/v1/5ada91e331d4df2af37677c2/1546724290419-6SWQ266NWYX3Q0JLZX34/yalom-cover-momma.jpg?format=500w",

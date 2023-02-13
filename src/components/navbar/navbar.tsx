@@ -5,6 +5,7 @@ import IconBookmark from "src/assets/icons/iconBookmark";
 import IconBooks from "src/assets/icons/iconBooks";
 import IconCart from "src/assets/icons/iconCart";
 import IconSearch from "src/assets/icons/iconSearch";
+import { useHomeStore } from "src/store/home/homeStoreHooks";
 import checkInputsEmptiness from "src/utils/checkInputEmptiness";
 import TextInput from "../input/text/textInput";
 import Profile from "../profile/profile";
@@ -12,6 +13,7 @@ import Text from "../typography/typography";
 import style from "./navbar.module.css";
 const Navbar = () => {
   const router = useRouter();
+  const { isLogin, user } = useHomeStore((s) => s);
   const [inputData, setInputData] = useState({ searchInput: "" });
   const handleChanges = (e: ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.currentTarget;
@@ -85,7 +87,7 @@ const Navbar = () => {
           height="35"
         />
 
-        <Link href={"/user/wishlist"}>
+        <Link href={isLogin ? "/user/wishlist" : "/auth"}>
           <IconBookmark
             data-testid="navbarBookmarkIcon"
             width="35"
@@ -94,11 +96,11 @@ const Navbar = () => {
         </Link>
 
         <div className={style.cartIconHolder}>
-          <Link href={"/user/cart"}>
+          <Link href={isLogin ? "/user/cart" : "/auth"}>
             <IconCart data-testid="navbarCartIcon" width="35" height="35" />
           </Link>
           <span data-testid="navbarCartNumber" className={style.cartNumber}>
-            5
+            {user.cartNumber}
           </span>
         </div>
         <Profile
@@ -107,7 +109,7 @@ const Navbar = () => {
           alt="else"
           height={100}
           width={100}
-          url="https://user-images.githubusercontent.com/90524474/218326887-539649b7-a556-4214-a5a3-3d4e7e541bd2.jpg"
+          url={user.profileUrl}
         />
       </div>
     </div>
