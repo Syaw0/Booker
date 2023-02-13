@@ -3,9 +3,9 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { Provider } from "react-redux";
 import makeStore from "src/store/books/booksStore";
-import fakeData from "src/shared/fakeBooksPageData";
+import fakeBooksPageData from "src/shared/fakeBooksPageData";
 
-const pageData = fakeData;
+const pageData = fakeBooksPageData;
 
 const CustomParent = (props: BooksPagePropsTypes) => {
   return (

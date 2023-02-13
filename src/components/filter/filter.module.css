@@ -8,6 +8,10 @@
   padding: 1rem;
 }
 
+.holder > div {
+  margin-bottom: 1.5rem;
+}
+
 .filterItemText {
   font-family: var(--font-sub);
   font-weight: 600;

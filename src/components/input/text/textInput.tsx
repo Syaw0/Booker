@@ -7,7 +7,7 @@ interface TextInputType {
   onChange: any;
   value: any;
   id?: string;
-  type: "text" | "email" | "search";
+  type: "text" | "email" | "search" | "number";
   testId: string;
   className?: string;
   onKeyDown?: (e: any) => void;

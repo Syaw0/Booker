@@ -1,6 +1,6 @@
 import { book1, book2 } from "./fakeBooks";
 
-const fakeData: BooksPagePropsTypes = {
+const fakeBooksPageData: BooksPagePropsTypes = {
   books: [book1, book2],
   isLogin: true,
   user: {
@@ -20,4 +20,4 @@ const fakeData: BooksPagePropsTypes = {
   },
 };
 
-export default fakeData;
+export default fakeBooksPageData;

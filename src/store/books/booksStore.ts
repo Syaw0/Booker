@@ -29,6 +29,21 @@ const booksSlice = createSlice({
         },
       };
     },
+    setPriceRange(
+      preState,
+      action: PayloadAction<{ max?: string | number; min?: string | number }>
+    ) {
+      return {
+        ...preState,
+        filters: {
+          ...preState.filters,
+          priceRange: {
+            ...preState.filters.priceRange,
+            ...action.payload,
+          },
+        },
+      };
+    },
   },
 });
 
@@ -40,6 +55,7 @@ const makeStore = (preState: Partial<BooksPagePropsTypes>) => {
 };
 
 export const setKeyword = booksSlice.actions.setKeyword;
+export const setPriceRange = booksSlice.actions.setPriceRange;
 
 export default makeStore;
 export type RootState = typeof initialState;
