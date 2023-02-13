@@ -19,7 +19,7 @@ describe("Test Component : Filter Keyword", () => {
   it("its render properly", () => {
     render(<CustomParent {...pageData} />);
     expect(screen.getByTestId("booksKeywordInput")).toBeInTheDocument();
-    expect(screen.getByTestId("booksKeywordHolder")).toBeInTheDocument();
+    expect(screen.getByTestId("booksFilterKeywordHolder")).toBeInTheDocument();
   });
 
   it("if provider got keyword data ,inputs must show it", () => {

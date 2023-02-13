@@ -31,7 +31,7 @@ const booksSlice = createSlice({
     },
     setPriceRange(
       preState,
-      action: PayloadAction<{ max?: string | number; min?: string | number }>
+      action: PayloadAction<Partial<typeof initialState.filters.priceRange>>
     ) {
       return {
         ...preState,

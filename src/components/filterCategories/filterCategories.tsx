@@ -19,12 +19,12 @@ const FilterCategories = () => {
     }
   };
   return (
-    <div data-testid="filterCategoryHolder" className={style.holder}>
+    <div data-testid="booksFilterCategoryHolder" className={style.holder}>
       {categories.map((category) => {
         return (
           <div
             key={category}
-            data-testid={`filterCategoryItem_${category}`}
+            data-testid={`booksFilterCategoryItem_${category}`}
             onClick={() => {
               handleClick(category, selectedCategories.includes(category));
             }}
@@ -35,7 +35,7 @@ const FilterCategories = () => {
             </Text>
             <input
               readOnly
-              data-testid={`filterCategoryInput_${category}`}
+              data-testid={`booksFilterCategoryInput_${category}`}
               checked={selectedCategories.includes(category)}
               type={"checkbox"}
             />

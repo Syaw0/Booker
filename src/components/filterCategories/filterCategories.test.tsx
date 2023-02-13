@@ -17,9 +17,9 @@ const CustomParent = (props: BooksPagePropsTypes) => {
 describe("Test Component : Filter Category", () => {
   it("its render properly", () => {
     render(<CustomParent {...fakeBooksPageData} />);
-    expect(screen.getByTestId("filterCategoryHolder")).toBeInTheDocument();
+    expect(screen.getByTestId("booksFilterCategoryHolder")).toBeInTheDocument();
     categories.forEach((cate) => {
-      const item = screen.getByTestId(`filterCategoryItem_${cate}`);
+      const item = screen.getByTestId(`booksFilterCategoryItem_${cate}`);
       expect(item).toBeInTheDocument();
       expect(item).toHaveTextContent(cate);
     });
@@ -28,13 +28,15 @@ describe("Test Component : Filter Category", () => {
     const props = fakeBooksPageData;
     props.filters.categories = ["classic", "habits"];
     render(<CustomParent {...props} />);
-    expect(screen.getByTestId("filterCategoryInput_classic")).toBeChecked();
-    expect(screen.getByTestId("filterCategoryInput_habits")).toBeChecked();
+    expect(
+      screen.getByTestId("booksFilterCategoryInput_classic")
+    ).toBeChecked();
+    expect(screen.getByTestId("booksFilterCategoryInput_habits")).toBeChecked();
 
     categories.forEach((cate) => {
       if (cate !== "classic" && cate !== "habits") {
         expect(
-          screen.getByTestId(`filterCategoryInput_${cate}`)
+          screen.getByTestId(`booksFilterCategoryInput_${cate}`)
         ).not.toBeChecked();
       }
     });
@@ -44,8 +46,8 @@ describe("Test Component : Filter Category", () => {
     const props = fakeBooksPageData;
     props.filters.categories = ["history", "psychology"];
     render(<CustomParent {...props} />);
-    const psy = screen.getByTestId("filterCategoryInput_psychology");
-    const history = screen.getByTestId("filterCategoryInput_history");
+    const psy = screen.getByTestId("booksFilterCategoryInput_psychology");
+    const history = screen.getByTestId("booksFilterCategoryInput_history");
     expect(psy).toBeChecked();
     expect(history).toBeChecked();
 

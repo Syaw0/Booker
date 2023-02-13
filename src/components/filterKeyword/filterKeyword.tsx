@@ -13,7 +13,7 @@ const FilterKeyword = () => {
     dispatch(setKeyword(value));
   };
   return (
-    <div data-testid="booksKeywordHolder" className={style.holder}>
+    <div data-testid="booksFilterKeywordHolder" className={style.holder}>
       <TextInput
         className={style.input}
         value={keyword}

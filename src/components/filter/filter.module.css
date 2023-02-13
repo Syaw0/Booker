@@ -6,14 +6,30 @@
   top: 0;
   border: 1px solid black;
   padding: 1rem;
+  overflow-y: auto;
+  scrollbar-width: none;
 }
 
 .holder > div {
-  margin-bottom: 1.5rem;
+  padding: 1rem 0;
 }
 
 .filterItemText {
   font-family: var(--font-sub);
   font-weight: 600;
   margin-bottom: 0.5rem;
+}
+
+.applyButton {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.message {
+  width: 100%;
+}
+
+.message div {
+  width: 100%;
+  margin: 0;
 }
