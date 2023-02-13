@@ -1,0 +1,109 @@
+.holder {
+  width: 100%;
+  border-bottom: 2px solid var(--on-background100);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2rem calc(1rem * 4);
+}
+.left {
+  display: flex;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+}
+
+.logoText {
+  font-weight: 600;
+  padding: 0rem 0.3rem;
+}
+
+.searchInput input {
+  padding: 0.5rem 1rem;
+  width: 20rem;
+  border-radius: 1rem;
+}
+
+.searchInput svg {
+  cursor: pointer;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+}
+
+.right svg {
+  fill: var(--on-background700);
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.right svg:hover {
+  fill: var(--on-background900);
+}
+
+.profile {
+  width: 50px;
+  height: 50px;
+  border: 1px solid var(--outline-variant);
+}
+
+.cartIconHolder {
+  display: flex;
+  position: relative;
+  margin: 0rem 1rem;
+}
+
+.cartNumber {
+  position: absolute;
+  right: 0;
+  background-color: var(--error);
+  color: var(--on-error);
+  width: 15px;
+  height: 15px;
+  text-align: center;
+  border-radius: 50%;
+  font-size: var(--titleSmall);
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+}
+
+.searchIcon {
+  display: none;
+}
+
+@media (max-width: 1000px) {
+  .holder {
+    padding: 0.2rem calc(1rem * 2);
+  }
+}
+
+@media (max-width: 800px) {
+  .searchIcon {
+    display: flex;
+    margin-right: 1rem;
+  }
+  .searchInput {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .holder {
+    padding: 0.2rem calc(1rem);
+  }
+  .left svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .logoText {
+    font-size: var(--headlineSmall);
+  }
+}
