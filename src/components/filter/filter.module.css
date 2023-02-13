@@ -1,0 +1,15 @@
+.holder {
+  width: 20rem;
+  height: 100%;
+  position: sticky;
+  left: 0;
+  top: 0;
+  border: 1px solid black;
+  padding: 1rem;
+}
+
+.filterItemText {
+  font-family: var(--font-sub);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}

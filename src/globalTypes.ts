@@ -47,5 +47,19 @@ declare global {
       mainIntroducers: BookIntroducerPropsType[];
     };
   }
+
+  type categories = "politic" | "history" | "habits" | "psychology";
+
+  interface BooksPagePropsTypes extends PageMainStates {
+    books: BookCardPropsType[];
+    filters: {
+      keyword: string;
+      priceRange: {
+        min: string | number;
+        max: string | number;
+      };
+      categories: categories[];
+    };
+  }
 }
 export {};
