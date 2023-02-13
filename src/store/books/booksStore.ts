@@ -44,6 +44,29 @@ const booksSlice = createSlice({
         },
       };
     },
+    removeCategoryFromFilter(preState, action: PayloadAction<CategoriesType>) {
+      let newList = preState.filters.categories;
+      newList = newList.filter((s) => s !== action.payload);
+      return {
+        ...preState,
+        filters: {
+          ...preState.filters,
+          categories: newList,
+        },
+      };
+    },
+
+    addCategoryFromFilter(preState, action: PayloadAction<CategoriesType>) {
+      let newList = preState.filters.categories.concat(action.payload);
+
+      return {
+        ...preState,
+        filters: {
+          ...preState.filters,
+          categories: newList,
+        },
+      };
+    },
   },
 });
 
@@ -56,6 +79,9 @@ const makeStore = (preState: Partial<BooksPagePropsTypes>) => {
 
 export const setKeyword = booksSlice.actions.setKeyword;
 export const setPriceRange = booksSlice.actions.setPriceRange;
+export const removeCategoryFromFilter =
+  booksSlice.actions.removeCategoryFromFilter;
+export const addCategoryFromFilter = booksSlice.actions.addCategoryFromFilter;
 
 export default makeStore;
 export type RootState = typeof initialState;

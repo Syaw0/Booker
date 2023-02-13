@@ -12,7 +12,15 @@ const BooksPage = () => {
       </Head>
 
       <div style={{ width: "100%", height: "100vh" }}>
-        <Provider store={makeStore({})}>
+        <Provider
+          store={makeStore({
+            filters: {
+              categories: ["classic", "habits"],
+              keyword: "",
+              priceRange: { max: "", min: "" },
+            },
+          })}
+        >
           <Filter />
         </Provider>
       </div>

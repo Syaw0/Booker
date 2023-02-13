@@ -1,3 +1,5 @@
+import categories from "./shared/allCategories";
+
 declare global {
   interface IconTypes {
     height: string;
@@ -48,7 +50,7 @@ declare global {
     };
   }
 
-  type categories = "politic" | "history" | "habits" | "psychology";
+  type CategoriesType = (typeof categories)[number];
 
   interface BooksPagePropsTypes extends PageMainStates {
     books: BookCardPropsType[];
@@ -58,7 +60,7 @@ declare global {
         min: string | number;
         max: string | number;
       };
-      categories: categories[];
+      categories: CategoriesType[];
     };
   }
 }

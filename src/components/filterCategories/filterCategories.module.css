@@ -1,0 +1,17 @@
+.holder {
+  width: 100%;
+}
+
+.categoryItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0rem;
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 1px solid var(--on-background100);
+}
+
+.categoryText {
+  font-weight: 500;
+  color: var(--on-background800);
+}
