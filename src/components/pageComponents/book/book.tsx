@@ -7,10 +7,10 @@ import style from "./book.module.css";
 const BookParticle = () => {
   const similarBooks = useBookStore((s) => s.booksIntroducers.similar);
   return (
-    <div className={style.holder}>
+    <div data-testid="bookPageHolder" className={style.holder}>
       <Navbar />
       <Book />
-      <div className={style.introducers}>
+      <div data-testid="bookPageIntroducer" className={style.introducers}>
         <BookIntroducer {...similarBooks} />
       </div>
       <Footer />
