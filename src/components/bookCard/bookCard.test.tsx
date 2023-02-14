@@ -15,6 +15,7 @@ const fakeBook: BookCardPropsType = {
   image: "https://gg.com",
   name: "Momma and the meaning of life",
   price: "10",
+  description: "",
 };
 
 describe("Test Component : Book", () => {

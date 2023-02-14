@@ -10,6 +10,9 @@ import { useUserCartStore } from "src/store/userCart/userCartStoreHooks";
 import { useEffect } from "react";
 
 const useWrapNavItems = (ref: any) => {
+  if (ref == null) {
+    return;
+  }
   const dispatch = useDispatch();
   const menuItems = useUserCartStore((s) => s.menuItems);
   const navItems = useUserCartStore((s) => s.navbarItems);

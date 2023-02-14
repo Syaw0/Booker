@@ -12,7 +12,9 @@ jest.mock("next/router", () => require("next-router-mock"));
 
 const CustomParent = () => {
   return (
-    <Provider store={makeStore(fakeUserCartPageData)}>
+    <Provider
+      store={makeStore({ ...fakeUserCartPageData, navbarItems: navItems })}
+    >
       <UserDashBase>
         <div data-testid="myChildInTheCustom"></div>
       </UserDashBase>
