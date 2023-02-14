@@ -1,6 +1,9 @@
 import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: BookPagePropsTypes = {
+  booksIntroducers: {
+    similar: { books: [], hrefToAllBooks: "", introducingName: "" },
+  },
   isLogin: false,
   user: {
     cartNumber: 0,

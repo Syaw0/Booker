@@ -12,6 +12,20 @@
   width: 100%;
   border-bottom: 1.2px solid var(--on-background100);
   padding: 0rem calc(1rem * 4);
+  justify-content: space-between;
+  align-items: center;
+}
+
+.linkHolder {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.menuHolder {
+  display: flex;
+  justify-content: center;
+  align-self: center;
 }
 
 .links {

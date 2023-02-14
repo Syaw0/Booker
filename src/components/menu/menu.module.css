@@ -2,8 +2,16 @@
   position: relative;
 }
 
+.holder svg {
+  fill: var(--on-background600);
+  cursor: pointer;
+}
+.holder svg:hover {
+  fill: var(--on-background);
+}
+
 .itemHolder {
-  background-color: var(--onBg);
+  background-color: var(--on-background);
   padding: 0.2rem;
   position: absolute;
   width: max-content;
@@ -12,12 +20,12 @@
 }
 
 .item {
-  color: var(--bg);
+  color: var(--background);
   cursor: pointer;
   padding: 0.2rem 0.5rem;
   border-radius: 8px;
 }
 
 .item:hover {
-  background-color: var(--bg400);
+  background-color: var(--on-background600);
 }
