@@ -5,11 +5,21 @@ import IconSetting from "src/assets/icons/iconSetting";
 import IconTruck from "src/assets/icons/iconTruck";
 
 const navItems = [
-  { href: "/user/cart", Icon: IconCart, name: "Cart" },
-  { href: "/user/orders", Icon: IconTruck, name: "Orders" },
-  { href: "/user/addresses", Icon: IconAddress, name: "Addresses" },
-  { href: "/user/wishlist", Icon: IconBookmark, name: "Wishlist" },
-  { href: "/user/setting", Icon: IconSetting, name: "Setting" },
+  { href: "/user/cart", name: "Cart" },
+  { href: "/user/orders", name: "Orders" },
+  { href: "/user/addresses", name: "Addresses" },
+  { href: "/user/wishlist", name: "Wishlist" },
+  { href: "/user/setting", name: "Setting" },
 ];
+
+const navIcons: any = {
+  Cart: IconCart,
+  Orders: IconTruck,
+  Addresses: IconAddress,
+  Wishlist: IconBookmark,
+  Setting: IconSetting,
+};
+
+export { navIcons };
 
 export default navItems;
