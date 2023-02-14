@@ -6,6 +6,8 @@ const book1: BookCardPropsType = {
   name: "Atomic Habit",
   price: "10",
   category: "habits",
+  description:
+    "James Clear, an expert on habit formation, reveals practical strategies that will teach you how to form good habits, break bad ones, and master the tiny behaviors that lead to remarkable results...",
 };
 
 const book2: BookCardPropsType = {
@@ -16,6 +18,7 @@ const book2: BookCardPropsType = {
   name: "War",
   price: "12",
   category: "history",
+  description: "",
 };
 
 const book3: BookCardPropsType = {
@@ -26,6 +29,7 @@ const book3: BookCardPropsType = {
   name: "Power",
   price: "11",
   category: "history",
+  description: "",
 };
 
 const book4: BookCardPropsType = {
@@ -36,6 +40,8 @@ const book4: BookCardPropsType = {
     "https://images.squarespace-cdn.com/content/v1/5ada91e331d4df2af37677c2/1546724290419-6SWQ266NWYX3Q0JLZX34/yalom-cover-momma.jpg?format=500w",
   name: "Momma and the meaning of life",
   price: "10",
+  description:
+    "Psychotherapist Irvin D. Yalom probes further into the mysteries of the therapeutic encounter in this entertaining and thoughtful follow-up to his bestselling Love's ExecutionerIn six enthralling stories ...",
 };
 
 export { book1, book2, book3, book4 };

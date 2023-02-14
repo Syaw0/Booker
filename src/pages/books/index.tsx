@@ -13,11 +13,9 @@ const BooksPage = (props: BooksPagePropsTypes) => {
         <meta name="description" content="Booker Home Page" />
       </Head>
 
-      <div style={{ width: "100%", height: "100vh" }}>
-        <Provider store={makeStore(props)}>
-          <Books />
-        </Provider>
-      </div>
+      <Provider store={makeStore(props)}>
+        <Books />
+      </Provider>
     </>
   );
 };

@@ -28,7 +28,8 @@ declare global {
     image: string;
     author: string;
     price: string;
-    category: string;
+    category: CategoriesType;
+    description: string;
   }
   interface BookIntroducerPropsType {
     introducingName: string;
@@ -63,6 +64,10 @@ declare global {
       };
       categories: CategoriesType[];
     };
+  }
+
+  interface BookPagePropsTypes extends PageMainStates {
+    book: BookCardPropsType;
   }
 }
 export {};
