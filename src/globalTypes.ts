@@ -72,5 +72,7 @@ declare global {
       similar: BookIntroducerPropsType;
     };
   }
+
+  interface UserCartPagePropsTypes extends PageMainStates {}
 }
 export {};
