@@ -4,14 +4,19 @@ import "@testing-library/jest-dom";
 import navItems from "src/shared/userDashNavItems";
 import { MemoryRouterProvider } from "next-router-mock/dist/MemoryRouterProvider";
 import router from "next-router-mock";
+import { Provider } from "react-redux";
+import makeStore from "src/store/userCart/userCart";
+import fakeUserCartPageData from "src/shared/fakeUserCartPageData";
 
 jest.mock("next/router", () => require("next-router-mock"));
 
 const CustomParent = () => {
   return (
-    <UserDashBase>
-      <div data-testid="myChildInTheCustom"></div>
-    </UserDashBase>
+    <Provider store={makeStore(fakeUserCartPageData)}>
+      <UserDashBase>
+        <div data-testid="myChildInTheCustom"></div>
+      </UserDashBase>
+    </Provider>
   );
 };
 

@@ -1,5 +1,7 @@
 const fakeUserCartPageData: UserCartPagePropsTypes = {
   isLogin: true,
+  menuItems: [],
+  navbarItems: [],
   user: {
     cartNumber: 1,
     email: "",

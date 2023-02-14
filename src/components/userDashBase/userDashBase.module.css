@@ -16,8 +16,8 @@
 
 .links {
   font-size: var(--titleMedium);
-  margin-right: 1rem;
-  padding: 0.5rem;
+  margin-right: 1.5rem;
+  padding: 0.5rem 0;
   user-select: none;
   cursor: pointer;
   color: var(--on-background500);
@@ -45,4 +45,16 @@
 
 .activeLink svg {
   fill: var(--on-background);
+}
+
+@media (max-width: 1000px) {
+  .top {
+    padding: 0rem calc(1rem * 2);
+  }
+}
+
+@media (max-width: 500px) {
+  .top {
+    padding: 0rem calc(1rem * 1);
+  }
 }

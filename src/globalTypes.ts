@@ -1,4 +1,5 @@
 import categories from "./shared/allCategories";
+import navItems from "./shared/userDashNavItems";
 
 declare global {
   interface IconTypes {
@@ -73,6 +74,12 @@ declare global {
     };
   }
 
-  interface UserCartPagePropsTypes extends PageMainStates {}
+  interface PageMainUserDashStates {
+    navbarItems: typeof navItems;
+    menuItems: typeof navItems;
+  }
+  interface UserCartPagePropsTypes
+    extends PageMainStates,
+      PageMainUserDashStates {}
 }
 export {};
