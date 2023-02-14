@@ -54,6 +54,7 @@ declare global {
 
   interface BooksPagePropsTypes extends PageMainStates {
     books: BookCardPropsType[];
+    isFilterOpen: boolean;
     filters: {
       keyword: string;
       priceRange: {

@@ -6,6 +6,7 @@ import makeStore from "src/store/books/booksStore";
 import fakeBooksPageData from "src/shared/fakeBooksPageData";
 import getFilteredBooks from "src/utils/getFilteredBooks";
 import categories from "src/shared/allCategories";
+import { book1 } from "src/shared/fakeBooks";
 
 jest.mock("src/utils/getFilteredBooks");
 const mockGetFilteredBooks = getFilteredBooks as jest.Mock;
@@ -60,7 +61,7 @@ describe("Test Component : Filter", () => {
       new Promise((res) => res({ status: false, msg: "error from server" }))
     );
     mockGetFilteredBooks.mockReturnValueOnce(
-      new Promise((res) => res({ status: true, msg: "update" }))
+      new Promise((res) => res({ status: true, msg: "update", data: [book1] }))
     );
     const apply = screen.getByTestId("booksFilterApplyFilterButton");
     fireEvent.change(screen.getByTestId("booksKeywordInput"), {
@@ -173,7 +174,7 @@ describe("Test Component : Filter", () => {
     it("correct example ", async () => {
       mockGetFilteredBooks.mockClear();
       mockGetFilteredBooks.mockReturnValue(
-        new Promise((res) => res({ status: true, msg: "okay" }))
+        new Promise((res) => res({ status: true, msg: "okay", data: [book1] }))
       );
       const max = screen.getByTestId("booksFilterMaxInput");
       const min = screen.getByTestId("booksFilterMinInput");

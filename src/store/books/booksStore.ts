@@ -2,6 +2,7 @@ import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: BooksPagePropsTypes = {
   isLogin: false,
+  isFilterOpen: true,
   user: {
     cartNumber: 0,
     email: "",
@@ -67,6 +68,19 @@ const booksSlice = createSlice({
         },
       };
     },
+
+    toggleFilterOpening(preState, action: PayloadAction<boolean>) {
+      return {
+        ...preState,
+        isFilterOpen: action.payload,
+      };
+    },
+    replaceBooks(preState, action: PayloadAction<BookCardPropsType[]>) {
+      return {
+        ...preState,
+        books: action.payload,
+      };
+    },
   },
 });
 
@@ -82,6 +96,8 @@ export const setPriceRange = booksSlice.actions.setPriceRange;
 export const removeCategoryFromFilter =
   booksSlice.actions.removeCategoryFromFilter;
 export const addCategoryFromFilter = booksSlice.actions.addCategoryFromFilter;
+export const toggleFilterOpening = booksSlice.actions.toggleFilterOpening;
+export const replaceBooks = booksSlice.actions.replaceBooks;
 
 export default makeStore;
 export type RootState = typeof initialState;

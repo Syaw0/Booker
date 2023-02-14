@@ -1,4 +1,6 @@
+import { useDispatch } from "react-redux";
 import useFetch from "src/hooks/useFetch";
+import { replaceBooks, toggleFilterOpening } from "src/store/books/booksStore";
 import { useBooksStore } from "src/store/books/booksStoreHooks";
 import checkFilters from "src/utils/checkFilters";
 import checkMinAndMax from "src/utils/checkMinAndMaxFilter";
@@ -11,7 +13,9 @@ import Message from "../message/message";
 import Text from "../typography/typography";
 import style from "./filter.module.css";
 
-const Filter = () => {
+const Filter = ({ className }: any) => {
+  const dispatch = useDispatch();
+  const isFilterOpen = useBooksStore((s) => s.isFilterOpen);
   const filters = useBooksStore((s) => s.filters);
   const [trigger, state, msg, setMsg] = useFetch(
     [getFilteredBooks],
@@ -30,9 +34,18 @@ const Filter = () => {
     }
 
     const result = await trigger(0);
+    if (result.status) {
+      if (isFilterOpen) {
+        dispatch(toggleFilterOpening(false));
+      }
+      dispatch(replaceBooks(result.data));
+    }
   };
   return (
-    <div data-testid="booksFilterHolder" className={style.holder}>
+    <div
+      data-testid="booksFilterHolder"
+      className={`${style.holder} ${className}`}
+    >
       <div data-testid="Books" className={style.filterItem}>
         <Text variant="titleLarge" className={style.filterItemText}>
           Keyword

@@ -14,6 +14,7 @@ const BookIntroducer = ({
   const bookHolderRef: any = useRef(null);
   const handleWell = (e: WheelEvent<HTMLDivElement>) => {
     e.preventDefault();
+    e.stopPropagation();
     let bookHolder = bookHolderRef.current as HTMLDivElement;
     const { deltaY } = e;
     const { scrollLeft } = bookHolder;

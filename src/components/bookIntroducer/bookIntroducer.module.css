@@ -21,6 +21,7 @@
   overflow-x: auto;
   padding: 1rem 0;
   scrollbar-width: none;
+  overscroll-behavior: contain;
 }
 
 .bookHolder {

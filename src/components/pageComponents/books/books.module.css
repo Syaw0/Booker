@@ -1,0 +1,136 @@
+.holder {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.middle {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 0rem calc(1rem * 4);
+}
+.right {
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.top {
+  padding: 1rem 0 1rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.filterIcon {
+  fill: var(--on-background800);
+  cursor: pointer;
+  display: none;
+}
+
+.filterIcon:hover {
+  fill: var(--on-background);
+}
+
+.booksHolder {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  justify-content: space-between;
+}
+
+.booksHolder > div {
+  margin: 0.7rem 1rem;
+}
+
+.floatFilterHolder {
+  display: none;
+  position: relative;
+}
+
+.filterCloseIcon {
+  position: absolute;
+  right: 0rem;
+  top: 1rem;
+  padding: 0.2rem;
+  border-radius: 50%;
+  fill: var(--on-background800);
+  cursor: pointer;
+}
+
+@media (max-width: 1000px) {
+  .middle {
+    padding: 0rem calc(1rem * 2);
+  }
+}
+
+@media (max-width: 750px) {
+  .floatFilterHolder {
+    display: flex;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    background-color: var(--background);
+    box-shadow: var(--shadow3dp);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overscroll-behavior: contain;
+  }
+  .floatFilter {
+    display: flex;
+    flex-direction: column;
+    overscroll-behavior: contain;
+    width: 100%;
+    padding: 1rem;
+  }
+  .filterIcon {
+    display: flex;
+  }
+  .booksHolder > div {
+    margin: 0.7rem 0rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .booksHolder {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  }
+}
+
+@media (max-width: 500px) {
+  .middle {
+    padding: 0rem calc(1rem);
+  }
+  .top {
+    padding: 1rem 0;
+  }
+}
+
+@media (max-width: 450px) {
+  .booksHolder {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  .booksHolder > div {
+    width: 150px;
+  }
+
+  .booksHolder > div img {
+    width: 150px;
+    height: 190px;
+  }
+}
