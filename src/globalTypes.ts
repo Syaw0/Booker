@@ -68,6 +68,9 @@ declare global {
 
   interface BookPagePropsTypes extends PageMainStates {
     book: BookCardPropsType;
+    booksIntroducers: {
+      similar: BookIntroducerPropsType;
+    };
   }
 }
 export {};

@@ -10,6 +10,13 @@ const fakeBookPageData: BookPagePropsTypes = {
     userId: "1",
   },
   book: book4,
+  booksIntroducers: {
+    similar: {
+      books: [book1, book2, book4],
+      hrefToAllBooks: "/",
+      introducingName: "Similar",
+    },
+  },
 };
 
 export default fakeBookPageData;
