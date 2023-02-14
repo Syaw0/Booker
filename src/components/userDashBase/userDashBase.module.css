@@ -1,0 +1,48 @@
+.holder {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.top {
+  display: flex;
+  width: 100%;
+  border-bottom: 1.2px solid var(--on-background100);
+  padding: 0rem calc(1rem * 4);
+}
+
+.links {
+  font-size: var(--titleMedium);
+  margin-right: 1rem;
+  padding: 0.5rem;
+  user-select: none;
+  cursor: pointer;
+  color: var(--on-background500);
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.links:hover {
+  color: var(--on-background900);
+}
+.links:hover svg {
+  fill: var(--on-background900);
+}
+
+.links svg {
+  fill: var(--on-background500);
+  margin-left: 0.2rem;
+}
+
+.activeLink {
+  color: var(--on-background);
+}
+
+.activeLink svg {
+  fill: var(--on-background);
+}
