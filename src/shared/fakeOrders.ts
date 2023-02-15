@@ -1,10 +1,7 @@
 import { book1, book2, book3, book4 } from "./fakeBooks";
 
 const fakeOrder1: Order = {
-  books: [
-    { ...book1, num: 2 },
-    { ...book2, num: 3 },
-  ],
+  books: [book1, book1, book2, book3, book4, book1],
   date: "2022-02-01",
   orderId: "2",
   state: "delivered",
@@ -12,10 +9,7 @@ const fakeOrder1: Order = {
 };
 
 const fakeOrder2: Order = {
-  books: [
-    { ...book2, num: 2 },
-    { ...book3, num: 3 },
-  ],
+  books: [book1, book1, book4, book3],
   date: "2022-02-01",
   orderId: "3",
   state: "delivered",
@@ -23,7 +17,7 @@ const fakeOrder2: Order = {
 };
 
 const fakeOrder3: Order = {
-  books: [{ ...book4, num: 2 }],
+  books: [book3, book3, book2],
   date: "2022-02-01",
   orderId: "4",
   state: "delivered",

@@ -1,0 +1,114 @@
+.holder {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+  border-bottom: 1.5px solid var(--on-background100);
+}
+
+.top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top > div:nth-child(1) {
+}
+
+.top > div:nth-child(2) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.orderId {
+  font-size: var(--headlineSmall);
+  line-height: var(--headlineSmall_lineHeight);
+  color: var(--on-background900);
+  font-weight: 600;
+}
+.date {
+  font-size: var(--titleSmall);
+  line-height: var(--titleSmall_lineHeight);
+  color: var(--on-background800);
+  font-weight: 500;
+}
+
+.state {
+  color: var(--on-primary-container);
+  background-color: var(--primary-container);
+  padding: 0.3rem;
+  border-radius: 0.5rem;
+  font-size: var(--titleSmall);
+  line-height: var(--titleSmall_lineHeight);
+  font-weight: 700;
+  margin-right: 1rem;
+}
+
+.totalPrice {
+  font-size: var(--titleSmall);
+  line-height: var(--titleSmall_lineHeight);
+  font-weight: 600;
+}
+
+.imageHolder {
+  width: fit-content;
+  position: relative;
+  padding: 1rem 0;
+  width: calc(140px * 3);
+}
+
+.image {
+  width: 140px;
+  height: 200px;
+  border-radius: 0.5rem;
+  border: 1.5px solid var(--on-background400);
+  box-shadow: var(--shadow1dp);
+}
+
+.image:nth-child(1) {
+  z-index: 1;
+}
+
+.image:nth-child(2) {
+  position: absolute;
+  left: 70px;
+  z-index: 2;
+}
+.image:nth-child(3) {
+  position: absolute;
+  left: 140px;
+  z-index: 4;
+}
+.image:nth-child(4) {
+  position: absolute;
+  left: 210px;
+  z-index: 5;
+}
+
+.bottom {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bottom > div:nth-child(1) {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.bottomRestBookNumber {
+  font-size: var(--titleMedium);
+  line-height: var(--titleMedium_lineHeight);
+  font-weight: 600;
+  color: var(--on-background800);
+}
+
+.seeDetailButton {
+  width: fit-content;
+  min-width: fit-content;
+  padding: 0.2rem 0.7rem;
+}

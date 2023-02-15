@@ -78,7 +78,7 @@ declare global {
   interface Order {
     date: string;
     state: OrderStates;
-    books: BookCartCardPropsType[];
+    books: BookCardPropsType[];
     totalPrice: string | number;
     orderId: string;
   }
