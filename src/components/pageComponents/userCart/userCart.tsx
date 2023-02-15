@@ -1,4 +1,5 @@
 import CartCard from "src/components/cartCard/cartCard";
+import CartPriceSummary from "src/components/cartPriceSummary/cartPriceSummary";
 import Footer from "src/components/footer/footer";
 import Navbar from "src/components/navbar/navbar";
 import UserDashBase from "src/components/userDashBase/userDashBase";
@@ -6,17 +7,19 @@ import { useUserCartStore } from "src/store/userCart/userCartStoreHooks";
 import style from "./userCart.module.css";
 
 const UserCart = () => {
-  const cartBooks = useUserCartStore((s) => s.books);
+  const { addresses, books, priceSummary } = useUserCartStore((s) => s);
   return (
     <div className={style.holder}>
       <Navbar />
       <UserDashBase className={style.bottomHolder}>
         <div className={style.left}>
-          {cartBooks.map((book) => (
+          {books.map((book) => (
             <CartCard {...book} />
           ))}
         </div>
-        <div className={style.right}>s</div>
+        <div className={style.right}>
+          <CartPriceSummary addresses={addresses} priceSummary={priceSummary} />
+        </div>
       </UserDashBase>
       <Footer />
     </div>
