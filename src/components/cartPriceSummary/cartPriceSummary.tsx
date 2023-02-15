@@ -28,41 +28,50 @@ const CartPriceSummary = ({
     router.replace("/user/addresses");
   };
   return (
-    <div className={style.holder}>
+    <div data-testid="cartPriceSummaryHolder" className={style.holder}>
       <div className={style.information}>
         {/* //TODO can refactor this? */}
         <Text className={style.headText}>Result</Text>
         <div className={style.informationItems}>
           <Text>SubTotal</Text>
-          <Text>{priceSummary.subTotal}</Text>
+          <Text testid="cartPriceSummarySubTotal">{priceSummary.subTotal}</Text>
         </div>
         <div className={style.informationItems}>
           <Text>Tax</Text>
-          <Text>{priceSummary.tax}</Text>
+          <Text testid="cartPriceSummaryTax">{priceSummary.tax}</Text>
         </div>
         <div className={style.informationItems}>
           <Text>Shipping</Text>
-          <Text>{priceSummary.shipping}</Text>
+          <Text testid="cartPriceSummaryShipping">{priceSummary.shipping}</Text>
         </div>
         <div className={style.informationItems}>
           <Text>Total</Text>
-          <Text>{priceSummary.total}</Text>
+          <Text testid="cartPriceSummaryTotal">{priceSummary.total}</Text>
         </div>
       </div>
 
       <div className={style.address}>
         <Text className={style.headText}>Address</Text>
         <select
+          data-testid="cartPriceSummarySelect"
           onChange={handleSelectChange}
           value={address}
           className={style.select}
         >
           {addresses.map((add) => {
-            return <option key={add.title}>{add.title}</option>;
+            return (
+              <option
+                data-testid={`cartSelectSummaryAddress_${add.title}`}
+                key={add.title}
+              >
+                {add.title}
+              </option>
+            );
           })}
-          <option selected></option>
+          <option></option>
         </select>
         <Text
+          testid="cartPriceSummaryAddNewAddressButton"
           onClick={goToAddresses}
           variant="labelLarge"
           className={style.addNewAddressButton}
@@ -72,7 +81,11 @@ const CartPriceSummary = ({
       </div>
 
       <div className={style.buttonHolder}>
-        <Button onClick={performPay} className={style.button}>
+        <Button
+          testid="cartPriceSummaryPayButton"
+          onClick={performPay}
+          className={style.button}
+        >
           Pay Now
         </Button>
       </div>
