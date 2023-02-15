@@ -23,6 +23,9 @@ const CartPriceSummary = ({
       return setMsg("error", "You must add an Address!");
     }
     const result = await trigger(0);
+    if (result.status) {
+      router.replace(`/user/orders/${result.data.orderId}`);
+    }
   };
   const goToAddresses = () => {
     router.replace("/user/addresses");

@@ -9,12 +9,12 @@ import style from "./userCart.module.css";
 const UserCart = () => {
   const { addresses, books, priceSummary } = useUserCartStore((s) => s);
   return (
-    <div className={style.holder}>
+    <div data-testid="userCartPage" className={style.holder}>
       <Navbar />
       <UserDashBase className={style.bottomHolder}>
         <div className={style.left}>
           {books.map((book) => (
-            <CartCard {...book} />
+            <CartCard key={book.bookId} {...book} />
           ))}
         </div>
         <div className={style.right}>

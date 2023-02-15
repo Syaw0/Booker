@@ -5,6 +5,7 @@ import { address1, address2 } from "src/shared/fakeAddresses";
 import pay from "src/utils/pay";
 import { MemoryRouterProvider } from "next-router-mock/dist/MemoryRouterProvider";
 import router from "next-router-mock";
+import { act } from "react-dom/test-utils";
 
 jest.mock("next/router", () => require("next-router-mock"));
 jest.mock("src/utils/pay.ts");
@@ -124,12 +125,14 @@ describe("Test Component : CartPriceSummary", () => {
     );
   });
   it("choose address and pay", async () => {
-    render(<CustomParent {...fakeData} />);
+    render(<CustomParent {...fakeData} />, { wrapper: MemoryRouterProvider });
     mockPay.mockReturnValueOnce(
       new Promise((res) => res({ status: false, msg: "error" }))
     );
     mockPay.mockReturnValueOnce(
-      new Promise((res) => res({ status: true, msg: "okay" }))
+      new Promise((res) =>
+        res({ status: true, msg: "okay", data: { orderId: "1" } })
+      )
     );
     fireEvent.change(screen.getByTestId("cartPriceSummarySelect"), {
       target: { value: fakeData.addresses[0].title },
@@ -144,14 +147,13 @@ describe("Test Component : CartPriceSummary", () => {
       expect(screen.getByTestId("errorMessage")).toHaveTextContent("error")
     );
 
-    fireEvent.click(button);
+    await act(async () => fireEvent.click(button));
     expect(mockPay).toBeCalledTimes(2);
-    await waitFor(() =>
-      expect(screen.getByTestId("waitMessage")).toBeInTheDocument()
-    );
+
     await waitFor(() =>
       expect(screen.getByTestId("successMessage")).toHaveTextContent("okay")
     );
+    await waitFor(() => expect(router.asPath).toEqual("/user/orders/1"));
   });
   it("click on the add address will move us to the user/addresses page", async () => {
     render(<CustomParent {...fakeData} />, { wrapper: MemoryRouterProvider });
