@@ -5,7 +5,6 @@ import pay from "src/utils/pay";
 import addOneToCart from "src/utils/addOneToCart";
 import removeAllFromCart from "src/utils/removeAllFromCart";
 import removeOneFromCart from "src/utils/removeOneFromCart";
-import router from "next-router-mock";
 import fakeUserCartPageData from "src/shared/fakeUserCartPageData";
 import { book1 } from "src/shared/fakeBooks";
 

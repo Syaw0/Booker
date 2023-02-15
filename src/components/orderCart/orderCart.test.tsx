@@ -3,6 +3,7 @@ import "@testing-library/jest-dom";
 import { fireEvent, render, screen } from "@testing-library/react";
 import router from "next-router-mock";
 import { book1, book2, book3, book4 } from "src/shared/fakeBooks";
+import { address1 } from "src/shared/fakeAddresses";
 
 jest.mock("next/router", () => require("next-router-mock"));
 
@@ -15,7 +16,13 @@ const fakeData1: Order = {
   date: "some date",
   orderId: "2",
   state: "delivered",
-  totalPrice: "11",
+  priceSummary: {
+    total: "1",
+    shipping: "1",
+    subTotal: "1",
+    tax: "1",
+  },
+  address: address1,
 };
 
 const fakeData2: Order = {
@@ -23,7 +30,13 @@ const fakeData2: Order = {
   date: "some date",
   orderId: "2",
   state: "delivered",
-  totalPrice: "11",
+  priceSummary: {
+    total: "1",
+    shipping: "1",
+    subTotal: "1",
+    tax: "1",
+  },
+  address: address1,
 };
 
 describe("Test Component", () => {
@@ -55,7 +68,7 @@ describe("Test Component", () => {
     expect(screen.getByTestId("orderDate")).toHaveTextContent(fakeData1.date);
     expect(screen.getByTestId("orderState")).toHaveTextContent(fakeData1.state);
     expect(screen.getByTestId("orderTotalPrice")).toHaveTextContent(
-      `${fakeData1.totalPrice}`
+      `${fakeData1.priceSummary.total}`
     );
     expect(screen.getByTestId("orderRestBookNumber")).toHaveTextContent(
       fakeData1.books.length - 4 <= 0
@@ -92,7 +105,7 @@ describe("Test Component", () => {
     expect(screen.getByTestId("orderDate")).toHaveTextContent(fakeData2.date);
     expect(screen.getByTestId("orderState")).toHaveTextContent(fakeData2.state);
     expect(screen.getByTestId("orderTotalPrice")).toHaveTextContent(
-      `${fakeData2.totalPrice}`
+      `${fakeData2.priceSummary.total}`
     );
     expect(screen.getByTestId("orderRestBookNumber")).toHaveTextContent(
       fakeData2.books.length - 4 <= 0

@@ -9,7 +9,7 @@ import style from "./userOrderId.module.css";
 const UserOrderId = () => {
   const { order } = useUserOrderIdStore((s) => s);
   return (
-    <div className={style.holder}>
+    <div data-testid="userOrderIdPage" className={style.holder}>
       <Navbar />
 
       <UserDashBase className={style.orderHolder}>

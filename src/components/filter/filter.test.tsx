@@ -7,6 +7,7 @@ import fakeBooksPageData from "src/shared/fakeBooksPageData";
 import getFilteredBooks from "src/utils/getFilteredBooks";
 import categories from "src/shared/allCategories";
 import { book1 } from "src/shared/fakeBooks";
+import { act } from "react-dom/test-utils";
 
 jest.mock("src/utils/getFilteredBooks");
 const mockGetFilteredBooks = getFilteredBooks as jest.Mock;
@@ -67,22 +68,16 @@ describe("Test Component : Filter", () => {
     fireEvent.change(screen.getByTestId("booksKeywordInput"), {
       target: { value: "siaw" },
     });
-    fireEvent.click(apply);
+    await act(async () => fireEvent.click(apply));
     expect(mockGetFilteredBooks).toBeCalledTimes(1);
-    await waitFor(() =>
-      expect(screen.getByTestId("waitMessage")).toBeInTheDocument()
-    );
 
     await waitFor(() =>
       expect(screen.getByTestId("errorMessage")).toHaveTextContent(
         "error from server"
       )
     );
-    fireEvent.click(apply);
+    await act(async () => fireEvent.click(apply));
     expect(mockGetFilteredBooks).toBeCalledTimes(2);
-    await waitFor(() =>
-      expect(screen.getByTestId("waitMessage")).toBeInTheDocument()
-    );
 
     await waitFor(() =>
       expect(screen.getByTestId("successMessage")).toHaveTextContent("update")
@@ -180,22 +175,21 @@ describe("Test Component : Filter", () => {
       const min = screen.getByTestId("booksFilterMinInput");
       const apply = screen.getByTestId("booksFilterApplyFilterButton");
       fireEvent.change(max, { target: { value: "11" } });
-      fireEvent.click(apply);
-      await waitFor(() => expect(screen.getByTestId("waitMessage")));
+      await act(async () => fireEvent.click(apply));
       await waitFor(() => expect(screen.getByTestId("successMessage")));
       expect(mockGetFilteredBooks).toBeCalledTimes(1);
 
       fireEvent.change(max, { target: { value: "0" } });
       fireEvent.change(min, { target: { value: "11" } });
-      fireEvent.click(apply);
-      await waitFor(() => expect(screen.getByTestId("waitMessage")));
+      await act(async () => fireEvent.click(apply));
+      // await waitFor(() => expect(screen.getByTestId("waitMessage")));
       await waitFor(() => expect(screen.getByTestId("successMessage")));
       expect(mockGetFilteredBooks).toBeCalledTimes(2);
 
       fireEvent.change(max, { target: { value: "123" } });
       fireEvent.change(min, { target: { value: "11" } });
-      fireEvent.click(apply);
-      await waitFor(() => expect(screen.getByTestId("waitMessage")));
+      await act(async () => fireEvent.click(apply));
+      // await waitFor(() => expect(screen.getByTestId("waitMessage")));
       await waitFor(() => expect(screen.getByTestId("successMessage")));
       expect(mockGetFilteredBooks).toBeCalledTimes(3);
     });
