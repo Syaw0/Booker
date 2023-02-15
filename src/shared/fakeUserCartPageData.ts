@@ -1,5 +1,5 @@
 import { address1, address2, address3 } from "./fakeAddresses";
-import { book1, book2, book4 } from "./fakeBooks";
+import { book1, book2, book3, book4 } from "./fakeBooks";
 
 const fakeUserCartPageData: UserCartPagePropsTypes = {
   isLogin: true,
@@ -7,7 +7,9 @@ const fakeUserCartPageData: UserCartPagePropsTypes = {
   addresses: [address1, address2, address3],
   books: [
     { ...book1, num: 2 },
-    { ...book2, num: 2 },
+    { ...book2, num: 3 },
+    { ...book3, num: 2 },
+    { ...book4, num: 5 },
   ],
   priceSummary: {
     shipping: "1",
