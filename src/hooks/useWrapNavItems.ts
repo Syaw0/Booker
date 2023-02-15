@@ -25,7 +25,7 @@ const useWrapNavItems = (ref: any) => {
     const pop = (index: any = anchors.length - 1) => {
       const name = anchors[index].id;
       const href = navItems.filter((s) => s.name === name)[0].href;
-      anchorWidth -= anchors[index].clientWidth;
+      anchorWidth -= anchors[index].clientWidth - 40;
       dispatch(popFromNav(name));
       dispatch(addToMenu({ name: name, href: href }));
       if (anchorWidth > window.innerWidth) {

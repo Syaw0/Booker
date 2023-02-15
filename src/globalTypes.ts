@@ -80,6 +80,26 @@ declare global {
   }
   interface UserCartPagePropsTypes
     extends PageMainStates,
-      PageMainUserDashStates {}
+      PageMainUserDashStates {
+    books: (BookCardPropsType & { num: number })[];
+    addresses: Address[];
+    priceSummary: {
+      tax: string | number;
+      shipping: string | number;
+      total: string | number;
+      subTotal: string | number;
+    };
+  }
+
+  interface Address {
+    title: string;
+    receiverName: string;
+    state: string;
+    city: string;
+    street: string;
+    tel: string | number;
+    zipCode: string | number;
+    country: string;
+  }
 }
 export {};

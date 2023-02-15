@@ -3,6 +3,14 @@ import navItems from "src/shared/userDashNavItems";
 
 const initialState: UserCartPagePropsTypes = {
   isLogin: false,
+  priceSummary: {
+    shipping: "",
+    subTotal: "",
+    tax: "",
+    total: "",
+  },
+  addresses: [],
+  books: [],
   menuItems: [],
   navbarItems: navItems,
   user: {

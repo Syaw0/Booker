@@ -7,7 +7,7 @@ const UserCart = () => {
   return (
     <div className={style.holder}>
       <Navbar />
-      <UserDashBase />
+      <UserDashBase></UserDashBase>
       <Footer />
     </div>
   );

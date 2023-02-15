@@ -1,6 +1,20 @@
+import { address1, address2, address3 } from "./fakeAddresses";
+import { book1, book2, book4 } from "./fakeBooks";
+
 const fakeUserCartPageData: UserCartPagePropsTypes = {
   isLogin: true,
   menuItems: [],
+  addresses: [address1, address2, address3],
+  books: [
+    { ...book1, num: 2 },
+    { ...book2, num: 2 },
+  ],
+  priceSummary: {
+    shipping: "1",
+    subTotal: "12",
+    tax: "1",
+    total: "14",
+  },
   navbarItems: [],
   user: {
     cartNumber: 1,
