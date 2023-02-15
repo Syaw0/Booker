@@ -74,6 +74,20 @@ declare global {
     };
   }
 
+  type OrderStates = "delivered";
+  interface Order {
+    date: string;
+    state: OrderStates;
+    books: BookCartCardPropsType[];
+    totalPrice: string | number;
+    orderId: string;
+  }
+  interface UserOrdersPagePropsTypes
+    extends PageMainStates,
+      PageMainUserDashStates {
+    orders: Order[];
+  }
+
   interface PageMainUserDashStates {
     navbarItems: typeof navItems;
     menuItems: typeof navItems;
