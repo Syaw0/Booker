@@ -24,6 +24,7 @@ const CartCard = ({
   name,
   price,
   author,
+  bookId,
   num,
 }: BookCartCardPropsType) => {
   const dispatch = useDispatch();
@@ -71,9 +72,10 @@ const CartCard = ({
     setIsLocked(false);
   };
   return (
-    <div className={style.holder}>
+    <div data-testid={`cartCardHolder_${bookId}`} className={style.holder}>
       <div className={style.left}>
         <Image
+          data-testid="cartCardImage"
           className={style.image}
           src={image}
           alt={name}
@@ -85,14 +87,23 @@ const CartCard = ({
       <div className={style.right}>
         <div className={style.rightTop}>
           <div>
-            <Text className={style.name} variant="headlineMedium">
+            <Text
+              testid="cartCardName"
+              className={style.name}
+              variant="headlineMedium"
+            >
               {name}
             </Text>
-            <Text className={style.author} variant="labelLarge">
+            <Text
+              testid="cartCardAuthor"
+              className={style.author}
+              variant="labelLarge"
+            >
               {author}
             </Text>
           </div>
           <Button
+            testid="cartCardRemoveAllButton"
             variant="shadow"
             className={style.removeAllButton}
             color="error"
@@ -103,19 +114,27 @@ const CartCard = ({
         </div>
         <div className={style.rightBottom}>
           <div className={style.counterHolder}>
-            <div onClick={removeOne}>
+            <div data-testid="cartCardRemoveOneButton" onClick={removeOne}>
               <IconSubtracting width="24" height="24" />
             </div>
             <div>
-              <Text className={style.counterCount} variant="titleLarge">
+              <Text
+                testid="cartCardCountNumber"
+                className={style.counterCount}
+                variant="titleLarge"
+              >
                 {num}
               </Text>
             </div>
-            <div onClick={addOne}>
+            <div data-testid="cartCardAddOneButton" onClick={addOne}>
               <IconPlus width="24" height="24" />
             </div>
           </div>
-          <Text className={style.price} variant="titleLarge">
+          <Text
+            testid="cartCardTotalPrice"
+            className={style.price}
+            variant="titleLarge"
+          >
             {Number(price) * Number(num)}$
           </Text>
         </div>
