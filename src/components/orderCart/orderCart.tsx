@@ -6,7 +6,7 @@ import Button from "../button/button";
 import Text from "../typography/typography";
 import style from "./orderCart.module.css";
 
-const OrderCart = ({ books, date, orderId, state, totalPrice }: Order) => {
+const OrderCart = ({ books, date, orderId, state, priceSummary }: Order) => {
   const router = useRouter();
   const goToOrder = () => {
     router.replace(`/user/orders/${orderId}`);
@@ -27,7 +27,7 @@ const OrderCart = ({ books, date, orderId, state, totalPrice }: Order) => {
             {state}
           </Text>
           <Text testid="orderTotalPrice" className={style.totalPrice}>
-            {totalPrice}$
+            {priceSummary.total}$
           </Text>
         </div>
       </div>

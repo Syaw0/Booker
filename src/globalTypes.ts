@@ -74,13 +74,20 @@ declare global {
     };
   }
 
+  interface UserOrderIdPagePropsTypes
+    extends PageMainStates,
+      PageMainUserDashStates {
+    order: Omit<Order, "books"> & { books: BookCartCardPropsType[] };
+  }
+
   type OrderStates = "delivered";
   interface Order {
     date: string;
     state: OrderStates;
     books: BookCardPropsType[];
-    totalPrice: string | number;
+    priceSummary: UserCartPagePropsTypes["priceSummary"];
     orderId: string;
+    address: Address;
   }
   interface UserOrdersPagePropsTypes
     extends PageMainStates,

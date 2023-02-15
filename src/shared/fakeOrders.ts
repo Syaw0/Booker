@@ -1,3 +1,4 @@
+import { address1, address2, address3 } from "./fakeAddresses";
 import { book1, book2, book3, book4 } from "./fakeBooks";
 
 const fakeOrder1: Order = {
@@ -5,7 +6,8 @@ const fakeOrder1: Order = {
   date: "2022-02-01",
   orderId: "2",
   state: "delivered",
-  totalPrice: "103",
+  priceSummary: { shipping: "1", subTotal: "1", tax: "1", total: "1" },
+  address: address1,
 };
 
 const fakeOrder2: Order = {
@@ -13,7 +15,8 @@ const fakeOrder2: Order = {
   date: "2022-02-01",
   orderId: "3",
   state: "delivered",
-  totalPrice: "23",
+  priceSummary: { shipping: "1", subTotal: "1", tax: "1", total: "1" },
+  address: address2,
 };
 
 const fakeOrder3: Order = {
@@ -21,7 +24,8 @@ const fakeOrder3: Order = {
   date: "2022-02-01",
   orderId: "4",
   state: "delivered",
-  totalPrice: "444",
+  priceSummary: { shipping: "1", subTotal: "1", tax: "1", total: "1" },
+  address: address3,
 };
 
 export { fakeOrder1, fakeOrder2, fakeOrder3 };
