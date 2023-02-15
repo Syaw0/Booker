@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import IconArrowRight from "src/assets/icons/iconArrowRight";
 import loader from "src/utils/imageLoader";
 import Button from "../button/button";
@@ -6,16 +7,28 @@ import Text from "../typography/typography";
 import style from "./orderCart.module.css";
 
 const OrderCart = ({ books, date, orderId, state, totalPrice }: Order) => {
+  const router = useRouter();
+  const goToOrder = () => {
+    router.replace(`/user/orders/${orderId}`);
+  };
   return (
-    <div className={style.holder}>
+    <div data-testid={`order_${orderId}`} className={style.holder}>
       <div className={style.top}>
         <div>
-          <Text className={style.orderId}>#{orderId}</Text>
-          <Text className={style.date}>{date}</Text>
+          <Text testid="orderOrderId" className={style.orderId}>
+            #{orderId}
+          </Text>
+          <Text testid="orderDate" className={style.date}>
+            {date}
+          </Text>
         </div>
         <div>
-          <Text className={style.state}>{state}</Text>
-          <Text className={style.totalPrice}>{totalPrice}$</Text>
+          <Text testid="orderState" className={style.state}>
+            {state}
+          </Text>
+          <Text testid="orderTotalPrice" className={style.totalPrice}>
+            {totalPrice}$
+          </Text>
         </div>
       </div>
 
@@ -23,11 +36,12 @@ const OrderCart = ({ books, date, orderId, state, totalPrice }: Order) => {
         <div>
           <div className={style.imageHolder}>
             {books.map((book, i) => {
-              if (i == 3) {
+              if (i > 3) {
                 return;
               }
               return (
                 <Image
+                  data-testid={`orderImage_${i}`}
                   key={`${book.bookId}_i`}
                   className={style.image}
                   src={book.image}
@@ -39,12 +53,17 @@ const OrderCart = ({ books, date, orderId, state, totalPrice }: Order) => {
               );
             })}
           </div>
-          <Text className={style.bottomRestBookNumber}>
+          <Text
+            testid="orderRestBookNumber"
+            className={style.bottomRestBookNumber}
+          >
             {books.length - 4 <= 0 ? "" : `And +${books.length - 4} books`}
           </Text>
         </div>
-        <div>
+        <div className={style.buttonHolder}>
           <Button
+            testid="orderSeeDetailButton"
+            onClick={goToOrder}
             className={style.seeDetailButton}
             EndIcon={IconArrowRight}
             variant="shadow"
