@@ -42,7 +42,7 @@ const OrderCart = ({ books, date, orderId, state, totalPrice }: Order) => {
               return (
                 <Image
                   data-testid={`orderImage_${i}`}
-                  key={`${book.bookId}_i`}
+                  key={`${book.bookId}_${i}`}
                   className={style.image}
                   src={book.image}
                   alt={book.name}

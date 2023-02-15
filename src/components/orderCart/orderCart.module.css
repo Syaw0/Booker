@@ -191,9 +191,6 @@
     line-height: var(--labelMedium_lineHeight);
   }
 
-  .buttonHolder {
-  }
-
   .bottomRestBookNumber {
     font-size: var(--titleSmall);
     line-height: var(--titleSmall_lineHeight);
