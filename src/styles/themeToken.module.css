@@ -64,6 +64,9 @@
   --on-tertiary-container: rgba(30, 24, 44, 1);
 
   --error: rgba(186, 26, 26, 1);
+
+  --error100: rgba(186, 26, 26, 0.3);
+
   --on-error: rgba(255, 255, 255, 1);
   --on-error500: rgba(255, 255, 255, 0.5);
   --on-error200: rgba(255, 255, 255, 0.2);

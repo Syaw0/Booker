@@ -78,16 +78,35 @@ declare global {
     navbarItems: typeof navItems;
     menuItems: typeof navItems;
   }
+
+  interface BookCartCardPropsType extends BookCardPropsType {
+    num: number | string;
+  }
+
   interface UserCartPagePropsTypes
     extends PageMainStates,
       PageMainUserDashStates {
-    books: (BookCardPropsType & { num: number })[];
+    books: BookCartCardPropsType[];
     addresses: Address[];
     priceSummary: {
       tax: string | number;
       shipping: string | number;
       total: string | number;
       subTotal: string | number;
+    };
+  }
+
+  interface UserCartPageUpdateData {
+    books: BookCartCardPropsType[];
+    addresses: Address[];
+    priceSummary: {
+      tax: string | number;
+      shipping: string | number;
+      total: string | number;
+      subTotal: string | number;
+    };
+    user: {
+      cartNumber: string | number;
     };
   }
 

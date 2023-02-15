@@ -8,7 +8,7 @@ import Menu from "../menu/menu";
 import { useRouter } from "next/router";
 import useWrapNavItems from "src/hooks/useWrapNavItems";
 
-const UserDashBase = ({ children }: any) => {
+const UserDashBase = ({ children, className = "" }: any) => {
   const router = useRouter();
   const ref: any = useRef(null);
   const navItems = useUserCartStore((s) => s.navbarItems);
@@ -61,7 +61,10 @@ const UserDashBase = ({ children }: any) => {
           </div>
         )}
       </div>
-      <div data-testid="userDashBaseContent" className={style.bottom}>
+      <div
+        data-testid="userDashBaseContent"
+        className={`${style.bottom} ${className}`}
+      >
         {children}
       </div>
     </div>

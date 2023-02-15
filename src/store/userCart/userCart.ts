@@ -54,6 +54,16 @@ const userCartSlice = createSlice({
         navbarItems: newList,
       };
     },
+
+    updateStates(preState, action: PayloadAction<UserCartPageUpdateData>) {
+      return {
+        ...preState,
+        addresses: action.payload.addresses,
+        books: action.payload.books,
+        priceSummary: action.payload.priceSummary,
+        user: { ...preState.user, ...action.payload.user },
+      };
+    },
   },
 });
 
@@ -68,6 +78,7 @@ export const addToMenu = userCartSlice.actions.addToMenu;
 export const addToNav = userCartSlice.actions.addToNav;
 export const popFromMenu = userCartSlice.actions.popFromMenu;
 export const popFromNav = userCartSlice.actions.popFromNav;
+export const updateStates = userCartSlice.actions.updateStates;
 
 export default makeStore;
 export type RootState = typeof initialState;
