@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useRef, WheelEvent } from "react";
+import { useEffect, useRef, WheelEvent } from "react";
 import IconArrowRight from "src/assets/icons/iconArrowRight";
 import BookCard from "../bookCard/bookCard";
 import Button from "../button/button";
@@ -12,7 +12,9 @@ const BookIntroducer = ({
   books,
 }: BookIntroducerPropsType) => {
   const bookHolderRef: any = useRef(null);
-  const handleWell = (e: WheelEvent<HTMLDivElement>) => {
+  const ref: any = useRef(null);
+
+  const handleWell = (e: any) => {
     e.preventDefault();
     e.stopPropagation();
     let bookHolder = bookHolderRef.current as HTMLDivElement;
@@ -28,6 +30,10 @@ const BookIntroducer = ({
       behavior: "smooth",
     });
   };
+  useEffect(() => {
+    const div = ref.current as HTMLDivElement;
+    div.addEventListener("wheel", handleWell, { passive: false });
+  }, []);
   return (
     <div
       data-testid={`bookIntroducer_${introducingName}`}
@@ -54,8 +60,8 @@ const BookIntroducer = ({
       </div>
       <div ref={bookHolderRef} className={style.bottom}>
         <div
+          ref={ref}
           data-testid="bookIntroducerBooksHolder"
-          onWheel={handleWell}
           className={style.bookHolder}
         >
           {books.map((book) => {
