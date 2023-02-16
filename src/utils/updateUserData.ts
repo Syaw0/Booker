@@ -8,6 +8,7 @@ const updateUserData = async () => {
       email: "",
       profileUrl: "",
       userId: "",
+      wishlist: [],
     },
   };
 };

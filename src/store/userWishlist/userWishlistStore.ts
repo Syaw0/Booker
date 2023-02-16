@@ -12,6 +12,7 @@ const initialState: UserWishlistPagePropsTypes = {
     email: "",
     profileUrl: "",
     userId: "",
+    wishlist: [],
   },
 };
 

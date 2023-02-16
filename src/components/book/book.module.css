@@ -4,6 +4,18 @@
   padding: 2rem calc(1rem * 4);
 }
 
+.buttonHolder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonHolder svg {
+  cursor: pointer;
+  fill: var(--on-primary-container);
+  margin-right: 1rem;
+}
+
 .right {
   padding: 0rem 0rem 0rem 2rem;
   display: flex;

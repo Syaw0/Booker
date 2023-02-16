@@ -10,6 +10,7 @@ const initialState: HomePagePropsTypes = {
     email: "",
     profileUrl: "",
     userId: "",
+    wishlist: [],
   },
 };
 

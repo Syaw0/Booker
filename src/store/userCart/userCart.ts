@@ -14,12 +14,7 @@ const initialState: UserCartPagePropsTypes = {
   books: [],
   menuItems: [],
   navbarItems: navItems,
-  user: {
-    cartNumber: 0,
-    email: "",
-    profileUrl: "",
-    userId: "",
-  },
+  user: { wishlist: [], cartNumber: 0, email: "", profileUrl: "", userId: "" },
 };
 
 const userCartSlice = createSlice({

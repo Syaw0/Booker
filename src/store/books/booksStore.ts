@@ -8,6 +8,7 @@ const initialState: BooksPagePropsTypes = {
     email: "",
     profileUrl: "",
     userId: "",
+    wishlist: [],
   },
   books: [],
   filters: {

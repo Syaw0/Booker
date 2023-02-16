@@ -37,14 +37,18 @@ declare global {
     hrefToAllBooks: string;
     books: BookCardPropsType[];
   }
+
+  interface User {
+    email: string;
+    cartNumber: string | number;
+    userId: string;
+    profileUrl: string;
+    wishlist: string[];
+  }
+
   interface PageMainStates {
     isLogin: boolean;
-    user: {
-      email: string;
-      cartNumber: string | number;
-      userId: string;
-      profileUrl: string;
-    };
+    user: User;
   }
   interface HomePagePropsTypes extends PageMainStates {
     booksIntroducers: {

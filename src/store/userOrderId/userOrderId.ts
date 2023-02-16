@@ -28,12 +28,7 @@ const initialState: UserOrderIdPagePropsTypes = {
   },
   menuItems: [],
   navbarItems: navItems,
-  user: {
-    cartNumber: 0,
-    email: "",
-    profileUrl: "",
-    userId: "",
-  },
+  user: { wishlist: [], cartNumber: 0, email: "", profileUrl: "", userId: "" },
 };
 
 const userOrderIdSlice = createSlice({

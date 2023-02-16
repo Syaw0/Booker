@@ -16,12 +16,7 @@ const initialState: UserEditAddressPagePropsTypes = {
   isLogin: false,
   menuItems: [],
   navbarItems: navItems,
-  user: {
-    cartNumber: 0,
-    email: "",
-    profileUrl: "",
-    userId: "",
-  },
+  user: { wishlist: [], cartNumber: 0, email: "", profileUrl: "", userId: "" },
 };
 
 const userEditAddressSlice = createSlice({
