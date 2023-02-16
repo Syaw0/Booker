@@ -74,6 +74,12 @@ declare global {
     };
   }
 
+  interface UserAddressesPagePropsTypes
+    extends PageMainStates,
+      PageMainUserDashStates {
+    addresses: Address[];
+  }
+
   interface UserOrderIdPagePropsTypes
     extends PageMainStates,
       PageMainUserDashStates {
