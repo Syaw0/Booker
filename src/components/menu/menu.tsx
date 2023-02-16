@@ -11,9 +11,10 @@ interface Item {
 
 interface MenuPropsType {
   items: Item[];
+  className?: string;
 }
 
-const Menu = ({ items }: MenuPropsType) => {
+const Menu = ({ items, className = "" }: MenuPropsType) => {
   const [showMenu, setShowMenu] = useState(false);
   const icon: any = useRef(null);
   useOutsideClickHandler(icon, setShowMenu);
@@ -21,7 +22,7 @@ const Menu = ({ items }: MenuPropsType) => {
     setShowMenu((s) => !s);
   };
   return (
-    <div data-testid="menuHolder" className={style.holder}>
+    <div data-testid="menuHolder" className={`${style.holder} ${className}`}>
       <IconDotsVertical
         ref={icon}
         width="25"
