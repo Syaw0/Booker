@@ -80,6 +80,12 @@ declare global {
     addresses: Address[];
   }
 
+  interface UserAddAddressPagePropsTypes
+    extends PageMainStates,
+      PageMainUserDashStates {
+    address: Address;
+  }
+
   interface UserOrderIdPagePropsTypes
     extends PageMainStates,
       PageMainUserDashStates {
@@ -104,7 +110,12 @@ declare global {
   interface PageMainUserDashStates {
     navbarItems: typeof navItems;
     menuItems: typeof navItems;
-    actionType: "userCart" | "userAddresses" | "userOrders" | "userOrderId";
+    actionType:
+      | "userCart"
+      | "userAddresses"
+      | "userOrders"
+      | "userOrderId"
+      | "userAddAddress";
   }
 
   interface BookCartCardPropsType extends BookCardPropsType {

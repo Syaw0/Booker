@@ -1,0 +1,21 @@
+.holder {
+  width: 100%;
+  position: relative;
+}
+
+.addAddressHolder {
+  width: 100%;
+  padding: 1rem calc(1rem * 4);
+}
+
+@media (max-width: 1000px) {
+  .addAddressHolder {
+    padding: 1rem calc(1rem * 2);
+  }
+}
+
+@media (max-width: 500px) {
+  .addAddressHolder {
+    padding: 1rem calc(1rem * 1);
+  }
+}
