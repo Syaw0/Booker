@@ -6,6 +6,9 @@ import { updateAddress } from "src/store/userAddAddress/userAddAddress";
 import { useUserAddAddressStore } from "src/store/userAddAddress/userAddAddressStoreHooks";
 import addAddress, { loaderMsg } from "src/utils/addAddress";
 import checkInputsEmptiness from "src/utils/checkInputEmptiness";
+import changeAddress, {
+  loaderMsg as changeAddressLoaderMsg,
+} from "src/utils/changeAddress";
 import Button from "../button/button";
 import TextInput from "../input/text/textInput";
 import Message from "../message/message";
@@ -15,7 +18,10 @@ import style from "./addressModifier.module.css";
 const AddressModifier = ({ isEdit }: { isEdit: boolean }) => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const [trigger, type, msg, setMsg] = useFetch([addAddress], [loaderMsg]);
+  const [trigger, type, msg, setMsg] = useFetch(
+    [addAddress, changeAddress],
+    [loaderMsg, changeAddressLoaderMsg]
+  );
   const addressData = useUserAddAddressStore((s) => s.address);
   const { city, country, receiverName, state, street, tel, title, zipCode } =
     addressData;
@@ -27,7 +33,12 @@ const AddressModifier = ({ isEdit }: { isEdit: boolean }) => {
     if (!checkInputs()) {
       return;
     }
-    const result = await trigger(0);
+    let result;
+    if (isEdit) {
+      result = await trigger(1);
+    } else {
+      result = await trigger(0);
+    }
     if (result.status) {
       router.replace("/user/addresses");
     }
@@ -41,8 +52,8 @@ const AddressModifier = ({ isEdit }: { isEdit: boolean }) => {
   };
 
   return (
-    <div className={style.holder}>
-      <Text className={style.headText}>
+    <div data-testid="addressModifierHolder" className={style.holder}>
+      <Text testid="addressModifierHeadText" className={style.headText}>
         {isEdit ? "Editing Address" : "Adding New Address"}
       </Text>
 
@@ -139,8 +150,12 @@ const AddressModifier = ({ isEdit }: { isEdit: boolean }) => {
           />
         </div>
       </div>
-      <Button onClick={performAddAddress} className={style.addAddressButton}>
-        Add Address{" "}
+      <Button
+        testid="addressModifierButton"
+        onClick={performAddAddress}
+        className={style.addAddressButton}
+      >
+        {isEdit ? "Update Address" : "Add Address"}
       </Button>
       <Message type={type} msg={msg} />
     </div>
