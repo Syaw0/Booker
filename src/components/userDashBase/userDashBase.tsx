@@ -1,18 +1,18 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { navIcons } from "src/shared/userDashNavItems";
-import { useUserCartStore } from "src/store/userCart/userCartStoreHooks";
 import Text from "../typography/typography";
 import style from "./userDashBase.module.css";
 import Menu from "../menu/menu";
 import { useRouter } from "next/router";
 import useWrapNavItems from "src/hooks/useWrapNavItems";
+import { useUserDashStore } from "src/store/userDashStoreHooks";
 
 const UserDashBase = ({ children, className = "" }: any) => {
   const router = useRouter();
   const ref: any = useRef(null);
-  const navItems = useUserCartStore((s) => s.navbarItems);
-  const menuItems = useUserCartStore((s) => s.menuItems);
+  const navItems = useUserDashStore((s) => s.navbarItems);
+  const menuItems = useUserDashStore((s) => s.menuItems);
 
   useWrapNavItems(ref);
 

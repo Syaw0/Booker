@@ -104,6 +104,7 @@ declare global {
   interface PageMainUserDashStates {
     navbarItems: typeof navItems;
     menuItems: typeof navItems;
+    actionType: "userCart" | "userAddresses" | "userOrders" | "userOrderId";
   }
 
   interface BookCartCardPropsType extends BookCardPropsType {

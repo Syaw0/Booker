@@ -16,12 +16,14 @@
 
 .title {
   font-size: var(--titleLarge);
+  line-height: var(--titleLarge_lineHeight);
   font-weight: 600;
   color: var(--on-background800);
 }
 
 .fullAddress {
   font-size: var(--titleSmall);
+  line-height: var(--titleSmall_lineHeight);
   font-weight: 600;
   color: var(--on-background500);
   padding: 0.5rem 0;
@@ -57,4 +59,28 @@
   font-size: var(--titleSmall);
   line-height: var(--titleSmall_lineHeight);
   font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .rightItemHolder {
+    width: 10rem;
+  }
+  .item p {
+    font-size: var(--labelMedium);
+    line-height: var(--labelMedium_lineHeight);
+    padding: 0.2rem 0.2rem;
+  }
+  .item svg {
+    width: 20px;
+    height: 20px;
+  }
+  .title {
+    font-size: var(--titleMedium);
+    line-height: var(--titleMedium_lineHeight);
+  }
+
+  .fullAddress {
+    font-size: var(--labelMedium);
+    line-height: var(--labelMedium_lineHeight);
+  }
 }

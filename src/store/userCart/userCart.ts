@@ -2,6 +2,7 @@ import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import navItems from "src/shared/userDashNavItems";
 
 const initialState: UserCartPagePropsTypes = {
+  actionType: "userCart",
   isLogin: false,
   priceSummary: {
     shipping: "",

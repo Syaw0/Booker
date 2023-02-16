@@ -2,6 +2,7 @@ import { fakeOrder1, fakeOrder2, fakeOrder3 } from "./fakeOrders";
 
 const fakeUserOrdersPageData: UserOrdersPagePropsTypes = {
   isLogin: true,
+  actionType: "userOrders",
   menuItems: [],
   navbarItems: [],
   user: {

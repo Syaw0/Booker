@@ -2,6 +2,7 @@ import { address1, address2, address3 } from "./fakeAddresses";
 import { book1, book2, book3, book4 } from "./fakeBooks";
 
 const fakeUserCartPageData: UserCartPagePropsTypes = {
+  actionType: "userCart",
   isLogin: true,
   menuItems: [],
   addresses: [address1, address2, address3],

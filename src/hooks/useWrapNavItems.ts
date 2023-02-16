@@ -1,21 +1,17 @@
 import { useDispatch } from "react-redux";
-import {
-  addToMenu,
-  addToNav,
-  popFromMenu,
-  popFromNav,
-} from "src/store/userCart/userCart";
+
 import originalNavItems from "src/shared/userDashNavItems";
-import { useUserCartStore } from "src/store/userCart/userCartStoreHooks";
 import { useEffect } from "react";
+import { useUserDashStore } from "src/store/userDashStoreHooks";
 
 const useWrapNavItems = (ref: any) => {
   if (ref == null) {
     return;
   }
   const dispatch = useDispatch();
-  const menuItems = useUserCartStore((s) => s.menuItems);
-  const navItems = useUserCartStore((s) => s.navbarItems);
+  const menuItems = useUserDashStore((s) => s.menuItems);
+  const navItems = useUserDashStore((s) => s.navbarItems);
+  const actionType = useUserDashStore((s) => s.actionType);
   const resizeHandler = () => {
     const divElement = ref.current as HTMLDivElement;
     const anchors = divElement.querySelectorAll("a");
@@ -26,8 +22,12 @@ const useWrapNavItems = (ref: any) => {
       const name = anchors[index].id;
       const href = navItems.filter((s) => s.name === name)[0].href;
       anchorWidth -= anchors[index].clientWidth - 40;
-      dispatch(popFromNav(name));
-      dispatch(addToMenu({ name: name, href: href }));
+      dispatch({ type: `${actionType}/popFromNav`, payload: name });
+      dispatch({
+        type: `${actionType}/addToMenu`,
+        payload: { name: name, href: href },
+      });
+
       if (anchorWidth > window.innerWidth) {
         pop(index - 1);
       }
@@ -40,8 +40,14 @@ const useWrapNavItems = (ref: any) => {
       navItems.length !== originalNavItems.length
     ) {
       const lastItemOfMenu = menuItems[menuItems.length - 1];
-      dispatch(popFromMenu(lastItemOfMenu.name));
-      dispatch(addToNav(lastItemOfMenu));
+      dispatch({
+        type: `${actionType}/popFromMenu`,
+        payload: lastItemOfMenu.name,
+      });
+      dispatch({
+        type: `${actionType}/addToNav`,
+        payload: lastItemOfMenu,
+      });
     }
   };
   useEffect(() => {

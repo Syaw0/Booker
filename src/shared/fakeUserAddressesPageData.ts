@@ -5,6 +5,7 @@ const fakeUserAddressesPageData: UserAddressesPagePropsTypes = {
   menuItems: [],
   addresses: [address1, address2, address3],
   navbarItems: [],
+  actionType: "userAddresses",
   user: {
     cartNumber: 1,
     email: "",

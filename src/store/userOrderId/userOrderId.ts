@@ -2,6 +2,7 @@ import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import navItems from "src/shared/userDashNavItems";
 
 const initialState: UserOrderIdPagePropsTypes = {
+  actionType: "userOrderId",
   isLogin: false,
   order: {
     address: {
@@ -18,7 +19,12 @@ const initialState: UserOrderIdPagePropsTypes = {
     date: "",
     orderId: "",
     state: "delivered",
-    totalPrice: "",
+    priceSummary: {
+      shipping: "",
+      subTotal: "",
+      tax: "",
+      total: "",
+    },
   },
   menuItems: [],
   navbarItems: navItems,

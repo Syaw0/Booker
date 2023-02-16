@@ -2,6 +2,7 @@ import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import navItems from "src/shared/userDashNavItems";
 
 const initialState: UserOrdersPagePropsTypes = {
+  actionType: "userOrders",
   isLogin: false,
   orders: [],
   menuItems: [],

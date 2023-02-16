@@ -2,6 +2,7 @@ import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import navItems from "src/shared/userDashNavItems";
 
 const initialState: UserAddressesPagePropsTypes = {
+  actionType: "userAddresses",
   isLogin: false,
 
   addresses: [],
@@ -48,6 +49,7 @@ const userAddressesSlice = createSlice({
         navbarItems: newList,
       };
     },
+
     replaceAddresses(preState, action: PayloadAction<Address[]>) {
       return {
         ...preState,
