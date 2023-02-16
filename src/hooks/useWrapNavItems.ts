@@ -20,6 +20,9 @@ const useWrapNavItems = (ref: any) => {
     anchors.forEach((a) => (anchorWidth += a.clientWidth));
 
     const pop = (index: any = anchors.length - 1) => {
+      if (index < 0) {
+        return;
+      }
       const name = anchors[index].id;
       const href = navItems.filter((s) => s.name === name)[0].href;
       anchorWidth -= anchors[index].clientWidth - 40;

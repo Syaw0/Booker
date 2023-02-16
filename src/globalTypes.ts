@@ -90,6 +90,10 @@ declare global {
     wishlist: BookCardPropsType[];
   }
 
+  interface UserSettingPagePropsTypes
+    extends PageMainStates,
+      PageMainUserDashStates {}
+
   interface UserAddAddressPagePropsTypes
     extends PageMainStates,
       PageMainUserDashStates {
@@ -133,7 +137,8 @@ declare global {
       | "userOrderId"
       | "userAddAddress"
       | "userEditAddress"
-      | "userWishlist";
+      | "userWishlist"
+      | "userSetting";
   }
 
   interface BookCartCardPropsType extends BookCardPropsType {
