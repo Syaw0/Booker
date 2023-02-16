@@ -6,14 +6,15 @@ import UserDashBase from "src/components/userDashBase/userDashBase";
 import style from "./userAddAddress.module.css";
 const UserAddAddress = () => {
   return (
-    <div className={style.holder}>
+    <div data-testid="userAddAddressPageHolder" className={style.holder}>
       <Navbar />
       <UserDashBase className={style.addAddressHolder}>
         <div className={style.left}>
           <AddressModifier isEdit={false} />
         </div>
-        <div className={style.right}>
-          <Text>Tips</Text>
+        <div data-testid="userAddAddressPageNoteHolder" className={style.right}>
+          {/* //TODO add limit to inputs and some notes in this div */}
+          <Text variant="headlineSmall">Some Tips</Text>
         </div>
       </UserDashBase>
       <Footer />

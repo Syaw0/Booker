@@ -63,13 +63,7 @@
     flex-direction: column;
   }
   .right {
-    width: 100%;
-    padding-left: 0;
-    border: 1px solid var(--on-background400);
-    border-radius: 1rem;
-    margin-top: 1rem;
-    padding: 1rem;
-    box-shadow: var(--shadow1dp);
+    display: none;
   }
   .left {
     width: calc(100%);

@@ -12,7 +12,7 @@ const fakeUserAddAddressPageData: UserAddAddressPagePropsTypes = {
     title: "",
     zipCode: "",
   },
-  actionType: "userAddresses",
+  actionType: "userAddAddress",
   user: {
     cartNumber: 1,
     email: "",
