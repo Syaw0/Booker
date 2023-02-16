@@ -13,6 +13,7 @@ const CustomParent = (props: UserOrdersPagePropsTypes) => {
 
 const fakeData: UserOrdersPagePropsTypes = {
   isLogin: true,
+  actionType: "userOrders",
   menuItems: [],
   navbarItems: [],
   orders: [fakeOrder1, fakeOrder2, fakeOrder3],

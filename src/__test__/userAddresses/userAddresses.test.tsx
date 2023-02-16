@@ -71,6 +71,6 @@ describe("Test Page : User Addresses", () => {
   it("click on the add address will move us to add address page", () => {
     render(<CustomParent {...fakeData2} />, { wrapper: MemoryRouterProvider });
     fireEvent.click(screen.getByTestId("userAddressesAddAddressButton"));
-    expect(router.asPath).toEqual("/user/addresses/addAddress");
+    expect(router.asPath).toEqual("/user/addresses/add");
   });
 });

@@ -86,6 +86,12 @@ declare global {
     address: Address;
   }
 
+  interface UserEditAddressPagePropsTypes
+    extends PageMainStates,
+      PageMainUserDashStates {
+    address: Address;
+  }
+
   interface UserOrderIdPagePropsTypes
     extends PageMainStates,
       PageMainUserDashStates {
@@ -115,7 +121,8 @@ declare global {
       | "userAddresses"
       | "userOrders"
       | "userOrderId"
-      | "userAddAddress";
+      | "userAddAddress"
+      | "userEditAddress";
   }
 
   interface BookCartCardPropsType extends BookCardPropsType {

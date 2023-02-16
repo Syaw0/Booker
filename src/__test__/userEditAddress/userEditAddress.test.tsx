@@ -1,23 +1,23 @@
-import UserAddAddressPage from "src/pages/user/addresses/add";
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
-import fakeUserAddAddressPageData from "src/shared/fakeUserAddAddressPageData";
+import UserEditAddressPage from "src/pages/user/addresses/edit";
+import fakeUserEditAddressPageData from "src/shared/fakeUseEditAddressPageData";
 
 jest.mock("next/router", () => require("next-router-mock"));
 
-const CustomParent = (props: UserAddAddressPagePropsTypes) => {
-  return <UserAddAddressPage {...props} />;
+const CustomParent = (props: UserEditAddressPagePropsTypes) => {
+  return <UserEditAddressPage {...props} />;
 };
 
-describe("Test Page : Add Address", () => {
+describe("Test Page : Edit Address", () => {
   it("its render properly", () => {
-    render(<CustomParent {...fakeUserAddAddressPageData} />);
-    expect(screen.getByTestId("userAddAddressPageHolder")).toBeInTheDocument();
+    render(<CustomParent {...fakeUserEditAddressPageData} />);
+    expect(screen.getByTestId("userEditAddressPageHolder")).toBeInTheDocument();
     expect(screen.getByTestId("navbarHolder")).toBeInTheDocument();
     expect(screen.getByTestId("userDashBaseHolder")).toBeInTheDocument();
     expect(screen.getByTestId("addressModifierHolder")).toBeInTheDocument();
     expect(
-      screen.getByTestId("userAddAddressPageNoteHolder")
+      screen.getByTestId("userEditAddressPageNoteHolder")
     ).toBeInTheDocument();
     expect(screen.getByTestId("footerHolder")).toBeInTheDocument();
   });

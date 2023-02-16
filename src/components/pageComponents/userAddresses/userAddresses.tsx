@@ -11,7 +11,7 @@ const UserAddresses = () => {
   const router = useRouter();
   const { addresses } = useUserAddressesStore((s) => s);
   const addAddress = () => {
-    router.replace("/user/addresses/addAddress");
+    router.replace("/user/addresses/add");
   };
   return (
     <div data-testid="userAddressesPage" className={style.holder}>
