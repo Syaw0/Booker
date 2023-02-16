@@ -1,0 +1,54 @@
+.holder {
+  width: 100%;
+  min-height: 100vh;
+  padding: 1rem 0 3rem 0;
+}
+
+.headText {
+  font-size: var(--headlineSmall);
+  line-height: var(--headlineSmall_lineHeight);
+  font-weight: 600;
+  color: var(--on-background900);
+}
+
+.inputHolder {
+  padding: 1.5rem 0;
+}
+
+.inputHolder > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.inputHolder > div input {
+  padding: 0.5rem 1rem;
+  width: 90%;
+}
+
+.inputHolder > div:last-child input {
+  padding: 0.5rem 1rem;
+  width: 40%;
+}
+.inputHolder > div label {
+  font-size: var(--titleMedium);
+  font-weight: 600;
+  line-height: var(--titleMedium_lineHeight);
+}
+
+@media (max-width: 800px) {
+  .inputHolder > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0;
+  }
+  .inputHolder > div input {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .inputHolder > div:last-child input {
+    width: 100%;
+  }
+}
