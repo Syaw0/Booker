@@ -1,0 +1,67 @@
+import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import navItems from "src/shared/userDashNavItems";
+
+const initialState: UserWishlistPagePropsTypes = {
+  actionType: "userWishlist",
+  isLogin: false,
+  wishlist: [],
+  menuItems: [],
+  navbarItems: navItems,
+  user: {
+    cartNumber: 0,
+    email: "",
+    profileUrl: "",
+    userId: "",
+  },
+};
+
+const userWishlistSlice = createSlice({
+  name: "userWishlist",
+  initialState: initialState,
+  reducers: {
+    addToMenu(preState, action: PayloadAction<(typeof navItems)[number]>) {
+      return {
+        ...preState,
+        menuItems: [...preState.menuItems, action.payload],
+      };
+    },
+    popFromMenu(preState, action: PayloadAction<string>) {
+      let newList = preState.menuItems;
+      newList = newList.filter((item) => item.name !== action.payload);
+      return {
+        ...preState,
+        menuItems: newList,
+      };
+    },
+
+    addToNav(preState, action: PayloadAction<(typeof navItems)[number]>) {
+      return {
+        ...preState,
+        navbarItems: [...preState.navbarItems, action.payload],
+      };
+    },
+    popFromNav(preState, action: PayloadAction<string>) {
+      let newList = [...preState.navbarItems];
+      newList = newList.filter((item) => item.name !== action.payload);
+      return {
+        ...preState,
+        navbarItems: newList,
+      };
+    },
+  },
+});
+
+const makeStore = (preState: Partial<UserWishlistPagePropsTypes>) => {
+  return configureStore({
+    reducer: userWishlistSlice.reducer,
+    preloadedState: { ...initialState, ...preState },
+  });
+};
+
+export const addToMenu = userWishlistSlice.actions.addToMenu;
+export const addToNav = userWishlistSlice.actions.addToNav;
+export const popFromMenu = userWishlistSlice.actions.popFromMenu;
+export const popFromNav = userWishlistSlice.actions.popFromNav;
+
+export default makeStore;
+export type RootState = typeof initialState;
