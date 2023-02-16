@@ -48,6 +48,12 @@ const userAddressesSlice = createSlice({
         navbarItems: newList,
       };
     },
+    replaceAddresses(preState, action: PayloadAction<Address[]>) {
+      return {
+        ...preState,
+        addresses: action.payload,
+      };
+    },
   },
 });
 
@@ -62,6 +68,7 @@ export const addToMenu = userAddressesSlice.actions.addToMenu;
 export const addToNav = userAddressesSlice.actions.addToNav;
 export const popFromMenu = userAddressesSlice.actions.popFromMenu;
 export const popFromNav = userAddressesSlice.actions.popFromNav;
+export const replaceAddresses = userAddressesSlice.actions.replaceAddresses;
 
 export default makeStore;
 export type RootState = typeof initialState;

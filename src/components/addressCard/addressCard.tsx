@@ -1,4 +1,12 @@
-import IconTruck from "src/assets/icons/iconTruck";
+import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import IconCompass from "src/assets/icons/iconCompass";
+import IconEmail from "src/assets/icons/iconEmail";
+import IconMail from "src/assets/icons/iconMail";
+import IconTel from "src/assets/icons/iconTel";
+import useFetch from "src/hooks/useFetch";
+import { replaceAddresses } from "src/store/userAddresses/userAddresses";
+import deleteAddress, { loaderMsg } from "src/utils/deleteAddress";
 import Menu from "../menu/menu";
 import Text from "../typography/typography";
 import style from "./addressCard.module.css";
@@ -13,36 +21,57 @@ const AddressCard = ({
   title,
   zipCode,
 }: Address) => {
+  const dispatch = useDispatch();
+  const [trigger] = useFetch([deleteAddress], [loaderMsg]);
+  const router = useRouter();
+  const goToEdit = () => {
+    router.replace(`/user/addresses/edit?title=${title}`);
+  };
+  const performDeleteAddress = async () => {
+    const result = await trigger(0);
+    if (result.status) {
+      dispatch(replaceAddresses(result.data));
+    }
+  };
   return (
-    <div className={style.holder}>
+    <div data-testid={`addressCard_${title}`} className={style.holder}>
       <div className={style.left}>
-        <Text className={style.title}>{title}</Text>
+        <Text testid="addressCardTitle" className={style.title}>
+          {title}
+        </Text>
         <Text
+          testid="addressCardFullAddress"
           className={style.fullAddress}
         >{`${country} - ${state} - ${city} - ${street}`}</Text>
       </div>
 
       <div className={style.right}>
-        <Menu className={style.menu} items={[{ text: "Edit", onClick() {} }]} />
+        <Menu
+          className={style.menu}
+          items={[
+            { text: "Edit", onClick: goToEdit },
+            { text: "Delete", onClick: performDeleteAddress },
+          ]}
+        />
         <div className={style.rightItemHolder}>
           <div className={style.item}>
-            <IconTruck width="24" height="24" />
-            <Text>{`${state} - ${city}`}</Text>
+            <IconCompass width="24" height="24" />
+            <Text testid="addressCardCityAndState">{`${state} - ${city}`}</Text>
           </div>
 
           <div className={style.item}>
-            <IconTruck width="24" height="24" />
-            <Text>{zipCode}</Text>
+            <IconMail width="24" height="24" />
+            <Text testid="addressCardZipCode">{zipCode}</Text>
           </div>
 
           <div className={style.item}>
-            <IconTruck width="24" height="24" />
-            <Text>{tel}</Text>
+            <IconTel width="24" height="24" />
+            <Text testid="addressCardTel">{tel}</Text>
           </div>
 
           <div className={style.item}>
-            <IconTruck width="24" height="24" />
-            <Text>{receiverName}</Text>
+            <IconEmail width="24" height="24" />
+            <Text testid="addressCardReceiverName">{receiverName}</Text>
           </div>
         </div>
       </div>
