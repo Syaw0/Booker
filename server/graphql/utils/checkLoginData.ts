@@ -1,5 +1,6 @@
 import checkEmailAndPassword from "../../../db/utils/checkEmailAndPassword";
 import { Request } from "express";
+import setTfaSession from "../../../db/utils/setTfaSession";
 
 interface CheckLoginDataTypes {
   email: string;
@@ -8,11 +9,15 @@ interface CheckLoginDataTypes {
 
 const checkLoginData = async (data: CheckLoginDataTypes, req: Request) => {
   try {
-    const result = await checkEmailAndPassword(data.email, data.password);
-    if (!result.status) {
-      return result;
+    const dataCheckResult = await checkEmailAndPassword(
+      data.email,
+      data.password
+    );
+    if (!dataCheckResult.status) {
+      return dataCheckResult;
     }
-    // if its okay send mail to email and set tfa session
+    const setTfaResult = await setTfaSession(data.email);
+    return setTfaResult;
   } catch (err) {
     return {
       status: false,
