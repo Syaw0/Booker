@@ -39,3 +39,5 @@ next-env.d.ts
 
 /server/static/cloud/
 /server/static/cloud/profile
+
+/public/bookCover
