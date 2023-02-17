@@ -243,4 +243,39 @@ const ordersFields = {
   },
 };
 
-export { userFields, bookFields, addressesFields, ordersFields };
+const introducersField = {
+  name: {
+    Field: "name",
+    Type: "varchar(100)",
+    Null: "NO",
+    Key: "",
+    Default: null,
+    Extra: "",
+  },
+
+  books: {
+    Field: "books",
+    Type: "varchar(1000)",
+    Null: "NO",
+    Key: "",
+    Default: "[]",
+    Extra: "",
+  },
+
+  introducerId: {
+    Field: "introducerId",
+    Type: "int(11)",
+    Null: "NO",
+    Key: "PRI",
+    Default: null,
+    Extra: "auto_increment",
+  },
+};
+
+export {
+  userFields,
+  bookFields,
+  addressesFields,
+  ordersFields,
+  introducersField,
+};

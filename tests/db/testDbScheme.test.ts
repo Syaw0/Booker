@@ -4,6 +4,7 @@ import { pool } from "scripts/dbConnectors";
 import {
   addressesFields,
   bookFields,
+  introducersField,
   ordersFields,
   userFields,
 } from "./dbFields";
@@ -83,6 +84,17 @@ describe("Test MariaDB Scheme", () => {
       const tmp: any = ordersFields[order.Field as keyof typeof ordersFields];
       Object.keys(tmp).forEach((tmpKey: string) => {
         expect(tmp[tmpKey]).toEqual(order[tmpKey]);
+      });
+    });
+  });
+  it("Test MARIADB Fields: INTRODUCERS TABLE", async () => {
+    const introducers = await mariaClient.query("DESCRIBE booker.introducers");
+    console.log(introducers);
+    introducers.forEach((introducer: any) => {
+      let tmp: any;
+      tmp = introducersField[introducer.Field as keyof typeof introducersField];
+      Object.keys(tmp).forEach((tmpKey: string) => {
+        expect(tmp[tmpKey]).toEqual(introducer[tmpKey]);
       });
     });
   });
