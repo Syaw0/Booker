@@ -67,7 +67,7 @@ const generateDbBase = async () => {
   console.log("DB SCHEME IS READY...");
   await con.end();
   await redisClient.quit();
-  process.exit(200);
+  // process.exit(200);
 };
 
 export default generateDbBase;

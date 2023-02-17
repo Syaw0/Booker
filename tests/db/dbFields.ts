@@ -1,0 +1,121 @@
+const userFields = {
+  email: {
+    Field: "email",
+    Type: "varchar(300)",
+    Null: "NO",
+    Key: "UNI",
+    Default: null,
+    Extra: "",
+  },
+  password: {
+    Field: "password",
+    Type: "char(64)",
+    Null: "NO",
+    Key: "",
+    Default: null,
+    Extra: "",
+  },
+
+  profileUrl: {
+    Field: "profileUrl",
+    Type: "varchar(200)",
+    Null: "NO",
+    Key: "",
+    Default: "/prof/default",
+    Extra: "",
+  },
+  userId: {
+    Field: "userId",
+    Type: "int(11)",
+    Null: "NO",
+    Key: "PRI",
+    Default: null,
+    Extra: "auto_increment",
+  },
+  orders: {
+    Field: "orders",
+    Type: "varchar(2000)",
+    Null: "NO",
+    Key: "",
+    Default: "[]",
+    Extra: "",
+  },
+  addresses: {
+    Field: "addresses",
+    Type: "varchar(2000)",
+    Null: "NO",
+    Key: "",
+    Default: "[]",
+    Extra: "",
+  },
+  cart: {
+    Field: "cart",
+    Type: "varchar(2000)",
+    Null: "NO",
+    Key: "",
+    Default: "[]",
+    Extra: "",
+  },
+};
+
+const bookFields = {
+  name: {
+    Field: "name",
+    Type: "varchar(100)",
+    Null: "NO",
+    Key: "",
+    Default: null,
+    Extra: "",
+  },
+  author: {
+    Field: "author",
+    Type: "varchar(300)",
+    Null: "NO",
+    Key: "",
+    Default: null,
+    Extra: "",
+  },
+
+  image: {
+    Field: "image",
+    Type: "varchar(500)",
+    Null: "NO",
+    Key: "",
+    Default: null,
+    Extra: "",
+  },
+  bookId: {
+    Field: "bookId",
+    Type: "int(11)",
+    Null: "NO",
+    Key: "PRI",
+    Default: null,
+    Extra: "auto_increment",
+  },
+  price: {
+    Field: "price",
+    Type: "int(11)",
+    Null: "NO",
+    Key: "",
+    Default: null,
+    Extra: "",
+  },
+  category: {
+    Field: "category",
+    Type: "varchar(400)",
+    Null: "NO",
+    Key: "",
+    Default: null,
+    Extra: "",
+  },
+  description: {
+    Field: "description",
+    Type: "varchar(500)",
+    Null: "NO",
+    Key: "",
+    Default: null,
+    Extra: "",
+  },
+};
+
+export { userFields, bookFields };

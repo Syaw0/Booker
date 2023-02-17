@@ -14,7 +14,10 @@
     "isolatedModules": false,
     "jsx": "react-jsx",
     "incremental": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "scripts/*": ["./scripts/*"]
+    }
   },
   "include": ["**/*.ts"],
   "exclude": ["node_modules"]
