@@ -1,7 +1,12 @@
 import generateDbBase from "scripts/generateDbBase";
 import { PoolConnection } from "mariadb";
 import { pool } from "scripts/dbConnectors";
-import { bookFields, userFields } from "./dbFields";
+import {
+  addressesFields,
+  bookFields,
+  ordersFields,
+  userFields,
+} from "./dbFields";
 
 let mariaClient: PoolConnection;
 
@@ -55,6 +60,29 @@ describe("Test MariaDB Scheme", () => {
       const tmp: any = bookFields[book.Field as keyof typeof bookFields];
       Object.keys(tmp).forEach((tmpKey: string) => {
         expect(tmp[tmpKey]).toEqual(book[tmpKey]);
+      });
+    });
+  });
+
+  it("Test MARIADB Fields: ADDRESSES TABLE", async () => {
+    const addresses = await mariaClient.query("DESCRIBE booker.addresses");
+
+    addresses.forEach((add: any) => {
+      const tmp: any =
+        addressesFields[add.Field as keyof typeof addressesFields];
+      Object.keys(tmp).forEach((tmpKey: string) => {
+        expect(tmp[tmpKey]).toEqual(add[tmpKey]);
+      });
+    });
+  });
+
+  it("Test MARIADB Fields: ORDERS TABLE", async () => {
+    const orders = await mariaClient.query("DESCRIBE booker.orders");
+
+    orders.forEach((order: any) => {
+      const tmp: any = ordersFields[order.Field as keyof typeof ordersFields];
+      Object.keys(tmp).forEach((tmpKey: string) => {
+        expect(tmp[tmpKey]).toEqual(order[tmpKey]);
       });
     });
   });

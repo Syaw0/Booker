@@ -118,4 +118,129 @@ const bookFields = {
   },
 };
 
-export { userFields, bookFields };
+const addressesFields = {
+  title: {
+    Field: "title",
+    Type: "varchar(300)",
+    Null: "NO",
+    Key: "UNI",
+    Default: null,
+    Extra: "",
+  },
+  receiverName: {
+    Field: "receiverName",
+    Type: "varchar(200)",
+    Null: "NO",
+    Key: "",
+    Default: null,
+    Extra: "",
+  },
+  country: {
+    Field: "country",
+    Type: "varchar(100)",
+    Null: "NO",
+    Key: "",
+    Default: null,
+    Extra: "",
+  },
+
+  street: {
+    Field: "street",
+    Type: "varchar(300)",
+    Null: "NO",
+    Key: "",
+    Default: null,
+    Extra: "",
+  },
+  state: {
+    Field: "state",
+    Type: "varchar(100)",
+    Null: "NO",
+    Key: "",
+    Default: null,
+    Extra: "",
+  },
+
+  zipCode: {
+    Field: "zipCode",
+    Type: "varchar(100)",
+    Null: "NO",
+    Key: "",
+    Default: null,
+    Extra: "",
+  },
+
+  tel: {
+    Field: "tel",
+    Type: "varchar(200)",
+    Null: "NO",
+    Key: "",
+    Default: null,
+    Extra: "",
+  },
+
+  addressId: {
+    Field: "addressId",
+    Type: "int(11)",
+    Null: "NO",
+    Key: "PRI",
+    Default: null,
+    Extra: "auto_increment",
+  },
+};
+
+const ordersFields = {
+  date: {
+    Field: "date",
+    Type: "varchar(100)",
+    Null: "NO",
+    Key: "",
+    Default: null,
+    Extra: "",
+  },
+  state: {
+    Field: "state",
+    Type: "varchar(100)",
+    Null: "NO",
+    Key: "",
+    Default: "step1",
+    Extra: "",
+  },
+  priceSummary: {
+    Field: "priceSummary",
+    Type: "varchar(1000)",
+    Null: "NO",
+    Key: "",
+    Default: '{"shipping": "","subTotal": "","tax": "","total": ""}',
+    Extra: "",
+  },
+
+  address: {
+    Field: "address",
+    Type: "varchar(1000)",
+    Null: "NO",
+    Key: "",
+    Default:
+      '{"title": "","receiverName": "","state": "","city": "","street": "","tel": "","zipCode": "","country": ""}',
+    Extra: "",
+  },
+  books: {
+    Field: "books",
+    Type: "varchar(1000)",
+    Null: "NO",
+    Key: "",
+    Default: "[]",
+    Extra: "",
+  },
+
+  orderId: {
+    Field: "orderId",
+    Type: "int(11)",
+    Null: "NO",
+    Key: "PRI",
+    Default: null,
+    Extra: "auto_increment",
+  },
+};
+
+export { userFields, bookFields, addressesFields, ordersFields };
