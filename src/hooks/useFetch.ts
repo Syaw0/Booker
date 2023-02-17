@@ -64,10 +64,11 @@ const useFetch = (
       }));
       return res;
     } catch (err) {
+      console.log(err);
       setState((s) => ({
         ...s,
         state: "error",
-        msg: "error in client",
+        msg: "Error In Client During Fetch!",
       }));
       return { status: false, msg: "" };
     }

@@ -3,10 +3,10 @@ import { pool } from "./dbConnectors";
 
 const seedUsers = async () => {
   const con = await pool.getConnection();
-  await con.query(`INSERT IGNORE INTO users (email,password) VALUES(?,?)`, [
-    "s@gmail.com",
-    SHA256("rootroot").toString(),
-  ]);
+  await con.query(
+    `INSERT IGNORE INTO booker.users (email,password) VALUES(?,?)`,
+    ["s@gmail.com", SHA256("rootroot").toString()]
+  );
 };
 
 export default seedUsers;

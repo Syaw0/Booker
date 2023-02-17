@@ -17,6 +17,8 @@
     "baseUrl": ".",
     "paths": {
       "src/*": ["./src/*"],
+      "db/*": ["./db/*"],
+      "server/*": ["./server/*"],
       "scripts/*": ["./scripts/*"]
     }
   },

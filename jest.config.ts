@@ -8,6 +8,9 @@ const config = {
   testEnvironment: "jsdom",
   moduleNameMapper: {
     "src/(.*)": "<rootDir>/src/$1",
+    "db/(.*)": "<rootDir>/db/$1",
+    "server/(.*)": "<rootDir>/server/$1",
+    "scripts/(.*)": "<rootDir>/scripts/$1",
   },
 };
 

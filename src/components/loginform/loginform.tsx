@@ -36,7 +36,7 @@ const LoginForm = () => {
     if (!checkInputs()) {
       return;
     }
-    const resp = await trigger(0);
+    const resp = await trigger(0, inputData.email, inputData.password);
     if (resp.status) {
       if (!isReset) {
         dispatch(setComponent("tfa"));

@@ -20,7 +20,7 @@ nextApp
     app.use(cookieParser());
     app.use(
       "/graphql",
-      graphqlHTTP({ graphiql: true, schema: schema, rootValue: rootValue })
+      graphqlHTTP({ schema: schema, rootValue: rootValue, graphiql: dev })
     );
     app.get("*", (req, res) => {
       return handle(req, res);

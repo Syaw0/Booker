@@ -9,13 +9,15 @@
     "esModuleInterop": true,
     "module": "CommonJS",
     "moduleResolution": "node",
-
     "resolveJsonModule": true,
     "isolatedModules": false,
     "jsx": "react-jsx",
     "incremental": true,
     "baseUrl": ".",
     "paths": {
+      "db/*": ["./db/*"],
+      "src/*": ["./src/*"],
+      "server/*": ["./server/*"],
       "scripts/*": ["./scripts/*"]
     }
   },
