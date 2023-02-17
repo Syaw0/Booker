@@ -1,8 +1,8 @@
-import { pool, redisClient } from "./db";
-import prepareTestDbEnvironment from "./initialDbContainer";
+import { pool, redisClient } from "./dbConnectors";
+import initialDbContainer from "./initialDbContainer";
 
 const generateDbBase = async () => {
-  await prepareTestDbEnvironment();
+  await initialDbContainer();
   await redisClient.connect();
   const con = await pool.getConnection();
   console.log(" Generating db base...");
@@ -71,4 +71,3 @@ const generateDbBase = async () => {
 };
 
 export default generateDbBase;
-generateDbBase();

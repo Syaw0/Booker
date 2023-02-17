@@ -1,7 +1,7 @@
 import { writeFileSync } from "fs";
 import fetch from "node-fetch";
 import path from "path";
-import { pool } from "./db";
+import { pool } from "./dbConnectors";
 
 const subjects = [
   "Architecture",
@@ -62,8 +62,6 @@ const subjects = [
   "biography",
 ];
 
-let books: any = [];
-
 const getData = async () => {
   let books = [];
   for await (let subject of subjects) {
@@ -85,13 +83,6 @@ const getData = async () => {
     }
   }
   return books;
-
-  // return await new Promise((res) => {
-  //   subjects.forEach(async (subject) => {
-
-  //     res(books);
-  //   });
-  // });
 };
 
 const seedBooks = async () => {
@@ -123,5 +114,3 @@ const seedBooks = async () => {
 };
 
 export default seedBooks;
-
-seedBooks();

@@ -26,7 +26,7 @@ const killContainers = () => {
   } catch (err) {}
 };
 
-const prepareTestDbEnvironment = async () => {
+const initialDbContainer = async () => {
   console.log("start operation");
   try {
     console.log("Stop and Remove redis db container");
@@ -42,8 +42,6 @@ const prepareTestDbEnvironment = async () => {
   console.log("initial Maria Db container");
   execSync(mariadbContainerCmd);
 
-  // await redisClient.connect();
-  // const mariaClient = await pool.getConnection();
   return { killContainers };
 };
-export default prepareTestDbEnvironment;
+export default initialDbContainer;
