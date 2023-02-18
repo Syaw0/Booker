@@ -1,4 +1,3 @@
-import { PoolConnection } from "mariadb";
 import { pool } from "../../db/dbController";
 
 const getIntroducers = async () => {

@@ -24,12 +24,13 @@ const HomePage = (props: HomePagePropsTypes) => {
 const getServerSideProps: GetServerSideProps = async ({
   req,
 }): Promise<GetServerSidePropsResult<HomePagePropsTypes>> => {
+  // TODO also we can wrap all of these in one module.
   const checkSessionResult = await checkSession(req.cookies);
   const props: HomePagePropsTypes = {
     booksIntroducers: { mainIntroducers: [] },
     isLogin: false,
     user: {
-      cartNumber: "1",
+      cartNumber: "",
       email: "",
       profileUrl: "",
       userId: "",

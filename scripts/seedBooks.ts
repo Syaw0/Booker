@@ -98,12 +98,11 @@ const seedBooks = async () => {
     // // );
     // // writeFileSync(savePath, buffer);
     let newItem = b;
-    newItem.image = `/prof/${b.bookId}`;
+    newItem.image = `/cover/${b.bookId}`;
 
     return Object.values(newItem);
   });
   let arrayBook = await Promise.all(promisedArrayBook);
-  console.log(arrayBook);
   await con.batch(
     `INSERT IGNORE INTO booker.books (name,image,category,author,price,description,bookId) VALUES (?,?,?,?,?,?,?)`,
     arrayBook

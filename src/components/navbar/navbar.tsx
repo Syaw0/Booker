@@ -22,7 +22,6 @@ const Navbar = () => {
   const startSearch = () => {
     router.replace(`/books?q=${inputData.searchInput}`);
   };
-  console.log(user);
   const handleKeydown = (e: KeyboardEvent) => {
     if (e.key === "Enter") {
       if (!checkInputs()) {

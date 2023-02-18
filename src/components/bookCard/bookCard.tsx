@@ -26,7 +26,7 @@ const BookCard = ({
           width={150}
           height={200}
           alt={name}
-          src={image}
+          src={`/cover/${bookId}`}
           loader={loader}
         />
       </div>
