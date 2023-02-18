@@ -1,8 +1,10 @@
+import checkSession from "db/utils/checkSession";
+import getIntroducers from "db/utils/getIntroducers";
+import getUserById from "db/utils/getUserById";
 import { GetServerSideProps, GetServerSidePropsResult } from "next";
 import Head from "next/head";
 import { Provider } from "react-redux";
 import Home from "src/components/pageComponents/home/home";
-import fakeHomePageData from "src/shared/fakeHomePageData";
 import makeStore from "src/store/home/homeStore";
 
 const HomePage = (props: HomePagePropsTypes) => {
@@ -19,12 +21,41 @@ const HomePage = (props: HomePagePropsTypes) => {
   );
 };
 
-const getServerSideProps: GetServerSideProps = async (): Promise<
-  GetServerSidePropsResult<HomePagePropsTypes>
-> => {
+const getServerSideProps: GetServerSideProps = async ({
+  req,
+}): Promise<GetServerSidePropsResult<HomePagePropsTypes>> => {
+  const checkSessionResult = await checkSession(req.cookies);
+  const props: HomePagePropsTypes = {
+    booksIntroducers: { mainIntroducers: [] },
+    isLogin: false,
+    user: {
+      cartNumber: "1",
+      email: "",
+      profileUrl: "",
+      userId: "",
+      wishlist: [],
+    },
+  };
+  if (checkSessionResult.status && checkSessionResult.data != null) {
+    console.log(checkSessionResult);
+    const user = await getUserById(checkSessionResult.data);
+    if (user.status && user.data != null) {
+      props.user = user.data;
+      props.user.cartNumber = JSON.parse(user.data.cart).length;
+      props.isLogin = true;
+    } else {
+      return { redirect: { destination: "/500", permanent: false } };
+    }
+  }
+
+  const introducers = await getIntroducers();
+  if (introducers.status && introducers.data != null) {
+    props.booksIntroducers.mainIntroducers = introducers.data;
+  }
+
   return {
     props: {
-      ...fakeHomePageData,
+      ...props,
     },
   };
 };

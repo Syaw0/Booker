@@ -22,6 +22,7 @@ const Navbar = () => {
   const startSearch = () => {
     router.replace(`/books?q=${inputData.searchInput}`);
   };
+  console.log(user);
   const handleKeydown = (e: KeyboardEvent) => {
     if (e.key === "Enter") {
       if (!checkInputs()) {
@@ -99,9 +100,11 @@ const Navbar = () => {
           <Link href={isLogin ? "/user/cart" : "/auth"}>
             <IconCart data-testid="navbarCartIcon" width="35" height="35" />
           </Link>
-          <span data-testid="navbarCartNumber" className={style.cartNumber}>
-            {user.cartNumber}
-          </span>
+          {isLogin && (
+            <span data-testid="navbarCartNumber" className={style.cartNumber}>
+              {user.cartNumber}
+            </span>
+          )}
         </div>
         <Profile
           data-testid="navbarProfile"
