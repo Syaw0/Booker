@@ -5,6 +5,7 @@ type Query{
   checkTfaCode(isReset:Boolean!,isSignup:Boolean!,email:String!,tfaCode:String!):Response
   getFreshTfaCode(email:String!):Response
   signup(email:String!,password:String!):Response
+  checkForgetPasswordData(email:String!):Response
 }
 
 

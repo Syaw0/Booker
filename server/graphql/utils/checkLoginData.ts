@@ -1,5 +1,4 @@
 import checkEmailAndPassword from "../../../db/utils/checkEmailAndPassword";
-import { Request } from "express";
 import setTfaSession from "../../../db/utils/setTfaSession";
 
 interface CheckLoginDataTypes {
@@ -7,7 +6,7 @@ interface CheckLoginDataTypes {
   password: string;
 }
 
-const checkLoginData = async (data: CheckLoginDataTypes, req: Request) => {
+const checkLoginData = async (data: CheckLoginDataTypes) => {
   try {
     const dataCheckResult = await checkEmailAndPassword(
       data.email,

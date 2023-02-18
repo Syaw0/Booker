@@ -35,7 +35,7 @@ const ForgetPasswordForm = () => {
     if (!checkInputs()) {
       return;
     }
-    const resp = await trigger(0);
+    const resp = await trigger(0, inputData.email);
     if (resp.status) {
       dispatch(setCurrentEmail(inputData.email));
       dispatch(setIsReset(true));

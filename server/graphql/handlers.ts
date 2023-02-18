@@ -1,3 +1,4 @@
+import checkForgetPasswordData from "./utils/checkForgetPasswordData";
 import checkLoginData from "./utils/checkLoginData";
 import checkTfaCode from "./utils/checkTfaCode";
 import getFreshTfaCode from "./utils/getFreshTfaCode";
@@ -8,6 +9,7 @@ const rootValue = {
   checkTfaCode,
   getFreshTfaCode,
   signup,
+  checkForgetPasswordData,
 };
 
 export default rootValue;
