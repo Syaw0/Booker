@@ -15,6 +15,7 @@ import {
   setComponent,
   setIsReset,
 } from "src/store/authenticate/authenticateStore";
+import { useAuthStore } from "src/store/authenticate/authenticateStoreHooks";
 
 const ResetPasswordForm = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const ResetPasswordForm = () => {
     newPassword: "",
     retypePassword: "",
   });
+  const email = useAuthStore((s) => s.currentEmail);
   const [trigger, state, msg, setMsg] = useFetch([resetPassword], [loaderMsg]);
   const inputChangeHandle = (e: ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.currentTarget;
@@ -33,7 +35,12 @@ const ResetPasswordForm = () => {
     if (!checkInputs()) {
       return;
     }
-    const resp = await trigger(0);
+    const resp = await trigger(
+      0,
+      email,
+      inputData.oldPassword,
+      inputData.newPassword
+    );
     if (resp.status) {
       dispatch(setComponent("login"));
     }
