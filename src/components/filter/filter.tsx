@@ -33,7 +33,12 @@ const Filter = ({ className }: any) => {
       return setMsg("error", checkMinAndMaxResult.msg);
     }
 
-    const result = await trigger(0);
+    const result = await trigger(
+      0,
+      filters.keyword,
+      filters.priceRange,
+      filters.categories
+    );
     if (result.status) {
       if (isFilterOpen) {
         dispatch(toggleFilterOpening(false));

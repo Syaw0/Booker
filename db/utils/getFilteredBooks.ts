@@ -15,7 +15,8 @@ const getFilteredBooks = async (
 
     return { status: true, msg: "Found!", data: books.slice(0, books.length) };
   } catch (err) {
-    return { status: false, msg: "Error During Filter Books!" };
+    console.log(err);
+    return { status: false, msg: "Error During Filter Books!", data: [] };
   } finally {
     if (con != null) {
       await con.release();

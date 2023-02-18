@@ -8,8 +8,25 @@ type Query{
   checkForgetPasswordData(email:String!):Response
   resetPassword(email:String!,oldPassword:String!,newPassword:String!):Response
   checkSignupData(email:String!):Response
+  getFilteredBooks(keyword:String!,max:String!,min:String!,categories:[String]):getFilteredBooksResponse
 }
 
+type getFilteredBooksResponse{
+  status:Boolean!
+  msg:String!
+  data:[Book]
+}
+
+type Book{
+  bookId: String
+  name: String!
+  author: String!
+  image: String!
+  price: Int!
+  category: String!
+  description: String
+
+}
 
 type Response {
   status:Boolean!

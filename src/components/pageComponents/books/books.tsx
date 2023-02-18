@@ -10,6 +10,7 @@ import Text from "src/components/typography/typography";
 import { toggleFilterOpening } from "src/store/books/booksStore";
 import { useBooksStore } from "src/store/books/booksStoreHooks";
 import style from "./books.module.css";
+
 const Books = () => {
   const dispatch = useDispatch();
   const ref = useRef(null);

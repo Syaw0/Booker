@@ -29,7 +29,7 @@ const getServerSideProps: GetServerSideProps = async ({
     books: [],
     filters: {
       categories: [],
-      keyword: query.q as string,
+      keyword: "",
       priceRange: { max: "", min: "" },
     },
     isFilterOpen: false,
@@ -45,7 +45,6 @@ const getServerSideProps: GetServerSideProps = async ({
 
   const checkSessionResult = await checkSession(req.cookies);
   if (checkSessionResult.status && checkSessionResult.data != null) {
-    console.log(checkSessionResult);
     const user = await getUserById(checkSessionResult.data);
     if (user.status && user.data != null) {
       props.user = user.data;
@@ -55,13 +54,15 @@ const getServerSideProps: GetServerSideProps = async ({
       return { redirect: { destination: "/500", permanent: false } };
     }
   }
-
-  const searchQuery = `name LIKE "%${query.q}%" or author LIKE "%${query.q}%" or category LIKE "%${query.q}%" `;
-  const result = await getFilteredBooks(searchQuery, 0, 1000);
-
-  if (result.status) {
-    props.books = result.data;
+  if (query != null && query.q != null) {
+    props.filters.keyword = query.q as string;
+    const searchQuery = `name LIKE "%${query.q}%" or author LIKE "%${query.q}%" or category LIKE "%${query.q}%" `;
+    const result = await getFilteredBooks(searchQuery, 0, 1000);
+    if (result.status) {
+      props.books = result.data;
+    }
   }
+
   return {
     props: {
       ...props,

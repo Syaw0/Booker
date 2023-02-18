@@ -1,10 +1,11 @@
-import checkForgetPasswordData from "./utils/checkForgetPasswordData";
-import checkLoginData from "./utils/checkLoginData";
-import checkSignupData from "./utils/checkSignupData";
-import checkTfaCode from "./utils/checkTfaCode";
-import getFreshTfaCode from "./utils/getFreshTfaCode";
-import resetPassword from "./utils/resetPassword";
-import signup from "./utils/signup";
+import checkForgetPasswordData from "./routes/checkForgetPasswordData";
+import checkLoginData from "./routes/checkLoginData";
+import checkSignupData from "./routes/checkSignupData";
+import checkTfaCode from "./routes/checkTfaCode";
+import getFilteredBooks from "./routes/getFilteredBooks";
+import getFreshTfaCode from "./routes/getFreshTfaCode";
+import resetPassword from "./routes/resetPassword";
+import signup from "./routes/signup";
 
 const rootValue = {
   checkLoginInformation: checkLoginData,
@@ -14,6 +15,7 @@ const rootValue = {
   checkForgetPasswordData,
   resetPassword,
   checkSignupData,
+  getFilteredBooks,
 };
 
 export default rootValue;
