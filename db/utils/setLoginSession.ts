@@ -24,7 +24,7 @@ const setLoginSession = async (email: string) => {
     return { status: false, msg: "Error During Set Login Session In Redis!" };
   } finally {
     if (con != null) {
-      await con.end();
+      await con.release();
     }
   }
 };

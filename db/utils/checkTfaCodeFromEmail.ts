@@ -6,7 +6,6 @@ const checkTfaCodeFromEmail = async (email: string, tfaCode: string) => {
     await redis.select(2);
     const formatEmail = email.split(".").join("");
     const checkSession = await redis.hGetAll(formatEmail);
-    console.log(checkSession);
     if (checkSession.token == null) {
       return {
         status: false,

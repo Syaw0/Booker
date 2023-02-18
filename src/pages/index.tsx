@@ -38,7 +38,6 @@ const getServerSideProps: GetServerSideProps = async ({
     },
   };
   if (checkSessionResult.status && checkSessionResult.data != null) {
-    console.log(checkSessionResult);
     const user = await getUserById(checkSessionResult.data);
     if (user.status && user.data != null) {
       props.user = user.data;

@@ -15,6 +15,10 @@ const resettingPassword = async (
     return { status: true, msg: "Update Password Successfully!" };
   } catch (err) {
     return { status: false, msg: "Error During Resetting Password!" };
+  } finally {
+    if (con != null) {
+      await con.release();
+    }
   }
 };
 export default resettingPassword;

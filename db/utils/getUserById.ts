@@ -13,7 +13,7 @@ const getUserById = async (userId: string) => {
     return { status: false, msg: "Error During GetUser From Maria!" };
   } finally {
     if (con != null) {
-      await con.end();
+      await con.release();
     }
   }
 };
