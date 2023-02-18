@@ -5,6 +5,7 @@ import IconLock from "src/assets/icons/iconLock";
 import useFetch from "src/hooks/useFetch";
 import {
   setComponent,
+  setCurrentEmail,
   setIsSignup,
   setSignupData,
 } from "src/store/authenticate/authenticateStore";
@@ -35,11 +36,12 @@ const SignupForm = () => {
     if (!checkInputs()) {
       return;
     }
-    const resp = await trigger(0);
+    const resp = await trigger(0, inputData.email);
     if (resp.status) {
       dispatch(setIsSignup(true));
       dispatch(setComponent("tfa"));
       dispatch(setSignupData(inputData));
+      dispatch(setCurrentEmail(inputData.email));
     }
   };
 

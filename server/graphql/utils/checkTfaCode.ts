@@ -17,6 +17,7 @@ const checkTfaCode = async (
 ) => {
   try {
     const result = await checkTfaCodeFromEmail(data.email, data.tfaCode);
+
     if (result.status) {
       if (data.isReset) {
         await setResetPasswordSession(data.email);

@@ -6,7 +6,7 @@ const signup = async (signupData: [email: string, password: string]) => {
 
   const query = `
     query SignUp($email:String!,$password:String!){
-      signup(email:$email,password:$password){
+      data:signup(email:$email,password:$password){
         status
         msg
       }

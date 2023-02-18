@@ -7,6 +7,7 @@ type Query{
   signup(email:String!,password:String!):Response
   checkForgetPasswordData(email:String!):Response
   resetPassword(email:String!,oldPassword:String!,newPassword:String!):Response
+  checkSignupData(email:String!):Response
 }
 
 
