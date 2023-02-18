@@ -37,7 +37,6 @@ const Book = () => {
   };
 
   const handleBookmark = async () => {
-    console.log(isLock);
     if (isLock) {
       return;
     }

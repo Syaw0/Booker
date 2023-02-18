@@ -4,6 +4,7 @@ import UserOrdersPage from "src/pages/user/orders";
 import router from "next-router-mock";
 import { fakeOrder1, fakeOrder2, fakeOrder3 } from "src/shared/fakeOrders";
 import { MemoryRouterProvider } from "next-router-mock/dist/MemoryRouterProvider/next-11";
+import { fakeUser } from "src/shared/fakeUser";
 
 jest.mock("next/router", () => require("next-router-mock"));
 
@@ -17,12 +18,7 @@ const fakeData: UserOrdersPagePropsTypes = {
   menuItems: [],
   navbarItems: [],
   orders: [fakeOrder1, fakeOrder2, fakeOrder3],
-  user: {
-    cartNumber: "1",
-    email: "",
-    profileUrl: "/s",
-    userId: "2",
-  },
+  user: fakeUser,
 };
 
 const fakeData2: UserOrdersPagePropsTypes = {

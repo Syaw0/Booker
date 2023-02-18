@@ -2,17 +2,13 @@ import HomePage from "src/pages";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { book1, book2, book3, book4 } from "src/shared/fakeBooks";
+import { fakeUser } from "src/shared/fakeUser";
 
 jest.mock("next/router", () => require("next-router-mock"));
 
 const fakeProps1: HomePagePropsTypes = {
   isLogin: false,
-  user: {
-    cartNumber: 0,
-    email: "",
-    userId: "",
-    profileUrl: "/prof/default",
-  },
+  user: fakeUser,
   booksIntroducers: {
     mainIntroducers: [
       {
@@ -26,12 +22,7 @@ const fakeProps1: HomePagePropsTypes = {
 
 const fakeProps2: HomePagePropsTypes = {
   isLogin: false,
-  user: {
-    cartNumber: 0,
-    email: "",
-    userId: "",
-    profileUrl: "/prof/default",
-  },
+  user: fakeUser,
   booksIntroducers: {
     mainIntroducers: [
       {

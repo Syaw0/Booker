@@ -1,7 +1,7 @@
 import MultiSectionHorizontal from "./multiSectionHorizontal";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import IconLock from "../../../assets/icons/iconLock";
+import IconLock from "src/assets/icons/iconLock";
 
 const fakeData = [
   {
