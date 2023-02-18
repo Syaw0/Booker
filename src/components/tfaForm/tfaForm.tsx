@@ -28,6 +28,7 @@ const TfaForm = ({ timerInit = 60 }: TfaFormPropsType) => {
   const router = useRouter();
   const isReset = useAuthStore((s) => s.isReset);
   const isSignup = useAuthStore((s) => s.isSignup);
+  const email = useAuthStore((s) => s.currentEmail);
   const [inputData, setInputData] = useState("");
   const [timer, setTimer] = useState(timerInit);
   const [trigger, state, msg, setMsg] = useFetch(
@@ -39,7 +40,7 @@ const TfaForm = ({ timerInit = 60 }: TfaFormPropsType) => {
     if (!checkInputs()) {
       return;
     }
-    const resp = await trigger(0);
+    const resp = await trigger(0, isReset, isSignup, email, inputData);
     if (resp.status) {
       if (isReset) {
         return dispatch(setComponent("resetPassword"));

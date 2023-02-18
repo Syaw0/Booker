@@ -7,6 +7,7 @@ const seedUsers = async () => {
     `INSERT IGNORE INTO booker.users (email,password) VALUES(?,?)`,
     ["s@gmail.com", SHA256("rootroot").toString()]
   );
+  await con.end();
 };
 
 export default seedUsers;

@@ -21,8 +21,8 @@ interface AuthenticateStoreTypes {
 }
 
 const initialState: AuthenticateStoreTypes = {
-  currentComponent: "login",
-  currentEmail: "",
+  currentComponent: "tfa",
+  currentEmail: "s@gmail.com",
   isReset: false,
   isSignup: false,
   signupData: {

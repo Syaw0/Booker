@@ -7,8 +7,9 @@ const setTfaSession = async (email: string) => {
     const redis = await redisCheckAndConnect();
     await redis.select(2);
     const randomNumber = generateTfToken();
-    await redis.set(email, randomNumber);
-    await sendTfaTokenToEmail(email, randomNumber);
+    const formatEmail = email.split(".").join("");
+    await redis.hSet(formatEmail, "token", randomNumber);
+    await redis.hSet(formatEmail, "try", 0);
     return { status: true, msg: "Successfully Set Tfa Token!" };
   } catch (err) {
     console.log(err);
