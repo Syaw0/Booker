@@ -17,7 +17,7 @@ const Authenticate = () => {
         {whichComponent === "signup" && <SignupForm />}
         {whichComponent === "resetPassword" && <ResetPasswordForm />}
         {whichComponent === "forgetPassword" && <ForgetPasswordForm />}
-        {whichComponent === "tfa" && <TfaForm timerInit={120} />}
+        {whichComponent === "tfa" && <TfaForm timerInit={4} />}
       </div>
     </div>
   );

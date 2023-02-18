@@ -1,5 +1,4 @@
 import generateTfToken from "../../server/utils/generateTfaToken";
-import sendTfaTokenToEmail from "../../server/utils/sendTfaTokenToEmail";
 import redisCheckAndConnect from "./redisCheckAndConnect";
 
 const setTfaSession = async (email: string) => {

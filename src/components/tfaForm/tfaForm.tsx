@@ -29,6 +29,7 @@ const TfaForm = ({ timerInit = 60 }: TfaFormPropsType) => {
   const isReset = useAuthStore((s) => s.isReset);
   const isSignup = useAuthStore((s) => s.isSignup);
   const email = useAuthStore((s) => s.currentEmail);
+  const signupData = useAuthStore((s) => s.signupData);
   const [inputData, setInputData] = useState("");
   const [timer, setTimer] = useState(timerInit);
   const [trigger, state, msg, setMsg] = useFetch(
@@ -46,7 +47,7 @@ const TfaForm = ({ timerInit = 60 }: TfaFormPropsType) => {
         return dispatch(setComponent("resetPassword"));
       }
       if (isSignup) {
-        const result = await trigger(2);
+        const result = await trigger(2, signupData.email, signupData.password);
         if (!result.status) {
           return;
         }
@@ -65,7 +66,7 @@ const TfaForm = ({ timerInit = 60 }: TfaFormPropsType) => {
 
   const getFreshCode = async () => {
     if (timer <= 0) {
-      const result = await trigger(1);
+      const result = await trigger(1, email);
       if (result.status) {
         setTimer(120);
       }
