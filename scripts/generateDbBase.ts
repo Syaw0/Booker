@@ -32,6 +32,8 @@ const generateDbBase = async () => {
     street varchar(300) not null ,
     state varchar(100) not null , 
     zipCode varchar(100) not null ,
+    city varchar(100) not null ,
+    userId varchar(100) not null ,
     tel varchar(200) not null );`
   );
   console.log(" creating books table");

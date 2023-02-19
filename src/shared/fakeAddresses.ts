@@ -7,6 +7,7 @@ const address1: Address = {
   tel: "+1 (714) 543-3124",
   zipCode: "92701",
   country: "USA",
+  addressId: "1",
 };
 
 const address2: Address = {
@@ -18,6 +19,7 @@ const address2: Address = {
   tel: "+1 (716) 681-1616",
   zipCode: "14059",
   country: "USA",
+  addressId: "2",
 };
 
 const address3: Address = {
@@ -29,6 +31,7 @@ const address3: Address = {
   tel: "+1 (215) 728-7956",
   zipCode: "19152",
   country: "USA",
+  addressId: "3",
 };
 
 export { address1, address2, address3 };

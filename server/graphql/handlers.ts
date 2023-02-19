@@ -1,3 +1,4 @@
+import addAddress from "./routes/addAddress";
 import addBookToCart from "./routes/addBookToCart";
 import checkForgetPasswordData from "./routes/checkForgetPasswordData";
 import checkLoginData from "./routes/checkLoginData";
@@ -28,6 +29,7 @@ const rootValue = {
   getUpdatedCart,
   removeBookFromCart,
   removeAllOfBookFromCart,
+  addAddress,
 };
 
 export default rootValue;

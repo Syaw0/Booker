@@ -15,6 +15,7 @@ type Query{
   removeBookFromCart(userId:String!,bookId:String!,curCart:[String]):Response
   removeAllOfBookFromCart(userId:String!,bookId:String!,curCart:[String]):Response
   getUpdatedCart(userId:String!):GetUpdatedCartResponse
+  addAddress(userId:String!,addressData:Address):Response
 } 
 
 type GetUpdatedCartResponse{
@@ -71,6 +72,20 @@ type Book{
   category: String!
   description: String
   num:Int
+
+}
+
+
+input Address{
+  title: String!
+  receiverName: String!
+  state: String!
+  city: String!
+  street: String!
+  tel: String! 
+  zipCode: String! 
+  country: String!
+  addressId: String
 
 }
 

@@ -178,6 +178,15 @@ const addressesFields = {
     Extra: "",
   },
 
+  city: {
+    Field: "city",
+    Type: "varchar(100)",
+    Null: "NO",
+    Key: "",
+    Default: null,
+    Extra: "",
+  },
+
   tel: {
     Field: "tel",
     Type: "varchar(200)",

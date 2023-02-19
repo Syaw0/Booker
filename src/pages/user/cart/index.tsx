@@ -56,7 +56,6 @@ const getServerSideProps: GetServerSideProps = async ({
     if (user.status && user.data != null) {
       props.user = user.data;
       props.isLogin = true;
-      console.log(user.data.cart);
       if (user.data.cart.length != 0) {
         const cart = await getCartData(user.data.cart);
         if (cart.status) {

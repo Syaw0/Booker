@@ -25,6 +25,7 @@ const AddressModifier = ({ isEdit }: { isEdit: boolean }) => {
   const addressData = useUserAddAddressStore((s) => s.address);
   const { city, country, receiverName, state, street, tel, title, zipCode } =
     addressData;
+  const { userId } = useUserAddAddressStore((s) => s.user);
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget;
     dispatch(updateAddress({ [name]: value }));
@@ -37,7 +38,7 @@ const AddressModifier = ({ isEdit }: { isEdit: boolean }) => {
     if (isEdit) {
       result = await trigger(1);
     } else {
-      result = await trigger(0);
+      result = await trigger(0, userId, addressData);
     }
     if (result.status) {
       router.replace("/user/addresses");

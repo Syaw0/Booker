@@ -100,7 +100,7 @@ declare global {
   interface UserAddAddressPagePropsTypes
     extends PageMainStates,
       PageMainUserDashStates {
-    address: Address;
+    address: Omit<Address, "addressId">;
   }
 
   interface UserEditAddressPagePropsTypes
@@ -182,6 +182,7 @@ declare global {
     tel: string | number;
     zipCode: string | number;
     country: string;
+    addressId: string;
   }
 }
 export {};

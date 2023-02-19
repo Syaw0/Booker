@@ -17,6 +17,7 @@ const getUserById = async (userId: string) => {
 
     return { status: true, msg: "Found User!", data: result[0] };
   } catch (err) {
+    console.log(err);
     return { status: false, msg: "Error During GetUser From Maria!" };
   } finally {
     if (con != null) {
