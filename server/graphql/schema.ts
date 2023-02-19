@@ -12,7 +12,30 @@ type Query{
   handleBookMark(userId:String!,wishlist:[String]!,bookId:String!,isBookMarked:Boolean!):Response
   updateUserData(userId:String!):UpdateUserDataResponse
   addBookToCart(userId:String!,bookId:String!,curCart:[String]):Response
+  removeBookFromCart(userId:String!,bookId:String!,curCart:[String]):Response
+  getUpdatedCart(userId:String!):GetUpdatedCartResponse
+} 
+
+type GetUpdatedCartResponse{
+  status:Boolean!
+  msg:String!
+  data:GetUpdatedCartResponseData
 }
+
+type GetUpdatedCartResponseData{
+  books:[Book]
+  priceSummary:PriceSummary
+  user:User
+}
+
+
+type PriceSummary{
+  shipping: String!
+  subTotal: String!
+  tax: String!
+  total:String!
+}
+
 type UpdateUserDataResponse{
   status:Boolean!
   msg:String!
@@ -46,6 +69,7 @@ type Book{
   price: Int!
   category: String!
   description: String
+  num:Int
 
 }
 

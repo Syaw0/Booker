@@ -14,7 +14,16 @@ const initialState: UserCartPagePropsTypes = {
   books: [],
   menuItems: [],
   navbarItems: navItems,
-  user: { wishlist: [], cartNumber: 0, email: "", profileUrl: "", userId: "" },
+  user: {
+    addresses: [],
+    cart: [],
+    orders: [],
+    wishlist: [],
+    cartNumber: 0,
+    email: "",
+    profileUrl: "",
+    userId: "",
+  },
 };
 
 const userCartSlice = createSlice({
@@ -54,10 +63,9 @@ const userCartSlice = createSlice({
     updateStates(preState, action: PayloadAction<UserCartPageUpdateData>) {
       return {
         ...preState,
-        addresses: action.payload.addresses,
         books: action.payload.books,
         priceSummary: action.payload.priceSummary,
-        user: { ...preState.user, ...action.payload.user },
+        user: action.payload.user,
       };
     },
   },

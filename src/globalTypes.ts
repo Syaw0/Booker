@@ -170,9 +170,7 @@ declare global {
       total: string | number;
       subTotal: string | number;
     };
-    user: {
-      cartNumber: string | number;
-    };
+    user: User;
   }
 
   interface Address {

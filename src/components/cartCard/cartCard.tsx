@@ -1,13 +1,13 @@
 import Image from "next/image";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 import IconPlus from "src/assets/icons/iconPlus";
 import IconSubtracting from "src/assets/icons/iconSubtracting";
 import useFetch from "src/hooks/useFetch";
-import { updateStates } from "src/store/userCart/userCart";
-import addOneToCart, {
-  loaderMsg as addOneLoaderMsg,
-} from "src/utils/addOneToCart";
+import useUpdateCartData from "src/hooks/useUpdateCartData";
+import { useUserCartStore } from "src/store/userCart/userCartStoreHooks";
+import addToCart, {
+  loaderMsg as addToCartLoaderMsg,
+} from "src/utils/addToCart";
 import loader from "src/utils/imageLoader";
 import removeAllFromCart, {
   loaderMsg as rmAllLoaderMsg,
@@ -27,23 +27,23 @@ const CartCard = ({
   bookId,
   num,
 }: BookCartCardPropsType) => {
-  const dispatch = useDispatch();
   const [isLocked, setIsLocked] = useState(false);
+  const { cart, userId } = useUserCartStore((s) => s.user);
+  const updateCart = useUpdateCartData(userId);
   const [trigger] = useFetch(
-    [removeAllFromCart, addOneToCart, removeOneFromCart],
-    [rmAllLoaderMsg, addOneLoaderMsg, rmOneLoaderMsg]
+    [removeAllFromCart, addToCart, removeOneFromCart],
+    [rmAllLoaderMsg, addToCartLoaderMsg, rmOneLoaderMsg]
   );
 
   // TODO write Hook for this?
-
   const addOne = async () => {
     if (isLocked) {
       return;
     }
     setIsLocked(true);
-    const result = await trigger(1);
+    const result = await trigger(1, userId, bookId, cart);
     if (result.status) {
-      dispatch(updateStates(result.data));
+      await updateCart();
     }
     setIsLocked(false);
   };
@@ -53,9 +53,10 @@ const CartCard = ({
       return;
     }
     setIsLocked(true);
-    const result = await trigger(2);
+    const result = await trigger(2, userId, bookId, cart);
     if (result.status) {
-      dispatch(updateStates(result.data));
+      await updateCart();
+      // dispatch(updateStates(result.data));
     }
     setIsLocked(false);
   };
@@ -67,7 +68,7 @@ const CartCard = ({
     setIsLocked(true);
     const result = await trigger(0);
     if (result.status) {
-      dispatch(updateStates(result.data));
+      await updateCart();
     }
     setIsLocked(false);
   };

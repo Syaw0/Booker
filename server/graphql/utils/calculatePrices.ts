@@ -1,9 +1,9 @@
 const calculatePrices = (books: any) => {
-  console.log(books);
   let total = 0;
   books.forEach((book: any) => {
-    total = Number(book.price) * book.num;
+    total += Number(book.price) * book.num;
   });
+
   return {
     shipping: "0",
     subTotal: "0",

@@ -1,10 +1,31 @@
-import fakeUserCartPageData from "src/shared/fakeUserCartPageData";
+const removeOneFromCart = async (
+  additionData: [userId: string, bookId: string, curCart: string[]]
+) => {
+  const userId = `${additionData[0]}`;
+  const bookId = `${additionData[1]}`;
+  const curCart = additionData[2];
 
-type Response = { status: boolean; msg: string; data?: UserCartPageUpdateData };
+  const query = `
+    query RemoveOneFromCart($userId:String!,$bookId:String!,$curCart:[String]){
+      data:removeBookFromCart(userId:$userId,bookId:$bookId,curCart:$curCart){
+        status
+        msg
+      }
+    }
+  `;
 
-const removeOneFromCart = async (): Promise<Response> => {
-  const resp = await fetch("");
-  return { status: true, msg: "its ok", data: fakeUserCartPageData };
+  const resp = await fetch("/graphql", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ query, variables: { userId, bookId, curCart } }),
+  });
+  const json = await resp.json();
+  console.log(json);
+  const data = json.data.data;
+
+  return data;
 };
 export const loaderMsg = "Please wait to server handle your request.";
 export default removeOneFromCart;

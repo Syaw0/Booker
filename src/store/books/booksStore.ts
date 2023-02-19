@@ -9,6 +9,9 @@ const initialState: BooksPagePropsTypes = {
     profileUrl: "",
     userId: "",
     wishlist: [],
+    addresses: [],
+    cart: [],
+    orders: [],
   },
   books: [],
   filters: {
