@@ -35,13 +35,15 @@ const getServerSideProps: GetServerSideProps = async ({
       profileUrl: "",
       userId: "",
       wishlist: [],
+      addresses: [],
+      cart: [],
+      orders: [],
     },
   };
   if (checkSessionResult.status && checkSessionResult.data != null) {
     const user = await getUserById(checkSessionResult.data);
     if (user.status && user.data != null) {
       props.user = user.data;
-      props.user.cartNumber = JSON.parse(user.data.cart).length;
       props.isLogin = true;
     } else {
       return { redirect: { destination: "/500", permanent: false } };

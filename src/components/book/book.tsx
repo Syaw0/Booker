@@ -25,11 +25,11 @@ const Book = () => {
     (s) => s.book
   );
 
-  const { wishlist, userId } = useBookStore((s) => s.user);
+  const { wishlist, userId, cart } = useBookStore((s) => s.user);
   const updateUserData = useUpdateUserData(userId);
   const isBookMarked = wishlist.filter((s) => s == bookId).length != 0;
   const performAddToCart = async () => {
-    const res = await trigger(0);
+    const res = await trigger(0, userId, bookId, cart);
     if (res.status) {
       //update user data!(cart number and ...)
       await updateUserData();

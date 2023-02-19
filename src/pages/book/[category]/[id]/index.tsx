@@ -50,6 +50,9 @@ const getServerSideProps: GetServerSideProps = async ({
       profileUrl: "",
       userId: "",
       wishlist: [],
+      addresses: [],
+      cart: [],
+      orders: [],
     },
   };
   const checkSessionResult = await checkSession(req.cookies);

@@ -44,6 +44,9 @@ declare global {
     userId: string;
     profileUrl: string;
     wishlist: string[];
+    cart: string[];
+    addresses: string[];
+    orders: string[];
   }
 
   interface PageMainStates {

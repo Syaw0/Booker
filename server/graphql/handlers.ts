@@ -1,3 +1,4 @@
+import addBookToCart from "./routes/addBookToCart";
 import checkForgetPasswordData from "./routes/checkForgetPasswordData";
 import checkLoginData from "./routes/checkLoginData";
 import checkSignupData from "./routes/checkSignupData";
@@ -20,6 +21,7 @@ const rootValue = {
   getFilteredBooks,
   handleBookMark,
   updateUserData,
+  addBookToCart,
 };
 
 export default rootValue;

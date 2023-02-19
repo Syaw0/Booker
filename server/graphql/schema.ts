@@ -11,6 +11,7 @@ type Query{
   getFilteredBooks(keyword:String!,max:String!,min:String!,categories:[String]):getFilteredBooksResponse
   handleBookMark(userId:String!,wishlist:[String]!,bookId:String!,isBookMarked:Boolean!):Response
   updateUserData(userId:String!):UpdateUserDataResponse
+  addBookToCart(userId:String!,bookId:String!,curCart:[String]):Response
 }
 type UpdateUserDataResponse{
   status:Boolean!

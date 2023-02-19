@@ -27,7 +27,6 @@ const getIntroducers = async () => {
   } catch (err) {
     return { status: false, msg: "Error During Get Introducers" };
   } finally {
-    console.log(con);
     if (con != null) {
       await con.release();
     }

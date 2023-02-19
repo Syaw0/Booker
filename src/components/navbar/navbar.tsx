@@ -101,7 +101,7 @@ const Navbar = () => {
           </Link>
           {isLogin && (
             <span data-testid="navbarCartNumber" className={style.cartNumber}>
-              {user.cartNumber}
+              {user.cart.length}
             </span>
           )}
         </div>
