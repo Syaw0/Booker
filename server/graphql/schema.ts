@@ -9,6 +9,7 @@ type Query{
   resetPassword(email:String!,oldPassword:String!,newPassword:String!):Response
   checkSignupData(email:String!):Response
   getFilteredBooks(keyword:String!,max:String!,min:String!,categories:[String]):getFilteredBooksResponse
+  handleBookMark(userId:String!,wishlist:[String]!,bookId:String!,isBookMarked:Boolean!):Response
 }
 
 type getFilteredBooksResponse{

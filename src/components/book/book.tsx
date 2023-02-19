@@ -25,7 +25,8 @@ const Book = () => {
   const { name, image, author, description, price, bookId } = useBookStore(
     (s) => s.book
   );
-  const { wishlist } = useBookStore((s) => s.user);
+
+  const { wishlist, userId } = useBookStore((s) => s.user);
   const isBookMarked = wishlist.filter((s) => s == bookId).length != 0;
   const performAddToCart = async () => {
     const res = await trigger(0);
@@ -40,11 +41,11 @@ const Book = () => {
       return;
     }
     setIsLock(true);
-    const result = await trigger(1);
+    const result = await trigger(1, userId, wishlist, bookId, isBookMarked);
 
-    if (result.status) {
-      await updateUserData();
-    }
+    // if (result.status) {
+    //   await updateUserData();
+    // }
     setIsLock(false);
   };
   return (
