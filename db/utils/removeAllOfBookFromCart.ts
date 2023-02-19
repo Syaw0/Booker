@@ -1,0 +1,30 @@
+import { pool } from "../dbController";
+
+const removeAllOfBookFromCart = async (
+  userId: string,
+  bookId: string,
+  curCart: string[]
+) => {
+  let con;
+  try {
+    con = await pool.getConnection();
+    curCart = curCart.filter((s) => s != bookId);
+    const newCart = JSON.stringify(curCart);
+    await con.query(`
+      UPDATE users SET cart='${newCart}' WHERE userId="${userId}"
+    `);
+
+    return {
+      status: true,
+      msg: "Successfully Remove Book From Cart!",
+    };
+  } catch (err) {
+    return { status: false, msg: "Error During Remove From Cart!" };
+  } finally {
+    if (con != null) {
+      await con.release();
+    }
+  }
+};
+
+export default removeAllOfBookFromCart;

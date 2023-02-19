@@ -1,12 +1,12 @@
-import removeBook from "../../../db/utils/removeBookFromCart";
+import removeBook from "../../../db/utils/removeAllOfBookFromCart";
 
-interface RemoveBookFromCart {
+interface RemoveAllBookFromCartTypes {
   bookId: string;
   userId: string;
   curCart: string[];
 }
 
-const removeBookFromCart = async (data: RemoveBookFromCart) => {
+const removeAllOfBookFromCart = async (data: RemoveAllBookFromCartTypes) => {
   try {
     const result = await removeBook(data.userId, data.bookId, data.curCart);
     return result;
@@ -17,4 +17,4 @@ const removeBookFromCart = async (data: RemoveBookFromCart) => {
     };
   }
 };
-export default removeBookFromCart;
+export default removeAllOfBookFromCart;

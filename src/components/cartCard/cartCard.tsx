@@ -66,7 +66,7 @@ const CartCard = ({
       return;
     }
     setIsLocked(true);
-    const result = await trigger(0);
+    const result = await trigger(0, userId, bookId, cart);
     if (result.status) {
       await updateCart();
     }

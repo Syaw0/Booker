@@ -13,6 +13,7 @@ type Query{
   updateUserData(userId:String!):UpdateUserDataResponse
   addBookToCart(userId:String!,bookId:String!,curCart:[String]):Response
   removeBookFromCart(userId:String!,bookId:String!,curCart:[String]):Response
+  removeAllOfBookFromCart(userId:String!,bookId:String!,curCart:[String]):Response
   getUpdatedCart(userId:String!):GetUpdatedCartResponse
 } 
 

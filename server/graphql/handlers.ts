@@ -7,6 +7,7 @@ import getFilteredBooks from "./routes/getFilteredBooks";
 import getFreshTfaCode from "./routes/getFreshTfaCode";
 import getUpdatedCart from "./routes/getUpdatedCart";
 import handleBookMark from "./routes/handleBookMark";
+import removeAllOfBookFromCart from "./routes/removeAllOfBookFromCart";
 import removeBookFromCart from "./routes/removeBookFromCart";
 import resetPassword from "./routes/resetPassword";
 import signup from "./routes/signup";
@@ -26,6 +27,7 @@ const rootValue = {
   addBookToCart,
   getUpdatedCart,
   removeBookFromCart,
+  removeAllOfBookFromCart,
 };
 
 export default rootValue;

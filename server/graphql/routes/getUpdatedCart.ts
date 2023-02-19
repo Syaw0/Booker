@@ -31,11 +31,13 @@ const getUpdatedCart = async ({ userId }: GetUpdatedCart) => {
 
     if (user.status) {
       result.user = user.data;
-      const cart = await getCartData(user.data.cart);
-      if (cart.status) {
-        result.books = cart.data;
-        let summary = calculatePrices(cart.data);
-        result.priceSummary = summary;
+      if (user.data.cart.length != 0) {
+        const cart = await getCartData(user.data.cart);
+        if (cart.status) {
+          result.books = cart.data;
+          let summary = calculatePrices(cart.data);
+          result.priceSummary = summary;
+        }
       }
     }
 
