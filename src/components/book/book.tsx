@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 import IconBookmark from "src/assets/icons/iconBookmark";
 import IconBookmarkFilled from "src/assets/icons/iconBookmarkFilled";
 import IconCart from "src/assets/icons/iconCart";

@@ -109,7 +109,6 @@ const seedBooks = async () => {
   );
   console.log("insert to db completely done!");
   await con.end();
-  process.exit();
 };
 
 export default seedBooks;

@@ -40,6 +40,14 @@ const userFields = {
     Default: "[]",
     Extra: "",
   },
+  wishlist: {
+    Field: "wishlist",
+    Type: "varchar(2000)",
+    Null: "NO",
+    Key: "",
+    Default: "[]",
+    Extra: "",
+  },
   addresses: {
     Field: "addresses",
     Type: "varchar(2000)",

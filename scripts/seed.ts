@@ -8,6 +8,7 @@ const seed = async () => {
   await seedBooks();
   await seedUsers();
   await seedIntroducers();
+  process.exit();
 };
 
 seed();

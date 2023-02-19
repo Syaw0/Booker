@@ -11,7 +11,7 @@ const CustomParent = (params: BookCardPropsType) => <BookCard {...params} />;
 const fakeBook: BookCardPropsType = {
   author: "Irvin Yalom",
   bookId: "2",
-  category: "psychology",
+  category: "Bears",
   image: "https://gg.com",
   name: "Momma and the meaning of life",
   price: "10",
@@ -37,7 +37,7 @@ describe("Test Component : Book", () => {
 
   it("if click on the cart we will move to the book page", () => {
     render(<CustomParent {...fakeBook} />, { wrapper: MemoryRouterProvider });
-    const book = screen.getByTestId(`bookCardHolder_${fakeBook.bookId}`);
+    const book = screen.getByTestId(`bookCardAnchor_${fakeBook.bookId}`);
     fireEvent.click(book);
     expect(router.asPath).toEqual(
       `/book/${fakeBook.category}/${fakeBook.bookId}`

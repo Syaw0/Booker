@@ -15,6 +15,7 @@ const generateDbBase = async () => {
     password char(64) not null ,
     profileUrl varchar(200) not null default('/prof/default') ,
     userId int not null AUTO_INCREMENT primary key , 
+    wishlist varchar(2000) not null default('[]'),
     orders varchar(2000) not null default('[]'),
     addresses varchar(2000) not null default('[]'),
     cart varchar(2000) not null default('[]')
