@@ -5,7 +5,8 @@ import IconEmail from "src/assets/icons/iconEmail";
 import IconMail from "src/assets/icons/iconMail";
 import IconTel from "src/assets/icons/iconTel";
 import useFetch from "src/hooks/useFetch";
-import { replaceAddresses } from "src/store/userAddresses/userAddresses";
+import useUpdateAddresses from "src/hooks/useUpdateAddresses";
+import { useUserAddressesStore } from "src/store/userAddresses/userAddressesStoreHooks";
 import deleteAddress, { loaderMsg } from "src/utils/deleteAddress";
 import Menu from "../menu/menu";
 import Text from "../typography/typography";
@@ -20,6 +21,7 @@ const AddressCard = ({
   tel,
   title,
   zipCode,
+  addressId,
 }: Address) => {
   const dispatch = useDispatch();
   const [trigger] = useFetch([deleteAddress], [loaderMsg]);
@@ -27,10 +29,13 @@ const AddressCard = ({
   const goToEdit = () => {
     router.replace(`/user/addresses/edit?title=${title}`);
   };
+  const { userId } = useUserAddressesStore((s) => s.user);
+  const updateAddresses = useUpdateAddresses(userId);
+
   const performDeleteAddress = async () => {
-    const result = await trigger(0);
+    const result = await trigger(0, addressId);
     if (result.status) {
-      dispatch(replaceAddresses(result.data));
+      await updateAddresses();
     }
   };
   return (

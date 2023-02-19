@@ -11,12 +11,22 @@ type Query{
   getFilteredBooks(keyword:String!,max:String!,min:String!,categories:[String]):getFilteredBooksResponse
   handleBookMark(userId:String!,wishlist:[String]!,bookId:String!,isBookMarked:Boolean!):Response
   updateUserData(userId:String!):UpdateUserDataResponse
+
   addBookToCart(userId:String!,bookId:String!,curCart:[String]):Response
   removeBookFromCart(userId:String!,bookId:String!,curCart:[String]):Response
   removeAllOfBookFromCart(userId:String!,bookId:String!,curCart:[String]):Response
   getUpdatedCart(userId:String!):GetUpdatedCartResponse
   addAddress(userId:String!,addressData:Address):Response
+  deleteAddress(addressId:String!):Response
+
+  getUpdatedAddresses(userId:String!):GetUpdatedAddresses
 } 
+
+type GetUpdatedAddresses{
+  status:Boolean!
+  msg:String!
+  data:[AddressType]
+}
 
 type GetUpdatedCartResponse{
   status:Boolean!
@@ -77,6 +87,19 @@ type Book{
 
 
 input Address{
+  title: String!
+  receiverName: String!
+  state: String!
+  city: String!
+  street: String!
+  tel: String! 
+  zipCode: String! 
+  country: String!
+  addressId: String
+
+}
+
+type AddressType{
   title: String!
   receiverName: String!
   state: String!

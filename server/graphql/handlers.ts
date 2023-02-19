@@ -4,8 +4,10 @@ import checkForgetPasswordData from "./routes/checkForgetPasswordData";
 import checkLoginData from "./routes/checkLoginData";
 import checkSignupData from "./routes/checkSignupData";
 import checkTfaCode from "./routes/checkTfaCode";
+import deleteAddress from "./routes/deleteAddress";
 import getFilteredBooks from "./routes/getFilteredBooks";
 import getFreshTfaCode from "./routes/getFreshTfaCode";
+import getUpdatedAddresses from "./routes/getUpdatedAddresses";
 import getUpdatedCart from "./routes/getUpdatedCart";
 import handleBookMark from "./routes/handleBookMark";
 import removeAllOfBookFromCart from "./routes/removeAllOfBookFromCart";
@@ -30,6 +32,8 @@ const rootValue = {
   removeBookFromCart,
   removeAllOfBookFromCart,
   addAddress,
+  deleteAddress,
+  getUpdatedAddresses,
 };
 
 export default rootValue;
