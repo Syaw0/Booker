@@ -14,6 +14,7 @@ import removeAllOfBookFromCart from "./routes/removeAllOfBookFromCart";
 import removeBookFromCart from "./routes/removeBookFromCart";
 import resetPassword from "./routes/resetPassword";
 import signup from "./routes/signup";
+import updateAddress from "./routes/updateAddress";
 import updateUserData from "./routes/updateUserData";
 
 const rootValue = {
@@ -34,6 +35,7 @@ const rootValue = {
   addAddress,
   deleteAddress,
   getUpdatedAddresses,
+  updateAddress,
 };
 
 export default rootValue;

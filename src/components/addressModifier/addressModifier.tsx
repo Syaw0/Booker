@@ -28,7 +28,12 @@ const AddressModifier = ({ isEdit }: { isEdit: boolean }) => {
   const { userId } = useUserAddAddressStore((s) => s.user);
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget;
-    dispatch(updateAddress({ [name]: value }));
+    dispatch({
+      type: isEdit
+        ? "userEditAddress/updateAddress"
+        : "userAddAddress/updateAddress",
+      payload: { [name]: value },
+    });
   };
   const performAddAddress = async () => {
     if (!checkInputs()) {
@@ -36,7 +41,7 @@ const AddressModifier = ({ isEdit }: { isEdit: boolean }) => {
     }
     let result;
     if (isEdit) {
-      result = await trigger(1);
+      result = await trigger(1, addressData);
     } else {
       result = await trigger(0, userId, addressData);
     }

@@ -4,6 +4,7 @@ import navItems from "src/shared/userDashNavItems";
 const initialState: UserEditAddressPagePropsTypes = {
   actionType: "userEditAddress",
   address: {
+    addressId: "",
     city: "",
     country: "",
     receiverName: "",
@@ -16,7 +17,16 @@ const initialState: UserEditAddressPagePropsTypes = {
   isLogin: false,
   menuItems: [],
   navbarItems: navItems,
-  user: { wishlist: [], cartNumber: 0, email: "", profileUrl: "", userId: "" },
+  user: {
+    wishlist: [],
+    cartNumber: 0,
+    email: "",
+    profileUrl: "",
+    userId: "",
+    addresses: [],
+    cart: [],
+    orders: [],
+  },
 };
 
 const userEditAddressSlice = createSlice({

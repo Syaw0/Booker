@@ -16,7 +16,16 @@ const initialState: UserAddAddressPagePropsTypes = {
   isLogin: false,
   menuItems: [],
   navbarItems: navItems,
-  user: { wishlist: [], cartNumber: 0, email: "", profileUrl: "", userId: "" },
+  user: {
+    wishlist: [],
+    addresses: [],
+    cart: [],
+    orders: [],
+    cartNumber: 0,
+    email: "",
+    profileUrl: "",
+    userId: "",
+  },
 };
 
 const userAddAddressSlice = createSlice({

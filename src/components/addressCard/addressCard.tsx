@@ -23,11 +23,10 @@ const AddressCard = ({
   zipCode,
   addressId,
 }: Address) => {
-  const dispatch = useDispatch();
   const [trigger] = useFetch([deleteAddress], [loaderMsg]);
   const router = useRouter();
   const goToEdit = () => {
-    router.replace(`/user/addresses/edit?title=${title}`);
+    router.replace(`/user/addresses/edit?addressId=${addressId}`);
   };
   const { userId } = useUserAddressesStore((s) => s.user);
   const updateAddresses = useUpdateAddresses(userId);

@@ -20,6 +20,7 @@ type Query{
   deleteAddress(addressId:String!):Response
 
   getUpdatedAddresses(userId:String!):GetUpdatedAddresses
+  updateAddress(addressData:Address):Response
 } 
 
 type GetUpdatedAddresses{
@@ -95,8 +96,8 @@ input Address{
   tel: String! 
   zipCode: String! 
   country: String!
-  addressId: String
-
+  addressId: Int
+  userId:String
 }
 
 type AddressType{
@@ -108,7 +109,8 @@ type AddressType{
   tel: String! 
   zipCode: String! 
   country: String!
-  addressId: String
+  addressId: Int
+  userId:String
 
 }
 
