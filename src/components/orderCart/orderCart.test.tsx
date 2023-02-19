@@ -115,14 +115,14 @@ describe("Test Component", () => {
   });
   it("if click on the see detail we moved to user/orders/id page", () => {
     render(<CustomParent {...fakeData2} />);
-    const button = screen.getByTestId("orderSeeDetailButton");
+    const button = screen.getByTestId("orderSeeDetailAnchor");
     fireEvent.click(button);
     expect(router.asPath).toEqual(`/user/orders/${fakeData2.orderId}`);
   });
 
   it("if click on the see detail we moved to user/orders/id page test2", () => {
     render(<CustomParent {...fakeData1} />);
-    const button = screen.getByTestId("orderSeeDetailButton");
+    const button = screen.getByTestId("orderSeeDetailAnchor");
     fireEvent.click(button);
     expect(router.asPath).toEqual(`/user/orders/${fakeData1.orderId}`);
   });

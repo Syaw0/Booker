@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import IconArrowRight from "src/assets/icons/iconArrowRight";
 import loader from "src/utils/imageLoader";
@@ -7,10 +8,6 @@ import Text from "../typography/typography";
 import style from "./orderCart.module.css";
 
 const OrderCart = ({ books, date, orderId, state, priceSummary }: Order) => {
-  const router = useRouter();
-  const goToOrder = () => {
-    router.replace(`/user/orders/${orderId}`);
-  };
   return (
     <div data-testid={`order_${orderId}`} className={style.holder}>
       <div className={style.top}>
@@ -61,15 +58,19 @@ const OrderCart = ({ books, date, orderId, state, priceSummary }: Order) => {
           </Text>
         </div>
         <div className={style.buttonHolder}>
-          <Button
-            testid="orderSeeDetailButton"
-            onClick={goToOrder}
-            className={style.seeDetailButton}
-            EndIcon={IconArrowRight}
-            variant="shadow"
+          <Link
+            data-testid="orderSeeDetailAnchor"
+            href={`/user/orders/${orderId}`}
           >
-            See Detail
-          </Button>
+            <Button
+              testid="orderSeeDetailButton"
+              className={style.seeDetailButton}
+              EndIcon={IconArrowRight}
+              variant="shadow"
+            >
+              See Detail
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
