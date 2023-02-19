@@ -10,7 +10,26 @@ type Query{
   checkSignupData(email:String!):Response
   getFilteredBooks(keyword:String!,max:String!,min:String!,categories:[String]):getFilteredBooksResponse
   handleBookMark(userId:String!,wishlist:[String]!,bookId:String!,isBookMarked:Boolean!):Response
+  updateUserData(userId:String!):UpdateUserDataResponse
 }
+type UpdateUserDataResponse{
+  status:Boolean!
+  msg:String!
+  data:User
+}
+
+type User{
+  email: String!,
+  password: String!,
+  profileUrl: String!,
+  userId: String!,
+  orders: [String],
+  addresses: [String],
+  cart: [String],
+  wishlist: [String]
+
+}
+
 
 type getFilteredBooksResponse{
   status:Boolean!

@@ -13,7 +13,7 @@ const bookmarkModifier = async (bookmarkData: BookMarkType) => {
 
   const query = `
     query HandleBookMark($userId:String!,$wishlist:[String]!,$bookId:String!,$isBookMarked:Boolean!){
-      handleBookMark(userId:$userId,wishlist:$wishlist,bookId:$bookId,isBookMarked:$isBookMarked){
+      data:handleBookMark(userId:$userId,wishlist:$wishlist,bookId:$bookId,isBookMarked:$isBookMarked){
         status
         msg
       }

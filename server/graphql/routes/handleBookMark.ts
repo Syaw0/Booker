@@ -1,3 +1,4 @@
+import removeBookFromWishlist from "../../../db/utils/removeBookFromWishlist";
 import addBookToWishlist from "../../../db/utils/addBookToWishlist copy";
 
 interface HandleBookMarkType {
@@ -16,6 +17,7 @@ const handleBookMark = async ({
   try {
     let result;
     if (isBookMarked) {
+      result = await removeBookFromWishlist(userId, wishlist, bookId);
     } else {
       result = await addBookToWishlist(userId, wishlist, bookId);
     }

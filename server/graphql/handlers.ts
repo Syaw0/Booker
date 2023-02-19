@@ -7,6 +7,7 @@ import getFreshTfaCode from "./routes/getFreshTfaCode";
 import handleBookMark from "./routes/handleBookMark";
 import resetPassword from "./routes/resetPassword";
 import signup from "./routes/signup";
+import updateUserData from "./routes/updateUserData";
 
 const rootValue = {
   checkLoginInformation: checkLoginData,
@@ -18,6 +19,7 @@ const rootValue = {
   checkSignupData,
   getFilteredBooks,
   handleBookMark,
+  updateUserData,
 };
 
 export default rootValue;
