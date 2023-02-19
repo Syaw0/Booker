@@ -4,6 +4,10 @@ import "@testing-library/jest-dom";
 import { book1, book2, book3, book4 } from "src/shared/fakeBooks";
 import { fakeUser } from "src/shared/fakeUser";
 
+jest.mock("db/utils/checkSession", () => jest.fn());
+jest.mock("db/utils/getUserById", () => jest.fn());
+jest.mock("db/utils/getIntroducers", () => jest.fn());
+
 jest.mock("next/router", () => require("next-router-mock"));
 
 const fakeProps1: HomePagePropsTypes = {

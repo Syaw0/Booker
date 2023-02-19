@@ -4,6 +4,9 @@ import { render, screen } from "@testing-library/react";
 import fakeUserWishlistPageData from "src/shared/fakeUserWishlistPageData";
 import { book1, book2, book3, book4 } from "src/shared/fakeBooks";
 
+jest.mock("db/utils/checkSession", () => jest.fn());
+jest.mock("db/utils/getFilteredBooks", () => jest.fn());
+jest.mock("db/utils/getUserById", () => jest.fn());
 jest.mock("next/router", () => require("next-router-mock"));
 
 const CustomParent = (props: UserWishlistPagePropsTypes) => {

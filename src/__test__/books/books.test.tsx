@@ -5,6 +5,9 @@ import fakeBooksPageData from "src/shared/fakeBooksPageData";
 import getFilteredBooks from "src/utils/getFilteredBooks";
 import { book3, book4 } from "src/shared/fakeBooks";
 
+jest.mock("db/utils/checkSession", () => jest.fn());
+jest.mock("db/utils/getUserById", () => jest.fn());
+jest.mock("db/utils/getFilteredBooks", () => jest.fn());
 jest.mock("src/utils/getFilteredBooks.ts");
 jest.mock("next/router", () => require("next-router-mock"));
 

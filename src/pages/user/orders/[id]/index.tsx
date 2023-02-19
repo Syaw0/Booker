@@ -5,7 +5,6 @@ import { GetServerSideProps, GetServerSidePropsResult } from "next";
 import Head from "next/head";
 import { Provider } from "react-redux";
 import UserOrderId from "src/components/pageComponents/userOrderId/userOrderId";
-import fakeUserOrderIdPageData from "src/shared/fakeUserOrderIdPageData";
 import navItems from "src/shared/userDashNavItems";
 import makeStore from "src/store/userOrderId/userOrderId";
 

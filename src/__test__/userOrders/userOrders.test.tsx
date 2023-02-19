@@ -6,6 +6,9 @@ import { fakeOrder1, fakeOrder2, fakeOrder3 } from "src/shared/fakeOrders";
 import { MemoryRouterProvider } from "next-router-mock/dist/MemoryRouterProvider/next-11";
 import { fakeUser } from "src/shared/fakeUser";
 
+jest.mock("db/utils/checkSession", () => jest.fn());
+jest.mock("db/utils/getUserOrders", () => jest.fn());
+jest.mock("db/utils/getUserById", () => jest.fn());
 jest.mock("next/router", () => require("next-router-mock"));
 
 const CustomParent = (props: UserOrdersPagePropsTypes) => {

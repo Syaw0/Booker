@@ -13,6 +13,9 @@ const initialState: UserWishlistPagePropsTypes = {
     profileUrl: "",
     userId: "",
     wishlist: [],
+    addresses: [],
+    cart: [],
+    orders: [],
   },
 };
 

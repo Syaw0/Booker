@@ -40,7 +40,7 @@ const userAddAddressSlice = createSlice({
     },
     popFromMenu(preState, action: PayloadAction<string>) {
       let newList = preState.menuItems;
-      newList = newList.filter((item) => item.name !== action.payload);
+      newList = newList.filter((item: any) => item.name !== action.payload);
       return {
         ...preState,
         menuItems: newList,

@@ -6,6 +6,7 @@ import router from "next-router-mock";
 import { Provider } from "react-redux";
 import makeStore from "src/store/home/homeStore";
 import fakeHomePageData from "src/shared/fakeHomePageData";
+import { book1, book2 } from "src/shared/fakeBooks";
 
 jest.mock("next/router", () => require("next-router-mock"));
 
@@ -55,12 +56,12 @@ describe("Test Component : Navbar", () => {
 
   it("check cart number ", () => {
     const props = fakeHomePageData;
-    props.user.cartNumber = 10;
+    props.user.cart = ["", "", ""];
     render(<CustomParent {...props} />, {
       wrapper: MemoryRouterProvider,
     });
     expect(screen.getByTestId("navbarCartNumber")).toHaveTextContent(
-      `${props.user.cartNumber}`
+      `${props.user.cart.length}`
     );
   });
 

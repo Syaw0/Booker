@@ -4,11 +4,12 @@ import "@testing-library/jest-dom";
 import { Provider } from "react-redux";
 import fakeUserOrderIdPageData from "src/shared/fakeUserOrderIdPageData";
 import makeStore from "src/store/userOrderId/userOrderId";
+import categories from "src/shared/allCategories";
 
 const fakeData: BookCartCardPropsType = {
   author: "leo tolstoy",
   bookId: "2",
-  category: "classic",
+  category: categories[0],
   description: "",
   image: "/s",
   name: "War and Peace",
@@ -19,7 +20,7 @@ const fakeData: BookCartCardPropsType = {
 const fakeData2: BookCartCardPropsType = {
   author: "james quick",
   bookId: "3",
-  category: "Non-fiction",
+  category: categories[0],
   description: "",
   image: "/s",
   name: "limitless",

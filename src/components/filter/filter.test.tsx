@@ -86,7 +86,7 @@ describe("Test Component : Filter", () => {
 
   it("if provider pass filter data , this data will paste into view", async () => {
     const props = fakeProps;
-    props.filters.categories = ["Mystery", "fiction", "novel"];
+    props.filters.categories = [categories[0], categories[1], categories[2]];
     props.filters.keyword = "HELLO";
     props.filters.priceRange = { max: 10, min: 0 };
     render(<CustomParent {...props} />);
@@ -100,7 +100,11 @@ describe("Test Component : Filter", () => {
       `${props.filters.priceRange.max}`
     );
     categories.forEach((cate) => {
-      if (cate !== "Mystery" && cate !== "fiction" && cate !== "novel") {
+      if (
+        cate !== categories[0] &&
+        cate !== categories[1] &&
+        cate !== categories[2]
+      ) {
         expect(
           screen.getByTestId(`booksFilterCategoryInput_${cate}`)
         ).not.toBeChecked();

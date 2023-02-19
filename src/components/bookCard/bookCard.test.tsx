@@ -3,6 +3,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import router from "next-router-mock";
 import { MemoryRouterProvider } from "next-router-mock/dist/MemoryRouterProvider";
+import categories from "src/shared/allCategories";
 
 jest.mock("next/router", () => require("next-router-mock"));
 
@@ -11,7 +12,7 @@ const CustomParent = (params: BookCardPropsType) => <BookCard {...params} />;
 const fakeBook: BookCardPropsType = {
   author: "Irvin Yalom",
   bookId: "2",
-  category: "Bears",
+  category: categories[0],
   image: "https://gg.com",
   name: "Momma and the meaning of life",
   price: "10",

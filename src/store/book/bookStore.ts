@@ -1,4 +1,5 @@
 import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import categories from "src/shared/allCategories";
 
 const initialState: BookPagePropsTypes = {
   booksIntroducers: {
@@ -11,11 +12,14 @@ const initialState: BookPagePropsTypes = {
     profileUrl: "",
     userId: "",
     wishlist: [],
+    addresses: [],
+    cart: [],
+    orders: [],
   },
   book: {
     author: "",
     bookId: "",
-    category: "psychology",
+    category: categories[0],
     image: "",
     name: "",
     price: "",

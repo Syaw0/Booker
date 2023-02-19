@@ -26,7 +26,7 @@ const generateDbBase = async () => {
   await con.query(
     `CREATE TABLE booker.addresses 
     (receiverName varchar(200) not null,
-    title varchar(300) not null UNIQUE ,
+    title varchar(300) not null  ,
     addressId int not null AUTO_INCREMENT primary key ,
     country varchar(100) not null ,
     street varchar(300) not null ,

@@ -3,6 +3,9 @@ import { render, screen } from "@testing-library/react";
 import UserEditAddressPage from "src/pages/user/addresses/edit";
 import fakeUserEditAddressPageData from "src/shared/fakeUseEditAddressPageData";
 
+jest.mock("db/utils/checkSession", () => jest.fn());
+jest.mock("db/utils/getAddressById", () => jest.fn());
+jest.mock("db/utils/getUserById", () => jest.fn());
 jest.mock("next/router", () => require("next-router-mock"));
 
 const CustomParent = (props: UserEditAddressPagePropsTypes) => {

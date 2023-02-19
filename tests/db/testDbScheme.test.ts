@@ -69,6 +69,7 @@ describe("Test MariaDB Scheme", () => {
     const addresses = await mariaClient.query("DESCRIBE booker.addresses");
 
     addresses.forEach((add: any) => {
+      console.log(add.Field);
       const tmp: any =
         addressesFields[add.Field as keyof typeof addressesFields];
       Object.keys(tmp).forEach((tmpKey: string) => {

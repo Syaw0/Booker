@@ -2,13 +2,22 @@ import UserCartPage from "src/pages/user/cart";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import pay from "src/utils/pay";
-import addOneToCart from "src/utils/addOneToCart";
+import addOneToCart from "src/utils/addToCart";
 import removeAllFromCart from "src/utils/removeAllFromCart";
 import removeOneFromCart from "src/utils/removeOneFromCart";
+import updateCartData from "src/utils/updateCardData";
 import fakeUserCartPageData from "src/shared/fakeUserCartPageData";
 import { book1 } from "src/shared/fakeBooks";
+import { act } from "react-dom/test-utils";
 
-jest.mock("src/utils/addOneToCart");
+jest.mock("server/graphql/utils/getCartData", () => jest.fn());
+jest.mock("db/utils/checkSession", () => jest.fn());
+jest.mock("db/utils/getAddresses", () => jest.fn());
+jest.mock("db/utils/getUserById", () => jest.fn());
+
+jest.mock("src/utils/addToCart.ts");
+jest.mock("src/utils/updateCardData.ts");
+
 jest.mock("src/utils/removeAllFromCart");
 jest.mock("src/utils/removeOneFromCart");
 jest.mock("src/utils/pay");
@@ -17,6 +26,7 @@ jest.mock("next/router", () => require("next-router-mock"));
 const mockAddOneToCart = addOneToCart as jest.Mock;
 const mockRemoveAllFromCart = removeAllFromCart as jest.Mock;
 const mockRemoveOneFromCart = removeOneFromCart as jest.Mock;
+const mockUpdateCartData = updateCartData as jest.Mock;
 const mockPay = pay as jest.Mock;
 
 const CustomParent = (props: UserCartPagePropsTypes) => {
@@ -44,7 +54,7 @@ describe("Test Page : User Cart", () => {
     const num = 2;
     const book = { ...book1, num: num };
     fakeData.books = [book];
-    fakeData.user.cartNumber = 2;
+    fakeData.user.cart = ["", ""];
 
     render(<CustomParent {...fakeUserCartPageData} />);
 
@@ -59,14 +69,16 @@ describe("Test Page : User Cart", () => {
         '[data-testid="cartCardCountNumber"]'
       ) as HTMLParagraphElement;
     expect(count).toHaveTextContent(`${num}`);
-
     mockAddOneToCart.mockReturnValue(
+      new Promise((res) => res({ status: true, msg: "" }))
+    );
+    mockUpdateCartData.mockReturnValue(
       new Promise((res) =>
         res({
           status: true,
           msg: "",
           data: {
-            user: { cartNumber: num + 1 },
+            user: { cartNumber: num + 1, cart: ["", "", ""] },
             books: [{ ...book, num: num + 1 }],
             priceSummary: { ...fakeUserCartPageData.priceSummary },
             addresses: [...fakeUserCartPageData.addresses],
@@ -76,6 +88,7 @@ describe("Test Page : User Cart", () => {
     );
     fireEvent.click(addButton);
     expect(mockAddOneToCart).toHaveBeenCalledTimes(1);
+    await waitFor(() => expect(mockUpdateCartData).toBeCalledTimes(1));
     await waitFor(() =>
       expect(screen.getByTestId("navbarCartNumber")).toHaveTextContent(
         `${num + 1}`
@@ -89,7 +102,7 @@ describe("Test Page : User Cart", () => {
     const num = 2;
     const book = { ...book1, num: num };
     fakeData.books = [book];
-    fakeData.user.cartNumber = 2;
+    fakeData.user.cart = ["", ""];
 
     render(<CustomParent {...fakeUserCartPageData} />);
 
@@ -104,14 +117,16 @@ describe("Test Page : User Cart", () => {
         '[data-testid="cartCardCountNumber"]'
       ) as HTMLParagraphElement;
     expect(count).toHaveTextContent(`${num}`);
-
     mockRemoveOneFromCart.mockReturnValue(
+      new Promise((res) => res({ status: true, msg: "" }))
+    );
+    mockUpdateCartData.mockReturnValue(
       new Promise((res) =>
         res({
           status: true,
           msg: "",
           data: {
-            user: { cartNumber: num - 1 },
+            user: { cartNumber: num - 1, cart: [""] },
             books: [{ ...book, num: num - 1 }],
             priceSummary: { ...fakeUserCartPageData.priceSummary },
             addresses: [...fakeUserCartPageData.addresses],
@@ -119,7 +134,7 @@ describe("Test Page : User Cart", () => {
         })
       )
     );
-    fireEvent.click(subButton);
+    await act(async () => fireEvent.click(subButton));
     expect(mockRemoveOneFromCart).toHaveBeenCalledTimes(1);
     await waitFor(() =>
       expect(screen.getByTestId("navbarCartNumber")).toHaveTextContent(
@@ -134,7 +149,7 @@ describe("Test Page : User Cart", () => {
     const num = 2;
     const book = { ...book1, num: num };
     fakeData.books = [book];
-    fakeData.user.cartNumber = 2;
+    fakeData.user.cart = ["", ""];
 
     render(<CustomParent {...fakeUserCartPageData} />);
 
@@ -149,14 +164,16 @@ describe("Test Page : User Cart", () => {
         '[data-testid="cartCardCountNumber"]'
       ) as HTMLParagraphElement;
     expect(count).toHaveTextContent(`${num}`);
-
     mockRemoveAllFromCart.mockReturnValue(
+      new Promise((res) => res({ status: true, msg: "" }))
+    );
+    mockUpdateCartData.mockReturnValue(
       new Promise((res) =>
         res({
           status: true,
           msg: "",
           data: {
-            user: { cartNumber: 0 },
+            user: { cartNumber: 0, cart: [] },
             books: [],
             priceSummary: { ...fakeUserCartPageData.priceSummary },
             addresses: [...fakeUserCartPageData.addresses],

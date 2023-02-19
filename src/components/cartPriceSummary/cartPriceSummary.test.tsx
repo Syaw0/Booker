@@ -6,6 +6,9 @@ import pay from "src/utils/pay";
 import { MemoryRouterProvider } from "next-router-mock/dist/MemoryRouterProvider";
 import router from "next-router-mock";
 import { act } from "react-dom/test-utils";
+import { Provider } from "react-redux";
+import makeStore from "src/store/userCart/userCart";
+import fakeUserCartPageData from "src/shared/fakeUserCartPageData";
 
 jest.mock("next/router", () => require("next-router-mock"));
 jest.mock("src/utils/pay.ts");
@@ -37,7 +40,11 @@ const fakeData2: CartPriceSummaryPropsType = {
 };
 
 const CustomParent = (props: CartPriceSummaryPropsType) => {
-  return <CartPriceSummary {...props} />;
+  return (
+    <Provider store={makeStore({ ...fakeUserCartPageData, ...props })}>
+      <CartPriceSummary {...props} />
+    </Provider>
+  );
 };
 
 describe("Test Component : CartPriceSummary", () => {
@@ -135,7 +142,7 @@ describe("Test Component : CartPriceSummary", () => {
       )
     );
     fireEvent.change(screen.getByTestId("cartPriceSummarySelect"), {
-      target: { value: fakeData.addresses[0].title },
+      target: { value: fakeData.addresses[0].addressId },
     });
     const button = screen.getByTestId("cartPriceSummaryPayButton");
     fireEvent.click(button);

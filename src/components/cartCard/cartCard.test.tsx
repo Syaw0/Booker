@@ -4,12 +4,13 @@ import "@testing-library/jest-dom";
 import { Provider } from "react-redux";
 import makeStore from "src/store/userCart/userCart";
 import fakeUserCartPageData from "src/shared/fakeUserCartPageData";
-import addOneToCart from "src/utils/addOneToCart";
+import addOneToCart from "src/utils/addToCart";
 import removeOneFromCart from "src/utils/removeOneFromCart";
 import removeAllFromCart from "src/utils/removeAllFromCart";
 import { act } from "react-dom/test-utils";
+import categories from "src/shared/allCategories";
 
-jest.mock("src/utils/addOneToCart.ts");
+jest.mock("src/utils/addToCart.ts");
 jest.mock("src/utils/removeOneFromCart.ts");
 jest.mock("src/utils/removeAllFromCart.ts");
 
@@ -20,7 +21,7 @@ const mockRemoveAllFromCart = removeAllFromCart as jest.Mock;
 const fakeData: BookCartCardPropsType = {
   author: "leo tolstoy",
   bookId: "2",
-  category: "classic",
+  category: categories[0],
   description: "",
   image: "/s",
   name: "War and Peace",
@@ -31,7 +32,7 @@ const fakeData: BookCartCardPropsType = {
 const fakeData2: BookCartCardPropsType = {
   author: "james quick",
   bookId: "3",
-  category: "Non-fiction",
+  category: categories[0],
   description: "",
   image: "/s",
   name: "limitless",

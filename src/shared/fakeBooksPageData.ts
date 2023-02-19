@@ -1,3 +1,4 @@
+import categories from "./allCategories";
 import { book1, book2 } from "./fakeBooks";
 import { fakeUser } from "./fakeUser";
 
@@ -7,7 +8,7 @@ const fakeBooksPageData: BooksPagePropsTypes = {
   isLogin: true,
   user: fakeUser,
   filters: {
-    categories: ["psychology"],
+    categories: [categories[0]],
     keyword: "Momma And meaning of life",
     priceRange: {
       max: "12",

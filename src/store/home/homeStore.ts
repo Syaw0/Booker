@@ -11,6 +11,9 @@ const initialState: HomePagePropsTypes = {
     profileUrl: "",
     userId: "",
     wishlist: [],
+    addresses: [],
+    cart: [],
+    orders: [],
   },
 };
 

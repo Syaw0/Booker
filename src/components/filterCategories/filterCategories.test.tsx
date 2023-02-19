@@ -26,15 +26,17 @@ describe("Test Component : Filter Category", () => {
   });
   it("if we give data in provider, those categories will be marker", () => {
     const props = fakeBooksPageData;
-    props.filters.categories = ["classic", "habits"];
+    props.filters.categories = [categories[0], categories[1]];
     render(<CustomParent {...props} />);
     expect(
-      screen.getByTestId("booksFilterCategoryInput_classic")
+      screen.getByTestId(`booksFilterCategoryInput_${categories[0]}`)
     ).toBeChecked();
-    expect(screen.getByTestId("booksFilterCategoryInput_habits")).toBeChecked();
+    expect(
+      screen.getByTestId(`booksFilterCategoryInput_${categories[1]}`)
+    ).toBeChecked();
 
     categories.forEach((cate) => {
-      if (cate !== "classic" && cate !== "habits") {
+      if (cate !== categories[0] && cate !== categories[1]) {
         expect(
           screen.getByTestId(`booksFilterCategoryInput_${cate}`)
         ).not.toBeChecked();
@@ -44,10 +46,12 @@ describe("Test Component : Filter Category", () => {
 
   it("change it manually", () => {
     const props = fakeBooksPageData;
-    props.filters.categories = ["history", "psychology"];
+    props.filters.categories = [categories[0], categories[1]];
     render(<CustomParent {...props} />);
-    const psy = screen.getByTestId("booksFilterCategoryInput_psychology");
-    const history = screen.getByTestId("booksFilterCategoryInput_history");
+    const psy = screen.getByTestId(`booksFilterCategoryInput_${categories[0]}`);
+    const history = screen.getByTestId(
+      `booksFilterCategoryInput_${categories[0]}`
+    );
     expect(psy).toBeChecked();
     expect(history).toBeChecked();
 

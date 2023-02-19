@@ -1,9 +1,11 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import fakeUserCartPageData from "src/shared/fakeUserCartPageData";
 import UserOrderIdPage from "src/pages/user/orders/[id]";
 import fakeUserOrderIdPageData from "src/shared/fakeUserOrderIdPageData";
 
+jest.mock("db/utils/checkSession", () => jest.fn());
+jest.mock("db/utils/getOrder", () => jest.fn());
+jest.mock("db/utils/getUserById", () => jest.fn());
 jest.mock("next/router", () => require("next-router-mock"));
 
 const CustomParent = (props: UserOrderIdPagePropsTypes) => {

@@ -4,6 +4,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import router from "next-router-mock";
 import { book1, book2, book3, book4 } from "src/shared/fakeBooks";
 import { address1 } from "src/shared/fakeAddresses";
+import { MemoryRouterProvider } from "next-router-mock/dist/MemoryRouterProvider";
 
 jest.mock("next/router", () => require("next-router-mock"));
 
@@ -114,14 +115,14 @@ describe("Test Component", () => {
     );
   });
   it("if click on the see detail we moved to user/orders/id page", () => {
-    render(<CustomParent {...fakeData2} />);
+    render(<CustomParent {...fakeData2} />, { wrapper: MemoryRouterProvider });
     const button = screen.getByTestId("orderSeeDetailAnchor");
     fireEvent.click(button);
     expect(router.asPath).toEqual(`/user/orders/${fakeData2.orderId}`);
   });
 
   it("if click on the see detail we moved to user/orders/id page test2", () => {
-    render(<CustomParent {...fakeData1} />);
+    render(<CustomParent {...fakeData1} />, { wrapper: MemoryRouterProvider });
     const button = screen.getByTestId("orderSeeDetailAnchor");
     fireEvent.click(button);
     expect(router.asPath).toEqual(`/user/orders/${fakeData1.orderId}`);

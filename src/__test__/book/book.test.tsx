@@ -9,6 +9,10 @@ import { fakeUser } from "src/shared/fakeUser";
 import { book1 } from "src/shared/fakeBooks";
 import { act } from "react-dom/test-utils";
 
+jest.mock("db/utils/checkSession", () => jest.fn());
+jest.mock("db/utils/getBookById", () => jest.fn());
+jest.mock("db/utils/getSimilarBooks", () => jest.fn());
+jest.mock("db/utils/getUserById", () => jest.fn());
 jest.mock("src/utils/addToCart.ts");
 jest.mock("src/utils/updateUserData.ts");
 jest.mock("src/utils/bookmarkModifier.ts");
@@ -40,18 +44,20 @@ describe("Test Page : Book", () => {
   it("add to cart and see navbar cart icon number", async () => {
     render(<CustomParent {...fakeBookPageData} />);
     const fakeUserData = { ...fakeBookPageData.user };
-    fakeUserData.cartNumber = Number(fakeUserData.cartNumber) + 1;
+    fakeUserData.cartNumber = Number(fakeUserData.cart.length) + 1;
     mockAddToCart.mockReturnValue(new Promise((res) => res({ status: true })));
     mockUpdateUserData.mockReturnValue(
       new Promise((res) => res({ status: true, msg: "", data: fakeUserData }))
     );
     expect(screen.getByTestId("navbarCartNumber")).toHaveTextContent(
-      `${fakeBookPageData.user.cartNumber}`
+      `${fakeBookPageData.user.cart.length}`
     );
-    fireEvent.click(screen.getByTestId("bookAddToCartButton"));
+    await act(async () =>
+      fireEvent.click(screen.getByTestId("bookAddToCartButton"))
+    );
     await waitFor(() =>
       expect(screen.getByTestId("navbarCartNumber")).toHaveTextContent(
-        `${fakeUserData.cartNumber}`
+        `${fakeUserData.cart.length}`
       )
     );
   });

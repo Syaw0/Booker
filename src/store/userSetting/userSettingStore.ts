@@ -12,6 +12,9 @@ const initialState: UserSettingPagePropsTypes = {
     profileUrl: "",
     userId: "",
     wishlist: [],
+    addresses: [],
+    cart: [],
+    orders: [],
   },
 };
 

@@ -6,6 +6,9 @@ import { address1, address2, address3 } from "src/shared/fakeAddresses";
 import { MemoryRouterProvider } from "next-router-mock/dist/MemoryRouterProvider";
 import router from "next-router-mock";
 
+jest.mock("db/utils/checkSession", () => jest.fn());
+jest.mock("db/utils/getAddresses", () => jest.fn());
+jest.mock("db/utils/getUserById", () => jest.fn());
 jest.mock("next/router", () => require("next-router-mock"));
 
 const CustomParent = (props: UserAddressesPagePropsTypes) => {

@@ -32,6 +32,7 @@ const fakeAddress1: Address = {
   tel: "752.526.8001 x4954",
   title: "HOME",
   zipCode: "75482-4070",
+  addressId: "1",
 };
 
 const fakeAddress2: Address = {
@@ -43,6 +44,7 @@ const fakeAddress2: Address = {
   tel: "(775) 295-6481 x85699",
   title: "WORK",
   zipCode: "06625-5748",
+  addressId: "2",
 };
 
 describe("Test Component : AddressCard", () => {
@@ -112,7 +114,7 @@ describe("Test Component : AddressCard", () => {
     fireEvent.click(screen.getByTestId("menuHolderIcon"));
     fireEvent.click(screen.getByTestId("Edit"));
     expect(router.asPath).toEqual(
-      `/user/addresses/edit?title=${fakeAddress2.title}`
+      `/user/addresses/edit?addressId=${fakeAddress2.addressId}`
     );
   });
 
@@ -123,7 +125,7 @@ describe("Test Component : AddressCard", () => {
     fireEvent.click(screen.getByTestId("menuHolderIcon"));
     fireEvent.click(screen.getByTestId("Edit"));
     expect(router.asPath).toEqual(
-      `/user/addresses/edit?title=${fakeAddress1.title}`
+      `/user/addresses/edit?addressId=${fakeAddress1.addressId}`
     );
   });
 

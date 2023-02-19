@@ -10,10 +10,13 @@ const initialState: UserAddressesPagePropsTypes = {
   navbarItems: navItems,
   user: {
     cartNumber: 0,
-    wishlist: [],
     email: "",
     profileUrl: "",
     userId: "",
+    wishlist: [],
+    addresses: [],
+    cart: [],
+    orders: [],
   },
 };
 

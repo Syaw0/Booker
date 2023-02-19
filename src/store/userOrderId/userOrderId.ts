@@ -14,6 +14,7 @@ const initialState: UserOrderIdPagePropsTypes = {
       tel: "",
       title: "",
       zipCode: "",
+      addressId: "",
     },
     books: [],
     date: "",
@@ -28,7 +29,16 @@ const initialState: UserOrderIdPagePropsTypes = {
   },
   menuItems: [],
   navbarItems: navItems,
-  user: { wishlist: [], cartNumber: 0, email: "", profileUrl: "", userId: "" },
+  user: {
+    cartNumber: 0,
+    email: "",
+    profileUrl: "",
+    userId: "",
+    wishlist: [],
+    addresses: [],
+    cart: [],
+    orders: [],
+  },
 };
 
 const userOrderIdSlice = createSlice({
