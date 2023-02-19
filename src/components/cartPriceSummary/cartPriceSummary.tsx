@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { ChangeEvent, useState } from "react";
 import useFetch from "src/hooks/useFetch";
+import { useUserCartStore } from "src/store/userCart/userCartStoreHooks";
 import pay, { loaderMsg } from "src/utils/pay";
 import Button from "../button/button";
 import Message from "../message/message";
@@ -13,6 +14,7 @@ const CartPriceSummary = ({
 }: Pick<UserCartPagePropsTypes, "addresses" | "priceSummary">) => {
   const router = useRouter();
   const [trigger, state, msg, setMsg] = useFetch([pay], [loaderMsg]);
+  const { books, user } = useUserCartStore((s) => s);
   const [address, setAddress] = useState("");
   const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const { value } = e.currentTarget;
@@ -22,7 +24,13 @@ const CartPriceSummary = ({
     if (address.trim() === "") {
       return setMsg("error", "You must add an Address!");
     }
-    const result = await trigger(0);
+    const result = await trigger(
+      0,
+      addresses.filter((s) => s.addressId == address)[0],
+      books,
+      priceSummary,
+      user.userId
+    );
     if (result.status) {
       router.replace(`/user/orders/${result.data.orderId}`);
     }
@@ -65,7 +73,9 @@ const CartPriceSummary = ({
             return (
               <option
                 data-testid={`cartSelectSummaryAddress_${add.title}`}
-                key={add.title}
+                id={`${add.addressId}`}
+                key={add.addressId}
+                value={add.addressId}
               >
                 {add.title}
               </option>

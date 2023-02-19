@@ -10,6 +10,7 @@ import getFreshTfaCode from "./routes/getFreshTfaCode";
 import getUpdatedAddresses from "./routes/getUpdatedAddresses";
 import getUpdatedCart from "./routes/getUpdatedCart";
 import handleBookMark from "./routes/handleBookMark";
+import insertOrder from "./routes/insertOrder";
 import removeAllOfBookFromCart from "./routes/removeAllOfBookFromCart";
 import removeBookFromCart from "./routes/removeBookFromCart";
 import resetPassword from "./routes/resetPassword";
@@ -36,6 +37,7 @@ const rootValue = {
   deleteAddress,
   getUpdatedAddresses,
   updateAddress,
+  insertOrder,
 };
 
 export default rootValue;

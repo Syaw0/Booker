@@ -45,7 +45,7 @@ const getServerSideProps: GetServerSideProps = async ({
       cart: [],
       orders: [],
     },
-    actionType: "userAddresses",
+    actionType: "userEditAddress",
     menuItems: [],
     navbarItems: [],
     address: {

@@ -215,6 +215,14 @@ const ordersFields = {
     Default: null,
     Extra: "",
   },
+  userId: {
+    Field: "userId",
+    Type: "varchar(100)",
+    Null: "NO",
+    Key: "",
+    Default: null,
+    Extra: "",
+  },
   state: {
     Field: "state",
     Type: "varchar(100)",

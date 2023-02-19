@@ -21,7 +21,19 @@ type Query{
 
   getUpdatedAddresses(userId:String!):GetUpdatedAddresses
   updateAddress(addressData:Address):Response
+
+  insertOrder(address:Address,books:[BookInput],priceSummary:PriceSummaryInput,userId:String!):InsertOrderResponse
 } 
+
+type InsertOrderResponse{
+  status:Boolean!
+  msg:String!
+  data:InsertOrderResponseData
+}
+type InsertOrderResponseData{
+  orderId:String!
+}
+
 
 type GetUpdatedAddresses{
   status:Boolean!
@@ -43,6 +55,14 @@ type GetUpdatedCartResponseData{
 
 
 type PriceSummary{
+  shipping: String!
+  subTotal: String!
+  tax: String!
+  total:String!
+}
+
+
+input PriceSummaryInput{
   shipping: String!
   subTotal: String!
   tax: String!
@@ -86,6 +106,17 @@ type Book{
 
 }
 
+input BookInput{
+  bookId: String
+  name: String!
+  author: String!
+  image: String!
+  price: Int!
+  category: String!
+  description: String
+  num:Int
+}
+
 
 input Address{
   title: String!
@@ -111,7 +142,6 @@ type AddressType{
   country: String!
   addressId: Int
   userId:String
-
 }
 
 type Response {

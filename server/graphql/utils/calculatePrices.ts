@@ -8,7 +8,7 @@ const calculatePrices = (books: any) => {
     shipping: "0",
     subTotal: "0",
     tax: "0",
-    total: total,
+    total: `${total}`,
   };
 };
 

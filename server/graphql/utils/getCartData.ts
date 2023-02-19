@@ -16,7 +16,11 @@ const getCartData = async (cart: string[]) => {
     if (books.status) {
       books.data.forEach((book: any) => {
         if (cartData[book.bookId] != null) {
-          cartData[book.bookId] = { ...cartData[book.bookId], ...book };
+          cartData[book.bookId] = {
+            ...cartData[book.bookId],
+            ...book,
+            bookId: `${book.bookId}`,
+          };
         }
       });
     } else {

@@ -1,4 +1,5 @@
 import checkSession from "db/utils/checkSession";
+import getAddresses from "db/utils/getAddresses";
 import getUserById from "db/utils/getUserById";
 import { GetServerSideProps, GetServerSidePropsResult } from "next";
 import Head from "next/head";
@@ -58,6 +59,10 @@ const getServerSideProps: GetServerSideProps = async ({
       props.isLogin = true;
       if (user.data.cart.length != 0) {
         const cart = await getCartData(user.data.cart);
+        const addresses = await getAddresses(user.data.userId);
+        if (addresses.status) {
+          props.addresses = addresses.data;
+        }
         if (cart.status) {
           props.books = cart.data as BookCartCardPropsType[];
           let summary = calculatePrices(cart.data);

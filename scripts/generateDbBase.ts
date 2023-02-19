@@ -53,6 +53,7 @@ const generateDbBase = async () => {
     `CREATE TABLE booker.orders 
     (orderId int not null AUTO_INCREMENT primary key , 
       date varchar(100) not null , 
+      userId varchar(100) not null , 
       state varchar(100) not null default('step1'), 
       priceSummary varchar(1000) not null default('{"shipping": "","subTotal": "","tax": "","total": ""}') , 
       address varchar(1000) not null default('{"title": "","receiverName": "","state": "","city": "","street": "","tel": "","zipCode": "","country": ""}') , 

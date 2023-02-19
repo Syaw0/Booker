@@ -148,28 +148,25 @@ declare global {
     num: number | string;
   }
 
+  interface PriceSummary {
+    tax: string | number;
+    shipping: string | number;
+    total: string | number;
+    subTotal: string | number;
+  }
+
   interface UserCartPagePropsTypes
     extends PageMainStates,
       PageMainUserDashStates {
     books: BookCartCardPropsType[];
     addresses: Address[];
-    priceSummary: {
-      tax: string | number;
-      shipping: string | number;
-      total: string | number;
-      subTotal: string | number;
-    };
+    priceSummary: PriceSummary;
   }
 
   interface UserCartPageUpdateData {
     books: BookCartCardPropsType[];
     addresses: Address[];
-    priceSummary: {
-      tax: string | number;
-      shipping: string | number;
-      total: string | number;
-      subTotal: string | number;
-    };
+    priceSummary: PriceSummary;
     user: User;
   }
 
