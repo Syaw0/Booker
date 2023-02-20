@@ -1,12 +1,10 @@
-import { dbInfo } from "./dbConnectors";
-import { createConnection } from "mariadb";
 import { pool, redisClient } from "./dbConnectors";
 import initialDbContainer from "./initialDbContainer";
 
 const generateDbBase = async () => {
   await initialDbContainer();
   await redisClient.connect();
-  const con = await createConnection(dbInfo);
+  const con = await pool.getConnection();
   console.log(" Generating db base...");
   console.log(" creating booker database");
   await con.query(`CREATE DATABASE booker`);
