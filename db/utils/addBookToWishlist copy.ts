@@ -1,4 +1,5 @@
-import { pool } from "../../db/dbController";
+import { createConnection } from "mariadb";
+import { dbInfo } from "../../db/dbController";
 
 const addBookToWishlist = async (
   userId: string,
@@ -7,7 +8,7 @@ const addBookToWishlist = async (
 ) => {
   let con;
   try {
-    con = await pool.getConnection();
+    con = await createConnection(dbInfo);
     const newWishlist = JSON.stringify([...curWishlist, bookId]);
     await con.query(`
       UPDATE users SET wishlist='${newWishlist}' WHERE userId="${userId}"

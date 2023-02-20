@@ -17,9 +17,14 @@ const UserCart = () => {
             <CartCard key={book.bookId} {...book} />
           ))}
         </div>
-        <div className={style.right}>
-          <CartPriceSummary addresses={addresses} priceSummary={priceSummary} />
-        </div>
+        {books.length != 0 && (
+          <div className={style.right}>
+            <CartPriceSummary
+              addresses={addresses}
+              priceSummary={priceSummary}
+            />
+          </div>
+        )}
       </UserDashBase>
       <Footer />
     </div>

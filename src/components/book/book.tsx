@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import IconBookmark from "src/assets/icons/iconBookmark";
 import IconBookmarkFilled from "src/assets/icons/iconBookmarkFilled";
@@ -16,6 +17,7 @@ import Text from "../typography/typography";
 import style from "./book.module.css";
 
 const Book = () => {
+  const router = useRouter();
   const [trigger, state, msg] = useFetch(
     [addToCart, bookmarkModifier],
     [loaderMsg, bookmarkModifierLoaderMsg]
@@ -24,11 +26,14 @@ const Book = () => {
   const { name, image, author, description, price, bookId } = useBookStore(
     (s) => s.book
   );
-
+  const isLogin = useBookStore((s) => s.isLogin);
   const { wishlist, userId, cart } = useBookStore((s) => s.user);
   const updateUserData = useUpdateUserData(userId);
   const isBookMarked = wishlist.filter((s) => s == bookId).length != 0;
   const performAddToCart = async () => {
+    if (!isLogin) {
+      router.replace("/auth");
+    }
     const res = await trigger(0, userId, bookId, cart);
     if (res.status) {
       //update user data!(cart number and ...)
@@ -37,6 +42,9 @@ const Book = () => {
   };
 
   const handleBookmark = async () => {
+    if (!isLogin) {
+      router.replace("/auth");
+    }
     if (isLock) {
       return;
     }

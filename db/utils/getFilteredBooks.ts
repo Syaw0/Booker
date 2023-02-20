@@ -1,4 +1,5 @@
-import { pool } from "../../db/dbController";
+import { createConnection } from "mariadb";
+import { dbInfo } from "../../db/dbController";
 
 const getFilteredBooks = async (
   query: string,
@@ -7,7 +8,7 @@ const getFilteredBooks = async (
 ) => {
   let con;
   try {
-    con = await pool.getConnection();
+    con = await createConnection(dbInfo);
 
     const books = await con.query(`
     SELECT * FROM books WHERE ${query} LIMIT ${len},${max}

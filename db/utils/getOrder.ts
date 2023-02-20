@@ -1,9 +1,10 @@
-import { pool } from "../../db/dbController";
+import { createConnection } from "mariadb";
+import { dbInfo } from "../../db/dbController";
 
 const getOrder = async (orderId: string) => {
   let con;
   try {
-    con = await pool.getConnection();
+    con = await createConnection(dbInfo);
     let order = await con.query(`
       SELECT * FROM orders WHERE orderId="${orderId}"
     `);

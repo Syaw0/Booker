@@ -1,7 +1,8 @@
+import { dbInfo } from "./dbConnectors";
 import { writeFileSync } from "fs";
+import { createConnection } from "mariadb";
 import fetch from "node-fetch";
 import path from "path";
-import { pool } from "./dbConnectors";
 
 const subjects = [
   "Architecture",
@@ -87,7 +88,7 @@ const getData = async () => {
 
 const seedBooks = async () => {
   const books = await getData();
-  const con = await pool.getConnection();
+  const con = await createConnection(dbInfo);
   let promisedArrayBook = books.map(async (b: any, i: number) => {
     // const re = await fetch(b.image);
     // // const blob: any = await re.blob();

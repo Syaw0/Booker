@@ -1,9 +1,10 @@
-import { pool } from "../../db/dbController";
+import { createConnection } from "mariadb";
+import { dbInfo } from "../../db/dbController";
 
 const getSimilarBooks = async (bookId: string, category: string) => {
   let con;
   try {
-    con = await pool.getConnection();
+    con = await createConnection(dbInfo);
     const similarBooks = await con.query(`
       SELECT * FROM books WHERE bookId != "${bookId}" and category="${category}" LIMIT 0,10
     `);

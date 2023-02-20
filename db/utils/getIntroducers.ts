@@ -1,9 +1,10 @@
-import { pool } from "../../db/dbController";
+import { createConnection } from "mariadb";
+import { dbInfo } from "../../db/dbController";
 
 const getIntroducers = async () => {
   let con: any;
   try {
-    con = await pool.getConnection();
+    con = await createConnection(dbInfo);
     const introducers = await con.query(`
       SELECT * FROM introducers ;
     `);

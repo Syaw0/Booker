@@ -7,6 +7,7 @@ import schema from "./graphql/schema";
 import rootValue from "./graphql/handlers";
 import getProfileById from "./routes/getProfileById";
 import getBookCoverById from "./routes/getBookCoverById";
+import accessibilityMiddleware from "./middleware/accessibilityMiddleware";
 
 const dev = process.env.NODE_ENV !== "production";
 const hostname = "localhost";
@@ -20,8 +21,12 @@ nextApp
     const app = express();
     app.use(bodyParser.json());
     app.use(cookieParser());
+
+    app.use(accessibilityMiddleware);
+
     app.get("/prof/:id", getProfileById);
     app.get("/cover/:id", getBookCoverById);
+
     app.use(
       "/graphql",
       graphqlHTTP({ schema: schema, rootValue: rootValue, graphiql: dev })

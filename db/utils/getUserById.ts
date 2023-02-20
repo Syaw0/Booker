@@ -1,9 +1,10 @@
-import { pool } from "../../db/dbController";
+import { createConnection } from "mariadb";
+import { dbInfo } from "../../db/dbController";
 
 const getUserById = async (userId: string) => {
   let con;
   try {
-    con = await pool.getConnection();
+    con = await createConnection(dbInfo);
     const result = await con.query(`
       SELECT * FROM users WHERE userId="${userId}"
     `);
@@ -14,7 +15,6 @@ const getUserById = async (userId: string) => {
       result[0].wishlist = JSON.parse(result[0].wishlist);
       result[0].addresses = JSON.parse(result[0].addresses);
     }
-    console.log(result, userId);
     return { status: true, msg: "Found User!", data: result[0] };
   } catch (err) {
     console.log(err);

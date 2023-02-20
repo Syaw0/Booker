@@ -1,4 +1,5 @@
-import { pool } from "../../db/dbController";
+import { createConnection } from "mariadb";
+import { dbInfo } from "../../db/dbController";
 
 const resettingPassword = async (
   email: string,
@@ -7,7 +8,7 @@ const resettingPassword = async (
 ) => {
   let con;
   try {
-    con = await pool.getConnection();
+    con = await createConnection(dbInfo);
     await con.query(`
       UPDATE users SET password="${newPassword}" WHERE email="${email}" and password="${oldPassword}"
     `);

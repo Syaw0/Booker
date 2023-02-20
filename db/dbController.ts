@@ -1,4 +1,4 @@
-import { createPool } from "mariadb";
+import { createPool, createConnection } from "mariadb";
 import { createClient } from "redis";
 import dotenv from "dotenv";
 dotenv.config();
@@ -6,6 +6,14 @@ dotenv.config();
 const MARIADB_PASSWORD = process.env.MARIADB_PASSWORD;
 const MARIADB_USER = process.env.MARIADB_USER;
 const REDIS_PASSWORD = process.env.REDIS_PASSWORD;
+
+const dbInfo = {
+  port: 3030,
+  host: "localhost",
+  user: MARIADB_USER,
+  password: MARIADB_PASSWORD,
+  database: "booker",
+};
 
 const pool = createPool({
   port: 3030,
@@ -24,4 +32,4 @@ const redisClient = createClient({
   password: REDIS_PASSWORD,
 });
 
-export { pool, redisClient };
+export { pool, redisClient, dbInfo };

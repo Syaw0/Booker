@@ -1,8 +1,9 @@
 import { SHA256 } from "crypto-js";
-import { pool } from "./dbConnectors";
+import { createConnection } from "mariadb";
+import { dbInfo } from "./dbConnectors";
 
 const seedUsers = async () => {
-  const con = await pool.getConnection();
+  const con = await createConnection(dbInfo);
   await con.query(
     `INSERT IGNORE INTO booker.users (email,password) VALUES(?,?)`,
     ["s@gmail.com", SHA256("rootroot").toString()]

@@ -8,6 +8,13 @@ const MARIADB_PASSWORD = process.env.MARIADB_PASSWORD;
 const MARIADB_USER = process.env.MARIADB_USER;
 const REDIS_PASSWORD = process.env.REDIS_PASSWORD;
 
+export const dbInfo = {
+  port: 3030,
+  host: "localhost",
+  user: MARIADB_USER,
+  password: MARIADB_PASSWORD,
+  database: "booker",
+};
 export const pool = createPool({
   port: 3030,
   host: "localhost",

@@ -1,11 +1,12 @@
 import { SHA256 } from "crypto-js";
-import { pool } from "../../db/dbController";
+import { createConnection } from "mariadb";
+import { dbInfo } from "../../db/dbController";
 import redisCheckAndConnect from "./redisCheckAndConnect";
 
 const setLoginSession = async (email: string) => {
   let con;
   try {
-    con = await pool.getConnection();
+    con = await createConnection(dbInfo);
     const redis = await redisCheckAndConnect();
     await redis.select(1);
     const user = await con.query(`

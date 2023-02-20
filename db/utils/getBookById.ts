@@ -1,10 +1,11 @@
-import { pool } from "../../db/dbController";
+import { createConnection } from "mariadb";
+import { dbInfo } from "../../db/dbController";
 
 const getBookById = async (id: string | number) => {
   let con;
 
   try {
-    con = await pool.getConnection();
+    con = await createConnection(dbInfo);
     const book = await con.query(`
       SELECT * FROM books WHERE bookId="${id}"
     `);

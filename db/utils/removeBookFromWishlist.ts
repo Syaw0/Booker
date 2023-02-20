@@ -1,4 +1,5 @@
-import { pool } from "../dbController";
+import { createConnection } from "mariadb";
+import { dbInfo } from "../dbController";
 
 const removeBookFromWishlist = async (
   userId: string,
@@ -7,7 +8,7 @@ const removeBookFromWishlist = async (
 ) => {
   let con;
   try {
-    con = await pool.getConnection();
+    con = await createConnection(dbInfo);
 
     const newWishlist = JSON.stringify(
       curWishlist.filter((id) => id != bookId)

@@ -1,4 +1,5 @@
-import { pool } from "../dbController";
+import { createConnection } from "mariadb";
+import { dbInfo } from "../dbController";
 
 const removeBookFromCart = async (
   userId: string,
@@ -7,7 +8,7 @@ const removeBookFromCart = async (
 ) => {
   let con;
   try {
-    con = await pool.getConnection();
+    con = await createConnection(dbInfo);
     curCart.splice(curCart.indexOf(bookId), 1);
     const newCart = JSON.stringify(curCart);
     await con.query(`

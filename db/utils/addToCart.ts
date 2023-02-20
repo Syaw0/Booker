@@ -1,9 +1,10 @@
-import { pool } from "../../db/dbController";
+import { createConnection } from "mariadb";
+import { dbInfo } from "../../db/dbController";
 
 const addToCart = async (userId: string, bookId: string, curCart: string[]) => {
   let con;
   try {
-    con = await pool.getConnection();
+    con = await createConnection(dbInfo);
     const newCart = JSON.stringify([...curCart, bookId]);
 
     await con.query(`

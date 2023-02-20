@@ -1,4 +1,5 @@
-import { pool } from "../../db/dbController";
+import { createConnection } from "mariadb";
+import { dbInfo } from "../../db/dbController";
 
 const addOrder = async (
   address: any,
@@ -9,7 +10,7 @@ const addOrder = async (
   let con;
 
   try {
-    con = await pool.getConnection();
+    con = await createConnection(dbInfo);
     let formattedData: any = new Date();
     formattedData = `${formattedData.getUTCFullYear()}-${formattedData.getUTCMonth()}-${formattedData.getUTCDate()}-${formattedData.getUTCHours()}-${formattedData.getUTCMinutes()}-${formattedData.getUTCSeconds()}`;
 

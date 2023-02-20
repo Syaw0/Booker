@@ -1,10 +1,10 @@
-import { SHA256 } from "crypto-js";
-import { pool } from "./dbConnectors";
+import { createConnection } from "mariadb";
+import { dbInfo } from "./dbConnectors";
 
 const introducers = ["Hot Todays", "Popular", "User Suggested"];
 
 const seedIntroducers = async () => {
-  const con = await pool.getConnection();
+  const con = await createConnection(dbInfo);
 
   const allBooks = await con.query(`
     SELECT * FROM booker.books;

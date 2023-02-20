@@ -1,9 +1,10 @@
-import { pool } from "../dbController";
+import { createConnection } from "mariadb";
+import { dbInfo } from "../dbController";
 
 const checkEmailAndPassword = async (email: string, password: string) => {
   let con;
   try {
-    con = await pool.getConnection();
+    con = await createConnection(dbInfo);
     const isEmailExist = await con.query(`
     SELECT * FROM users WHERE email="${email}"
     `);
