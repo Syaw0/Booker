@@ -1,0 +1,124 @@
+.holder {
+  display: flex;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--on-background100);
+}
+
+.image {
+  border-radius: 1rem;
+}
+
+.price {
+  font-family: var(--font-sub);
+  font-weight: 500;
+  color: var(--on-background900);
+}
+
+.name {
+  font-weight: 600;
+  color: var(--on-background900);
+}
+.author {
+  color: var(--on-background700);
+}
+
+.right {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.5rem 0rem 0.5rem 0.5rem;
+}
+
+.removeAllButton {
+  width: fit-content;
+  min-width: fit-content;
+  color: var(--error);
+}
+
+.removeAllButton:hover {
+  width: fit-content;
+  min-width: fit-content;
+  color: var(--error);
+  background-color: var(--error90);
+}
+
+.rightTop,
+.rightBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.counterHolder {
+  display: flex;
+  border: 1px solid var(--on-background400);
+  border-radius: 0.3rem;
+  width: fit-content;
+}
+
+.counterHolder > div {
+  padding: 0.2rem 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.counterHolder div:nth-child(1),
+.counterHolder div:nth-child(3) {
+  cursor: pointer;
+}
+
+.counterHolder svg {
+  fill: var(--on-background800);
+  width: 24px;
+  height: 24px;
+}
+
+.counterHolder div:nth-child(2) {
+  border-right: 1px solid var(--on-background100);
+  border-left: 1px solid var(--on-background100);
+}
+
+.counterCount {
+  font-weight: 500;
+  font-family: var(--font-sub);
+  user-select: none;
+}
+
+@media (max-width: 600px) {
+  .image {
+    width: 150px;
+    height: 220px;
+  }
+  .name {
+    font-size: var(--headlineSmall);
+    line-height: var(--headlineSmall_lineHeight);
+  }
+  .removeAllButton {
+    font-size: var(--labelMedium);
+  }
+}
+
+@media (max-width: 450px) {
+  .image {
+    width: 120px;
+    height: 170px;
+  }
+  .name {
+    font-size: var(--titleMedium);
+    line-height: var(--titleLarge_lineHeight);
+    font-weight: 700;
+  }
+  .author {
+    font-size: var(--labelMedium);
+    line-height: var(--labelMedium_lineHeight);
+  }
+  .removeAllButton {
+    padding: 0.2rem 0.3rem;
+  }
+  .counterHolder > div {
+    padding: 0.2rem 0.3rem;
+  }
+}

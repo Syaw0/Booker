@@ -1,0 +1,41 @@
+.holder {
+  width: 20rem;
+  height: 100%;
+  position: sticky;
+  left: 0;
+  top: 0;
+  border-right: 2px solid var(--on-background100);
+  padding-right: 1rem;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.holder > div {
+  padding: 1rem 0;
+}
+
+.filterItemText {
+  font-family: var(--font-sub);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.applyButton {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.message {
+  width: 100%;
+}
+
+.message div {
+  width: 100%;
+  margin: 0;
+}
+
+@media (max-width: 750px) {
+  .holder {
+    display: none;
+  }
+}

@@ -1,0 +1,51 @@
+.holder {
+  border-radius: 0.5rem;
+  cursor: pointer;
+  width: 150px;
+  overflow: hidden;
+  border: 0.5px solid var(--on-background100);
+}
+
+.imageHolder img {
+  border-radius: 0.5rem;
+}
+
+.bookInfo {
+  padding: 0rem 0.2rem;
+}
+
+.bookName {
+  font-weight: 600;
+}
+.authorName {
+  color: var(--on-background600);
+}
+
+.bookName,
+.bookInfo {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+  .holder {
+    width: 120px;
+  }
+
+  .imageHolder img {
+    width: 120px;
+    height: 170px;
+  }
+}
+
+@media (max-width: 500px) {
+  .holder {
+    width: 120px;
+  }
+
+  .imageHolder img {
+    width: 120px;
+    height: 170px;
+  }
+}

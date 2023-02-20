@@ -1,0 +1,25 @@
+.holder {
+  width: 100%;
+  position: relative;
+}
+
+.SettingHolder {
+  width: 100%;
+  padding: 1rem calc(1rem * 4);
+}
+
+/* .multiSectionHolder {
+} */
+
+.oneSectionHolder {
+  display: none;
+}
+
+@media (max-width: 850px) {
+  .multiSectionHolder {
+    display: none;
+  }
+  .oneSectionHolder {
+    display: flex;
+  }
+}

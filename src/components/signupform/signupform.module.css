@@ -1,0 +1,46 @@
+.headText {
+  font-weight: 600;
+}
+
+.subheadText {
+  font-family: var(--font-sub);
+}
+.loginInsteadButton {
+  padding: 0.2rem 0;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  color: var(--on-background700);
+  width: fit-content;
+}
+
+.loginInsteadButton:hover {
+  color: var(--on-background);
+}
+
+.registerButton {
+  width: 100%;
+  margin-bottom: 0.2rem;
+}
+
+.typographyHolder {
+  margin-bottom: 3rem;
+}
+
+.inputsHolder {
+  margin-bottom: 2rem;
+}
+
+.inputsHolder {
+  margin-bottom: 1.5rem;
+}
+
+.signupformEmailInput {
+  margin-bottom: 0.6rem;
+}
+/* .loginformPasswordInput {
+} */
+
+.buttonHolder {
+  width: 100%;
+}

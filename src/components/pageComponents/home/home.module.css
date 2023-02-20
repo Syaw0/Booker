@@ -1,0 +1,34 @@
+.holder {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.introducersHolder {
+  padding: calc(1rem * 4);
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.introducersHolder > div {
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 1000px) {
+  .introducersHolder {
+    padding: calc(1rem * 2);
+  }
+}
+
+@media (max-width: 500px) {
+  .introducersHolder {
+    padding: calc(1rem);
+  }
+}

@@ -1,0 +1,22 @@
+.holder {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.ordersHolder {
+  width: 100%;
+  min-height: 100vh;
+  padding: 0 calc(1rem * 4);
+}
+
+@media (max-width: 1000px) {
+  .ordersHolder {
+    padding: 0 calc(1rem * 2);
+  }
+}
+
+@media (max-width: 500px) {
+  .ordersHolder {
+    padding: 0 calc(1rem * 1);
+  }
+}

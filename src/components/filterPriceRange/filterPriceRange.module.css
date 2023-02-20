@@ -1,0 +1,14 @@
+.holder {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.holder input {
+  padding: 0.5rem 1rem;
+}
+
+.separator {
+  padding: 0rem 0.5rem;
+}

@@ -1,0 +1,57 @@
+.holder {
+  width: 100%;
+  overflow: hidden;
+}
+
+.introducingName {
+  user-select: none;
+  font-weight: 500;
+}
+
+.top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 0rem 1.5rem 0;
+}
+
+.bottom {
+  width: 100%;
+  overflow-x: auto;
+  padding: 1rem 0;
+  scrollbar-width: none;
+  overscroll-behavior: contain;
+  -ms-overflow-style: none;
+}
+
+.bottom::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+.bookHolder {
+  display: flex;
+  width: fit-content;
+}
+.bookHolder > a {
+  margin-right: 1rem;
+}
+
+.seeAllButton {
+  min-width: fit-content;
+}
+
+@media (max-width: 700px) {
+  .introducingName {
+    font-size: var(--headlineMedium);
+  }
+  .top {
+    padding: 0rem 0rem 0.5rem 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .bookHolder > div {
+    margin-right: 0.3rem;
+  }
+}

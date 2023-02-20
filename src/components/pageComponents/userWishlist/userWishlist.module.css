@@ -1,0 +1,48 @@
+.holder {
+  width: 100%;
+  position: relative;
+}
+
+.booksHolder {
+  width: 100%;
+  padding: 1rem calc(1rem * 4);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  justify-content: space-between;
+}
+.booksHolder > div {
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 1000px) {
+  .booksHolder {
+    padding: 1rem calc(1rem * 2);
+  }
+}
+
+@media (max-width: 500px) {
+  .booksHolder {
+    padding: 1rem calc(1rem * 1);
+  }
+}
+
+@media (max-width: 700px) {
+  .booksHolder {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  }
+}
+
+@media (max-width: 450px) {
+  .booksHolder {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  .booksHolder > div {
+    width: 150px;
+  }
+
+  .booksHolder > div img {
+    width: 150px;
+    height: 190px;
+  }
+}

@@ -1,0 +1,72 @@
+.holder {
+  width: 100%;
+}
+
+.headText {
+  font-size: var(--headlineMedium);
+  line-height: var(--headlineMedium_lineHeight);
+  font-weight: 600;
+  color: var(--on-background);
+  padding: 0.5rem 0;
+}
+
+.information {
+  margin-bottom: 1rem;
+}
+
+.informationItems {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--on-background100);
+}
+
+.informationItems > p:nth-child(1) {
+  font-size: var(--titleMedium);
+  line-height: var(--titleMedium_lineHeight);
+  color: var(--on-background900);
+  font-weight: 500;
+}
+
+.informationItems > p:nth-child(2) {
+  font-size: var(--titleMedium);
+  line-height: var(--titleMedium_lineHeight);
+  color: var(--on-background);
+  font-weight: 600;
+}
+
+.select {
+  width: 100%;
+  padding: 0.3rem 0.5rem;
+  color: var(--on-background900);
+  font-weight: 600;
+  font-family: var(--font-sub);
+  font-size: var(--titleMedium);
+  line-height: var(--titleMedium_lineHeight);
+  cursor: pointer;
+  background-color: var(--background);
+  border: 1.5px solid var(--on-background300);
+  border-radius: 0.2rem;
+}
+
+.address {
+  margin-bottom: 1rem;
+}
+.button {
+  width: 100%;
+}
+
+.addNewAddressButton {
+  font-weight: 600;
+  color: var(--on-background700);
+  user-select: none;
+
+  cursor: pointer;
+
+  width: fit-content;
+  padding: 0.4rem 0;
+}
+.addNewAddressButton:hover {
+  color: var(--on-background900);
+}

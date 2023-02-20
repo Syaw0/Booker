@@ -1,0 +1,52 @@
+.holder {
+  width: 100%;
+  position: relative;
+}
+
+.addressesHolder {
+  width: 100%;
+  padding: 1rem calc(1rem * 4);
+}
+
+.buttonHolder {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.addAddressButton {
+  min-width: fit-content;
+  width: fit-content;
+}
+
+.addAddressButton:hover span {
+  border: none;
+}
+
+@media (max-width: 1000px) {
+  .addressesHolder {
+    padding: 1rem calc(1rem * 2);
+  }
+}
+
+@media (max-width: 500px) {
+  .addressesHolder {
+    padding: 1rem calc(1rem * 1);
+  }
+  .addAddressButtonText {
+    display: none;
+  }
+  .addAddressButton {
+    width: fit-content;
+    min-width: fit-content;
+    padding: 0.7rem;
+    border-radius: 50%;
+    position: fixed;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 10000;
+    box-shadow: var(--shadow3dp);
+  }
+  .addAddressButton svg {
+    margin: 0;
+  }
+}

@@ -1,0 +1,46 @@
+.subheadText {
+  font-family: var(--font-sub);
+}
+
+.headText {
+  font-weight: 600;
+}
+.forgetPasswordBtn {
+  padding: 0.2rem 0;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  color: var(--on-background700);
+  width: fit-content;
+}
+
+.forgetPasswordBtn:hover {
+  color: var(--on-background);
+}
+
+.loginButton {
+  width: 100%;
+  margin-bottom: 0.2rem;
+}
+
+.typographyHolder {
+  margin-bottom: 3rem;
+}
+
+.inputsHolder {
+  margin-bottom: 2rem;
+}
+
+.inputsHolder {
+  margin-bottom: 1.5rem;
+}
+
+.loginformEmailInput {
+  margin-bottom: 0.6rem;
+}
+/* .loginformPasswordInput {
+} */
+
+.buttonHolder {
+  width: 100%;
+}
