@@ -14,6 +14,7 @@ import { act } from "react-dom/test-utils";
 jest.mock("src/utils/addToCart.ts");
 jest.mock("src/utils/updateUserData.ts");
 jest.mock("src/utils/bookmarkModifier.ts");
+jest.mock("next/router", () => require("next-router-mock"));
 
 const mockBookmarkModifier = bookmarkModifier as jest.Mock;
 const mockAddToCart = addToCart as jest.Mock;

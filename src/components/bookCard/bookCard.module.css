@@ -3,6 +3,7 @@
   cursor: pointer;
   width: 150px;
   overflow: hidden;
+  border: 0.5px solid var(--on-background100);
 }
 
 .imageHolder img {

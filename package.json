@@ -1,6 +1,6 @@
 {
   "name": "booker",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "prettier": "npx prettier . -c -w",
+    "test": "npm run test:component && npm run test:page && npm run test:db",
     "test:component": "npx jest ./src/components/",
     "test:page": "npx jest ./src/__test__",
     "test:db": "npx jest --testTimeout=50000 --forceExit --config=./jest.config.node.ts ./tests/db/ ",
