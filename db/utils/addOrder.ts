@@ -47,7 +47,7 @@ const addOrder = async (
     return { status: false, msg: "Error During Add Order!" };
   } finally {
     if (con != null) {
-      await con.release();
+      await con.end();
     }
   }
 };

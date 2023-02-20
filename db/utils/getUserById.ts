@@ -14,14 +14,14 @@ const getUserById = async (userId: string) => {
       result[0].wishlist = JSON.parse(result[0].wishlist);
       result[0].addresses = JSON.parse(result[0].addresses);
     }
-
+    console.log(result, userId);
     return { status: true, msg: "Found User!", data: result[0] };
   } catch (err) {
     console.log(err);
     return { status: false, msg: "Error During GetUser From Maria!" };
   } finally {
     if (con != null) {
-      await con.release();
+      await con.end();
     }
   }
 };

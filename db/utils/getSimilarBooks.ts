@@ -22,7 +22,7 @@ const getSimilarBooks = async (bookId: string, category: string) => {
     };
   } finally {
     if (con != null) {
-      await con.release();
+      await con.end();
     }
   }
 };

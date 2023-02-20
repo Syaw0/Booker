@@ -18,7 +18,7 @@ const addToCart = async (userId: string, bookId: string, curCart: string[]) => {
     return { status: false, msg: "Error During Add To Cart!" };
   } finally {
     if (con != null) {
-      await con.release();
+      await con.end();
     }
   }
 };

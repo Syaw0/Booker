@@ -19,7 +19,7 @@ const checkEmailExistence = async (email: string) => {
     };
   } finally {
     if (con != null) {
-      await con.release();
+      await con.end();
     }
   }
 };

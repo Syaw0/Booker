@@ -15,7 +15,7 @@ const insertNewUser = async (email: string, password: string) => {
     return { status: false, msg: "Error During Signup !" };
   } finally {
     if (con != null) {
-      await con.release();
+      await con.end();
     }
   }
 };

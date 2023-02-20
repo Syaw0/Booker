@@ -4,6 +4,8 @@ import { render, screen } from "@testing-library/react";
 import fakeUserSettingPageData from "src/shared/fakeUserSettingPageData";
 
 jest.mock("next/router", () => require("next-router-mock"));
+jest.mock("db/utils/checkSession", () => jest.fn());
+jest.mock("db/utils/getUserById", () => jest.fn());
 
 const CustomParent = (props: UserSettingPagePropsTypes) => {
   return <UserSettingPage {...props} />;

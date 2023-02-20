@@ -19,7 +19,7 @@ const getFilteredBooks = async (
     return { status: false, msg: "Error During Filter Books!", data: [] };
   } finally {
     if (con != null) {
-      await con.release();
+      await con.end();
     }
   }
 };

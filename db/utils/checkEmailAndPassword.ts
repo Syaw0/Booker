@@ -32,7 +32,7 @@ const checkEmailAndPassword = async (email: string, password: string) => {
     };
   } finally {
     if (con != null) {
-      await con.release();
+      await con.end();
     }
   }
 };

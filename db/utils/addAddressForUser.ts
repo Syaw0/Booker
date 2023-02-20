@@ -19,7 +19,7 @@ const addAddressForUser = async (userId: string, addressData: any) => {
     return { status: false, msg: "Error During Add Address In Maria!" };
   } finally {
     if (con != null) {
-      await con.release();
+      await con.end();
     }
   }
 };

@@ -19,7 +19,7 @@ const addBookToWishlist = async (
     return { status: false, msg: "Error During Add Book To Wishlist!" };
   } finally {
     if (con != null) {
-      await con.release();
+      await con.end();
     }
   }
 };

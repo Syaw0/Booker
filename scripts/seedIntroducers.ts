@@ -17,7 +17,6 @@ const seedIntroducers = async () => {
     books = books.map((book: any) => {
       return `${book.bookId}`;
     });
-    console.log(books);
     await con.query(
       `INSERT IGNORE INTO booker.introducers (name,books) VALUES(?,?)`,
       [name, `[${books}]`]

@@ -32,7 +32,7 @@ const getUserOrders = async (userId: string) => {
     };
   } finally {
     if (con != null) {
-      await con.release();
+      await con.end();
     }
   }
 };

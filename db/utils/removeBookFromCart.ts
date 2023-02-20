@@ -22,7 +22,7 @@ const removeBookFromCart = async (
     return { status: false, msg: "Error During Remove From Cart!" };
   } finally {
     if (con != null) {
-      await con.release();
+      await con.end();
     }
   }
 };

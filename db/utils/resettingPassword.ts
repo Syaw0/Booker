@@ -17,7 +17,7 @@ const resettingPassword = async (
     return { status: false, msg: "Error During Resetting Password!" };
   } finally {
     if (con != null) {
-      await con.release();
+      await con.end();
     }
   }
 };

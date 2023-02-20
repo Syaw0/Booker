@@ -1,8 +1,9 @@
+import checkSession from "db/utils/checkSession";
+import getUserById from "db/utils/getUserById";
 import { GetServerSideProps, GetServerSidePropsResult } from "next";
 import Head from "next/head";
 import { Provider } from "react-redux";
 import UserSetting from "src/components/pageComponents/userSetting/userSetting";
-import fakeUserSettingPageData from "src/shared/fakeUserSettingPageData";
 import navItems from "src/shared/userDashNavItems";
 import makeStore from "src/store/userSetting/userSettingStore";
 
@@ -19,12 +20,39 @@ const UserSettingPage = (props: UserSettingPagePropsTypes) => {
     </>
   );
 };
-const getServerSideProps: GetServerSideProps = async (): Promise<
-  GetServerSidePropsResult<UserSettingPagePropsTypes>
-> => {
+const getServerSideProps: GetServerSideProps = async ({
+  req,
+}): Promise<GetServerSidePropsResult<UserSettingPagePropsTypes>> => {
+  const props: UserSettingPagePropsTypes = {
+    actionType: "userSetting",
+    isLogin: false,
+    menuItems: [],
+    navbarItems: [],
+    user: {
+      cartNumber: "",
+      email: "",
+      profileUrl: "",
+      userId: "",
+      wishlist: [],
+      addresses: [],
+      cart: [],
+      orders: [],
+    },
+  };
+
+  const checkSessionResult = await checkSession(req.cookies);
+  if (checkSessionResult.status && checkSessionResult.data != null) {
+    const user = await getUserById(checkSessionResult.data);
+    if (user.status && user.data != null) {
+      props.user = user.data;
+      props.isLogin = true;
+    } else {
+      return { redirect: { destination: "/500", permanent: false } };
+    }
+  }
   return {
     props: {
-      ...fakeUserSettingPageData,
+      ...props,
     },
   };
 };

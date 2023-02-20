@@ -23,7 +23,7 @@ const getBookById = async (id: string | number) => {
     return { status: false, msg: "Error During Get Book!" };
   } finally {
     if (con != null) {
-      await con.release();
+      await con.end();
     }
   }
 };

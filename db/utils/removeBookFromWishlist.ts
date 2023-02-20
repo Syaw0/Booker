@@ -22,7 +22,7 @@ const removeBookFromWishlist = async (
     return { status: false, msg: "Error During Remove Book From Wishlist!" };
   } finally {
     if (con != null) {
-      await con.release();
+      await con.end();
     }
   }
 };

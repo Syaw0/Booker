@@ -28,7 +28,7 @@ const getOrder = async (orderId: string) => {
     };
   } finally {
     if (con != null) {
-      await con.release();
+      await con.end();
     }
   }
 };

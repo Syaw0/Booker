@@ -13,6 +13,7 @@ const pool = createPool({
   user: MARIADB_USER,
   password: MARIADB_PASSWORD,
   database: "booker",
+  // connectionLimit: 100,
 });
 
 const redisClient = createClient({

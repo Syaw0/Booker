@@ -16,7 +16,7 @@ const deleteAddressById = async (addressId: string) => {
     };
   } finally {
     if (con != null) {
-      await con.release();
+      await con.end();
     }
   }
 };
